@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS users (
     role TEXT NOT NULL DEFAULT 'user',
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     last_seen_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    status TEXT NOT NULL DEFAULT 'active',
     operations_count INTEGER NOT NULL DEFAULT 0,
     tests_count INTEGER NOT NULL DEFAULT 0
 );
