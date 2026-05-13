@@ -12,7 +12,7 @@ router = Router()
 
 
 def _is_admin(telegram_id: int) -> bool:
-    return user_service.is_admin(telegram_id)
+    return telegram_id in settings.admin_ids
 
 
 async def _require_admin(message: Message) -> bool:
