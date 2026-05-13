@@ -14,6 +14,10 @@ async def init_db() -> None:
     settings.database_path.parent.mkdir(parents=True, exist_ok=True)
     async with aiosqlite.connect(settings.database_path) as db:
         await db.executescript(SCHEMA_SQL)
+        columns = await db.execute_fetchall("PRAGMA table_info(users)")
+        column_names = {row[1] for row in columns}
+        if "status" not in column_names:
+            await db.execute("ALTER TABLE users ADD COLUMN status TEXT NOT NULL DEFAULT 'active'")
         await db.commit()
 
 
