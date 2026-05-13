@@ -5,6 +5,7 @@ import logging
 
 from aiogram import Bot, Dispatcher
 
+from app.bot_commands import set_default_commands
 from app.config import settings
 from app.database import init_db
 from app.handlers import admin, test, user
@@ -34,6 +35,7 @@ async def main() -> None:
         )
 
     bot = Bot(token=settings.bot_token)
+    await set_default_commands(bot)
     dp = Dispatcher()
     dp.include_router(admin.router)
     dp.include_router(user.router)
