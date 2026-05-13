@@ -8,19 +8,88 @@ from aiogram.types import User as TelegramUser
 from app.config import settings
 from app.database import db_session
 
+ADMIN_CONTACT = "@Javohir_Ibrohimov"
 
-async def upsert_user(tg_user: TelegramUser) -> int:
-    role = "admin" if tg_user.id in settings.admin_ids else "user"
+
+def is_admin(telegram_id: int) -> bool:
+    return telegram_id in settings.admin_ids
+
+
+def access_denied_text(telegram_id: int) -> str:
+    return (
+        "Sizda botdan foydalanish uchun ruxsat yo'q.\n\n"
+        f"Ruxsat olish uchun admin bilan bog'laning: {ADMIN_CONTACT}\n"
+        f"Sizning Telegram ID: {telegram_id}"
+    )
+
+
+async def get_allowed_user_id(telegram_id: int) -> int | None:
+    async with db_session() as db:
+        rows = await db.execute_fetchall(
+            """
+            SELECT id
+            FROM users
+            WHERE telegram_id = ?
+              AND status = 'active'
+            """,
+            (telegram_id,),
+        )
+        return int(rows[0]["id"]) if rows else None
+
+
+async def is_allowed(telegram_id: int) -> bool:
+    if is_admin(telegram_id):
+        return True
+    return await get_allowed_user_id(telegram_id) is not None
+
+
+async def add_allowed_user(telegram_id: int, role: str = "user") -> dict:
+    if telegram_id in settings.admin_ids:
+        role = "admin"
     async with db_session() as db:
         await db.execute(
             """
-            INSERT INTO users (telegram_id, username, first_name, last_name, role)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO users (telegram_id, role, status)
+            VALUES (?, ?, 'active')
+            ON CONFLICT(telegram_id) DO UPDATE SET
+                role = excluded.role,
+                status = 'active',
+                last_seen_at = CURRENT_TIMESTAMP
+            """,
+            (telegram_id, role),
+        )
+        await db.commit()
+    return await get_profile_by_telegram_id(telegram_id) or {}
+
+
+async def set_user_status(telegram_id: int, status: str) -> dict | None:
+    async with db_session() as db:
+        rows = await db.execute_fetchall("SELECT id FROM users WHERE telegram_id = ?", (telegram_id,))
+        if not rows:
+            return None
+        await db.execute(
+            "UPDATE users SET status = ?, last_seen_at = CURRENT_TIMESTAMP WHERE telegram_id = ?",
+            (status, telegram_id),
+        )
+        await db.commit()
+    return await get_profile_by_telegram_id(telegram_id)
+
+
+async def upsert_user(tg_user: TelegramUser) -> int:
+    role = "admin" if is_admin(tg_user.id) else "user"
+    if not is_admin(tg_user.id) and not await get_allowed_user_id(tg_user.id):
+        raise PermissionError(access_denied_text(tg_user.id))
+    async with db_session() as db:
+        await db.execute(
+            """
+            INSERT INTO users (telegram_id, username, first_name, last_name, role, status)
+            VALUES (?, ?, ?, ?, ?, 'active')
             ON CONFLICT(telegram_id) DO UPDATE SET
                 username = excluded.username,
                 first_name = excluded.first_name,
                 last_name = excluded.last_name,
                 role = excluded.role,
+                status = 'active',
                 last_seen_at = CURRENT_TIMESTAMP
             """,
             (tg_user.id, tg_user.username, tg_user.first_name, tg_user.last_name, role),
@@ -48,13 +117,27 @@ async def get_profile(user_id: int) -> dict:
         rows = await db.execute_fetchall(
             """
             SELECT id, telegram_id, username, first_name, last_name, role, created_at,
-                   last_seen_at, operations_count, tests_count
+                   last_seen_at, status, operations_count, tests_count
             FROM users
             WHERE id = ?
             """,
             (user_id,),
         )
         return dict(rows[0])
+
+
+async def get_profile_by_telegram_id(telegram_id: int) -> dict | None:
+    async with db_session() as db:
+        rows = await db.execute_fetchall(
+            """
+            SELECT id, telegram_id, username, first_name, last_name, role, created_at,
+                   last_seen_at, status, operations_count, tests_count
+            FROM users
+            WHERE telegram_id = ?
+            """,
+            (telegram_id,),
+        )
+        return dict(rows[0]) if rows else None
 
 
 async def get_last_results(user_id: int, limit: int = 5) -> list[dict]:
