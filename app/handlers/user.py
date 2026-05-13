@@ -5,10 +5,15 @@ from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
 
 from app.bot_commands import set_chat_commands
+from app.config import settings
 from app.keyboards import BTN_HELP, BTN_LAST_RESULTS, BTN_PROFILE, main_menu
 from app.services import user_service
 
 router = Router()
+
+
+def _is_admin(telegram_id: int) -> bool:
+    return telegram_id in settings.admin_ids
 
 
 async def _ensure_allowed(message: Message) -> int | None:
@@ -47,7 +52,7 @@ async def cmd_start(message: Message) -> None:
     user_id = await _ensure_allowed(message)
     if user_id is None:
         return
-    await set_chat_commands(message.bot, message.chat.id, user_service.is_admin(message.from_user.id))
+    await set_chat_commands(message.bot, message.chat.id, _is_admin(message.from_user.id))
     await user_service.log_operation(user_id, "start")
     await message.answer(
         "Assalomu alaykum! EMU TEST BOT ga xush kelibsiz.\n\n"
@@ -109,4 +114,4 @@ async def help_message(message: Message) -> None:
     if user_id is None:
         return
     await user_service.log_operation(user_id, "help")
-    await message.answer(_help_text(user_service.is_admin(message.from_user.id)), reply_markup=main_menu())
+    await message.answer(_help_text(_is_admin(message.from_user.id)), reply_markup=main_menu())
