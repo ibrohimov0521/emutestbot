@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import asyncio
 import json
@@ -8,17 +8,7 @@ from app.database import db_session, init_db
 
 BASE_DIR = Path(__file__).resolve().parent
 DISTRICTS_PATH = BASE_DIR / "data" / "uzbekistan_districts.json"
-CATEGORY = "O‘zbekiston tumanlari"
-
-
-def _district_questions(district: str, region: str) -> list[tuple[str, str]]:
-    return [
-        (f"{district} qaysi viloyatda joylashgan?", region),
-        (f"{district} qaysi hududga tegishli?", region),
-        (f"{district} qaysi viloyat tarkibida?", region),
-        (f"{district} qaysi hududga qaraydi?", region),
-        (f"{district} joylashgan viloyat nomini yozing", region),
-    ]
+CATEGORY = "O'zbekiston tumanlari"
 
 
 def build_questions() -> list[dict[str, str]]:
@@ -26,26 +16,15 @@ def build_questions() -> list[dict[str, str]]:
     questions: list[dict[str, str]] = []
     for item in data:
         region = item["region"]
-        districts = item["districts"]
-        for district in districts:
-            for question_text, correct_answer in _district_questions(district, region):
-                questions.append(
-                    {
-                        "question_text": question_text,
-                        "correct_answer": correct_answer,
-                        "category": CATEGORY,
-                        "difficulty": "easy",
-                    }
-                )
-
-        questions.append(
-            {
-                "question_text": f"{region} tarkibidagi tumanlardan birini ayting",
-                "correct_answer": ", ".join(districts),
-                "category": CATEGORY,
-                "difficulty": "easy",
-            }
-        )
+        for district in item["districts"]:
+            questions.append(
+                {
+                    "question_text": f"{district} qaysi viloyatda joylashgan?",
+                    "correct_answer": region,
+                    "category": CATEGORY,
+                    "difficulty": "easy",
+                }
+            )
     return questions
 
 
