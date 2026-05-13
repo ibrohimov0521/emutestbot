@@ -20,6 +20,10 @@ def _parse_admin_ids(value: str) -> set[int]:
     return admin_ids
 
 
+def _parse_bool(value: str) -> bool:
+    return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
 @dataclass(frozen=True)
 class Settings:
     bot_token: str
@@ -27,6 +31,7 @@ class Settings:
     openai_model: str
     admin_ids: set[int]
     database_path: Path
+    auto_seed_districts: bool
     questions_per_test: int = 50
 
 
@@ -43,6 +48,7 @@ def get_settings() -> Settings:
         openai_model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
         admin_ids=_parse_admin_ids(os.getenv("ADMIN_IDS", "")),
         database_path=db_path,
+        auto_seed_districts=_parse_bool(os.getenv("AUTO_SEED_DISTRICTS", "false")),
         questions_per_test=int(os.getenv("QUESTIONS_PER_TEST", "50")),
     )
 

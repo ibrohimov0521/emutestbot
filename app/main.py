@@ -22,6 +22,16 @@ async def main() -> None:
         raise RuntimeError("OPENAI_API_KEY .env faylida ko'rsatilmagan.")
 
     await init_db()
+    if settings.auto_seed_districts:
+        from seed import seed_district_questions
+
+        seed_result = await seed_district_questions()
+        logging.info(
+            "District questions seed completed: inserted=%s skipped=%s total=%s",
+            seed_result["inserted"],
+            seed_result["skipped"],
+            seed_result["total"],
+        )
 
     bot = Bot(token=settings.bot_token)
     dp = Dispatcher()

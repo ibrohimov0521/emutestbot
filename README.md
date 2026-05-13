@@ -79,6 +79,7 @@ OPENAI_MODEL=gpt-4o-mini
 ADMIN_IDS=123456789
 DATABASE_PATH=data/bot.db
 QUESTIONS_PER_TEST=50
+AUTO_SEED_DISTRICTS=false
 ```
 
 `ADMIN_IDS` bir nechta bo'lsa vergul bilan yoziladi.
@@ -104,6 +105,24 @@ python -m app.main
 ```
 
 Bot lokal PC'da long polling orqali ishlaydi. Serverga chiqarishda ham shu arxitektura saqlanadi: `.env` qiymatlari serverda beriladi, SQLite fayl yo'li esa `DATABASE_PATH` orqali sozlanadi.
+
+## Railway deploy
+
+Railway GitHub repositorydan deploy qilganda start command `python -m app.main` bo'ladi. Repo ichida `railway.json` va `Procfile` tayyor.
+
+Railway Variables bo'limiga quyidagilarni qo'shing:
+
+```env
+BOT_TOKEN=telegram_bot_token
+OPENAI_API_KEY=openai_api_key
+OPENAI_MODEL=gpt-4o-mini
+ADMIN_IDS=123456789
+QUESTIONS_PER_TEST=50
+AUTO_SEED_DISTRICTS=true
+DATABASE_PATH=/data/bot.db
+```
+
+SQLite ma'lumotlari restart yoki redeploydan keyin ham saqlanishi uchun Railway'da Volume yarating va mount path sifatida `/data` ni tanlang. Volume ishlatmasangiz, baza ephemeral filesystemda qoladi va deploy/restartlarda yo'qolishi mumkin.
 
 ## Admin komandalar
 
