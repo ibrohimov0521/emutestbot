@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from app.config import settings
 from app.database import db_session
 from app.services.openai_checker import CheckResult
 
@@ -14,7 +13,7 @@ async def get_active_session(user_id: int) -> dict | None:
         return dict(rows[0]) if rows else None
 
 
-async def start_test(user_id: int) -> dict:
+async def start_test(user_id: int, total_questions: int) -> dict:
     active = await get_active_session(user_id)
     if active:
         return active
@@ -25,30 +24,17 @@ async def start_test(user_id: int) -> dict:
             SELECT id
             FROM questions
             WHERE is_active = 1
-              AND category = 'O‘zbekiston tumanlari'
-              AND question_text LIKE '%qaysi viloyatda joylashgan?'
             ORDER BY RANDOM()
             LIMIT ?
             """,
-            (settings.questions_per_test,),
+            (total_questions,),
         )
-        if len(question_rows) < settings.questions_per_test:
-            question_rows = await db.execute_fetchall(
-                """
-                SELECT id
-                FROM questions
-                WHERE is_active = 1
-                ORDER BY RANDOM()
-                LIMIT ?
-                """,
-                (settings.questions_per_test,),
-            )
-        if len(question_rows) < settings.questions_per_test:
-            raise ValueError(f"Kamida {settings.questions_per_test} ta aktiv savol kerak.")
+        if len(question_rows) < total_questions:
+            raise ValueError(f"Kamida {total_questions} ta aktiv savol kerak.")
 
         cursor = await db.execute(
             "INSERT INTO test_sessions (user_id, total_questions) VALUES (?, ?)",
-            (user_id, settings.questions_per_test),
+            (user_id, total_questions),
         )
         session_id = cursor.lastrowid
         for position, row in enumerate(question_rows, start=1):
