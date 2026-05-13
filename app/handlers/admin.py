@@ -12,15 +12,30 @@ router = Router()
 
 
 def _is_admin(telegram_id: int) -> bool:
-    return telegram_id in settings.admin_ids
+    return user_service.is_admin(telegram_id)
+
+
+async def _require_admin(message: Message) -> bool:
+    if not message.from_user or not _is_admin(message.from_user.id):
+        await message.answer("Bu bo'lim faqat adminlar uchun.")
+        return False
+    user_id = await user_service.upsert_user(message.from_user)
+    await user_service.log_operation(user_id, "admin_command")
+    return True
+
+
+def _parse_telegram_id(command: CommandObject | None) -> int | None:
+    if not command or not command.args:
+        return None
+    value = command.args.strip().split()[0]
+    if not value.isdigit():
+        return None
+    return int(value)
 
 
 @router.message(Command("admin"))
 async def admin_panel(message: Message) -> None:
-    user_id = await user_service.upsert_user(message.from_user)
-    await user_service.log_operation(user_id, "admin_panel")
-    if not _is_admin(message.from_user.id):
-        await message.answer("Bu bo'lim faqat adminlar uchun.")
+    if not await _require_admin(message):
         return
 
     stats = await admin_service.dashboard_stats()
@@ -36,6 +51,9 @@ async def admin_panel(message: Message) -> None:
         f"O'zbekiston tumanlari savollari: {stats['district_questions']}\n\n"
         f"Kategoriya bo'yicha:\n{categories}\n\n"
         "Userlar ro'yxati: /users\n"
+        "Yangi user qo'shish: /add_user TELEGRAM_ID\n"
+        "Userni bloklash: /block_user TELEGRAM_ID\n"
+        "Userni aktiv qilish: /unblock_user TELEGRAM_ID\n"
         "User statistikasi: /user_stats USER_ID\n"
         "Tuman savollarini seed qilish: /seed_districts"
     )
@@ -43,8 +61,7 @@ async def admin_panel(message: Message) -> None:
 
 @router.message(Command("users"))
 async def users_list(message: Message) -> None:
-    if not _is_admin(message.from_user.id):
-        await message.answer("Bu bo'lim faqat adminlar uchun.")
+    if not await _require_admin(message):
         return
     await _send_users_page(message, 1)
 
@@ -56,10 +73,12 @@ async def _send_users_page(message: Message, page: int) -> None:
         return
     lines = [f"Userlar, {page}-sahifa:"]
     for user in users:
-        name = user.get("username") or user.get("first_name") or user["telegram_id"]
+        username = f"@{user['username']}" if user.get("username") else "yo'q"
+        name = user.get("first_name") or "-"
         lines.append(
-            f"#{user['id']} | {name} | oxirgi: {user['last_seen_at']} | "
-            f"test: {user['tests_count']} | operatsiya: {user['operations_count']}"
+            f"#{user['id']} | tg:{user['telegram_id']} | {username} | ism:{name} | "
+            f"status:{user['status']} | oxirgi:{user['last_seen_at']} | "
+            f"test:{user['tests_count']} | op:{user['operations_count']}"
         )
     await message.answer("\n".join(lines), reply_markup=admin_users_pagination(page, page > 1, has_next))
 
@@ -73,10 +92,12 @@ async def users_page_callback(callback: CallbackQuery) -> None:
     users, has_next = await admin_service.list_users(page)
     lines = [f"Userlar, {page}-sahifa:"]
     for user in users:
-        name = user.get("username") or user.get("first_name") or user["telegram_id"]
+        username = f"@{user['username']}" if user.get("username") else "yo'q"
+        name = user.get("first_name") or "-"
         lines.append(
-            f"#{user['id']} | {name} | oxirgi: {user['last_seen_at']} | "
-            f"test: {user['tests_count']} | operatsiya: {user['operations_count']}"
+            f"#{user['id']} | tg:{user['telegram_id']} | {username} | ism:{name} | "
+            f"status:{user['status']} | oxirgi:{user['last_seen_at']} | "
+            f"test:{user['tests_count']} | op:{user['operations_count']}"
         )
     await callback.message.edit_text(
         "\n".join(lines),
@@ -87,8 +108,7 @@ async def users_page_callback(callback: CallbackQuery) -> None:
 
 @router.message(Command("user_stats"))
 async def user_stats(message: Message, command: CommandObject) -> None:
-    if not _is_admin(message.from_user.id):
-        await message.answer("Bu bo'lim faqat adminlar uchun.")
+    if not await _require_admin(message):
         return
     if not command.args or not command.args.strip().isdigit():
         await message.answer("Foydalanish: /user_stats USER_ID\nMasalan: /user_stats 12")
@@ -107,6 +127,7 @@ async def user_stats(message: Message, command: CommandObject) -> None:
         f"Username: {username}\n"
         f"Ism: {summary.get('first_name') or '-'}\n"
         f"Rol: {summary['role']}\n"
+        f"Status: {summary['status']}\n"
         f"Oxirgi kirgan: {summary['last_seen_at']}\n"
         f"Operatsiyalar: {summary['operations_count']}\n"
         f"Testlar: {summary['sessions']}\n"
@@ -116,10 +137,55 @@ async def user_stats(message: Message, command: CommandObject) -> None:
     )
 
 
+@router.message(Command("add_user"))
+async def add_user(message: Message, command: CommandObject) -> None:
+    if not await _require_admin(message):
+        return
+    telegram_id = _parse_telegram_id(command)
+    if telegram_id is None:
+        await message.answer("Foydalanish: /add_user TELEGRAM_ID\nMasalan: /add_user 123456789")
+        return
+    user = await user_service.add_allowed_user(telegram_id)
+    await message.answer(
+        "User qo'shildi yoki aktiv qilindi.\n\n"
+        f"Telegram ID: {user['telegram_id']}\n"
+        f"Status: {user['status']}\n"
+        f"Rol: {user['role']}"
+    )
+
+
+@router.message(Command("block_user"))
+async def block_user(message: Message, command: CommandObject) -> None:
+    if not await _require_admin(message):
+        return
+    telegram_id = _parse_telegram_id(command)
+    if telegram_id is None:
+        await message.answer("Foydalanish: /block_user TELEGRAM_ID\nMasalan: /block_user 123456789")
+        return
+    user = await user_service.set_user_status(telegram_id, "blocked")
+    if not user:
+        await message.answer("Bunday Telegram ID bazada topilmadi.")
+        return
+    await message.answer(f"User bloklandi: {telegram_id}")
+
+
+@router.message(Command("unblock_user"))
+async def unblock_user(message: Message, command: CommandObject) -> None:
+    if not await _require_admin(message):
+        return
+    telegram_id = _parse_telegram_id(command)
+    if telegram_id is None:
+        await message.answer("Foydalanish: /unblock_user TELEGRAM_ID\nMasalan: /unblock_user 123456789")
+        return
+    user = await user_service.set_user_status(telegram_id, "active")
+    if not user:
+        user = await user_service.add_allowed_user(telegram_id)
+    await message.answer(f"User aktiv qilindi: {user['telegram_id']}")
+
+
 @router.message(Command("seed_districts"))
 async def seed_districts(message: Message) -> None:
-    if not _is_admin(message.from_user.id):
-        await message.answer("Bu komanda faqat adminlar uchun.")
+    if not await _require_admin(message):
         return
 
     from seed import seed_district_questions
