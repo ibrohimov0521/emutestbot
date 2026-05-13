@@ -13,10 +13,7 @@ async def dashboard_stats() -> dict:
             "total_answers": "SELECT COUNT(*) AS count FROM test_answers",
             "total_questions": "SELECT COUNT(*) AS count FROM questions",
             "active_questions": "SELECT COUNT(*) AS count FROM questions WHERE is_active = 1",
-            "district_questions": (
-                "SELECT COUNT(*) AS count FROM questions "
-                "WHERE category = 'O‘zbekiston tumanlari' OR category = 'O''zbekiston tumanlari'"
-            ),
+            "district_questions": "SELECT COUNT(*) AS count FROM questions WHERE category = 'O''zbekiston tumanlari'",
         }
         for key, sql in queries.items():
             rows = await db.execute_fetchall(sql)
@@ -35,7 +32,7 @@ async def list_users(page: int = 1, per_page: int = 10) -> tuple[list[dict], boo
         rows = await db.execute_fetchall(
             """
             SELECT id, telegram_id, username, first_name, last_name, role, last_seen_at,
-                   operations_count, tests_count
+                   status, operations_count, tests_count
             FROM users
             ORDER BY id DESC
             LIMIT ? OFFSET ?
@@ -64,3 +61,11 @@ async def user_summary(user_id: int) -> dict | None:
         )
         summary.update(dict(result_rows[0]))
         return summary
+
+
+async def user_summary_by_telegram_id(telegram_id: int) -> dict | None:
+    async with db_session() as db:
+        rows = await db.execute_fetchall("SELECT id FROM users WHERE telegram_id = ?", (telegram_id,))
+        if not rows:
+            return None
+    return await user_summary(int(rows[0]["id"]))
