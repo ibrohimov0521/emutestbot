@@ -42,6 +42,7 @@ def _help_text(is_admin: bool) -> str:
             "/block_user TELEGRAM_ID - userni bloklash\n"
             "/unblock_user TELEGRAM_ID - userni qayta aktiv qilish\n"
             "/user_stats USER_ID - user statistikasi\n"
+            "/seed_questions - barcha savollarni seed qilish\n"
             "/seed_districts - tuman savollarini seed qilish"
         )
     return text
