@@ -28,8 +28,9 @@ async def main() -> None:
 
         seed_result = await seed_all_questions()
         logging.info(
-            "Questions seed completed: inserted=%s skipped=%s total=%s",
+            "Questions seed completed: inserted=%s updated=%s skipped=%s total=%s",
             seed_result["inserted"],
+            seed_result.get("updated", 0),
             seed_result["skipped"],
             seed_result["total"],
         )
