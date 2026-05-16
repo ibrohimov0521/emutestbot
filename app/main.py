@@ -24,11 +24,11 @@ async def main() -> None:
 
     await init_db()
     if settings.auto_seed_districts:
-        from seed import seed_district_questions
+        from seed import seed_all_questions
 
-        seed_result = await seed_district_questions()
+        seed_result = await seed_all_questions()
         logging.info(
-            "District questions seed completed: inserted=%s skipped=%s total=%s",
+            "Questions seed completed: inserted=%s skipped=%s total=%s",
             seed_result["inserted"],
             seed_result["skipped"],
             seed_result["total"],
