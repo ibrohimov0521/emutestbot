@@ -196,6 +196,7 @@ async def seed_districts(message: Message) -> None:
     await message.answer(
         "Seed yakunlandi.\n"
         f"Yangi qo'shilgan savollar: {result['inserted']}\n"
+        f"Yangilangan savollar: {result.get('updated', 0)}\n"
         f"Avval bor bo'lgan savollar: {result['skipped']}\n"
         f"Jami ishlab chiqilgan savollar: {result['total']}"
     )
@@ -212,6 +213,7 @@ async def seed_questions(message: Message) -> None:
     await message.answer(
         "Barcha savollar seed qilindi.\n"
         f"Yangi qo'shilgan savollar: {result['inserted']}\n"
+        f"Yangilangan savollar: {result.get('updated', 0)}\n"
         f"Avval bor bo'lgan savollar: {result['skipped']}\n"
         f"Jami ishlab chiqilgan savollar: {result['total']}"
     )
