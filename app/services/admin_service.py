@@ -14,6 +14,10 @@ async def dashboard_stats() -> dict:
             "total_questions": "SELECT COUNT(*) AS count FROM questions",
             "active_questions": "SELECT COUNT(*) AS count FROM questions WHERE is_active = 1",
             "district_questions": "SELECT COUNT(*) AS count FROM questions WHERE category = 'O''zbekiston tumanlari'",
+            "operator_manual_questions": (
+                "SELECT COUNT(*) AS count FROM questions "
+                "WHERE category = 'Operatorlar yo''riqnomasi 2026'"
+            ),
         }
         for key, sql in queries.items():
             rows = await db.execute_fetchall(sql)
