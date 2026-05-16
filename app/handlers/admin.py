@@ -49,12 +49,14 @@ async def admin_panel(message: Message) -> None:
         f"Savollar soni: {stats['total_questions']}\n"
         f"Aktiv savollar: {stats['active_questions']}\n"
         f"O'zbekiston tumanlari savollari: {stats['district_questions']}\n\n"
+        f"Operator yo'riqnomasi savollari: {stats['operator_manual_questions']}\n\n"
         f"Kategoriya bo'yicha:\n{categories}\n\n"
         "Userlar ro'yxati: /users\n"
         "Yangi user qo'shish: /add_user TELEGRAM_ID\n"
         "Userni bloklash: /block_user TELEGRAM_ID\n"
         "Userni aktiv qilish: /unblock_user TELEGRAM_ID\n"
         "User statistikasi: /user_stats USER_ID\n"
+        "Barcha savollarni seed qilish: /seed_questions\n"
         "Tuman savollarini seed qilish: /seed_districts"
     )
 
@@ -193,6 +195,22 @@ async def seed_districts(message: Message) -> None:
     result = await seed_district_questions()
     await message.answer(
         "Seed yakunlandi.\n"
+        f"Yangi qo'shilgan savollar: {result['inserted']}\n"
+        f"Avval bor bo'lgan savollar: {result['skipped']}\n"
+        f"Jami ishlab chiqilgan savollar: {result['total']}"
+    )
+
+
+@router.message(Command("seed_questions"))
+async def seed_questions(message: Message) -> None:
+    if not await _require_admin(message):
+        return
+
+    from seed import seed_all_questions
+
+    result = await seed_all_questions()
+    await message.answer(
+        "Barcha savollar seed qilindi.\n"
         f"Yangi qo'shilgan savollar: {result['inserted']}\n"
         f"Avval bor bo'lgan savollar: {result['skipped']}\n"
         f"Jami ishlab chiqilgan savollar: {result['total']}"
