@@ -3,7 +3,6 @@
     "region": "Andijon viloyati",
     "districts": [
       "Oltinko'l tumani",
-      "Andijon tumani",
       "Asaka tumani",
       "Baliqchi tumani",
       "Bo'z tumani",
@@ -22,7 +21,6 @@
     "region": "Buxoro viloyati",
     "districts": [
       "Olot tumani",
-      "Buxoro tumani",
       "Vobkent tumani",
       "G'ijduvon tumani",
       "Jondor tumani",
@@ -89,7 +87,6 @@
       "Chust tumani",
       "Kosonsoy tumani",
       "Mingbuloq tumani",
-      "Namangan tumani",
       "Norin tumani",
       "Pop tumani",
       "To'raqo'rg'on tumani",
@@ -185,8 +182,7 @@
       "O'rta Chirchiq tumani",
       "Yangiyo'l tumani",
       "Yuqori Chirchiq tumani",
-      "Zangiota tumani",
-      "Toshkent tumani"
+      "Zangiota tumani"
     ]
   },
   {
@@ -203,7 +199,6 @@
       "Toshloq tumani",
       "O'zbekiston tumani",
       "Uchko'prik tumani",
-      "Farg'ona tumani",
       "Furqat tumani",
       "Yozyovon tumani"
     ]
