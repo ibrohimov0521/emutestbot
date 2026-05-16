@@ -3,6 +3,12 @@ from __future__ import annotations
 from app.database import db_session
 from app.services.openai_checker import CheckResult
 
+DISTRICT_CATEGORY = "O'zbekiston tumanlari"
+OPERATOR_MANUAL_CATEGORY = "Operatorlar yo'riqnomasi 2026"
+TEST_DIRECTION_DISTRICTS = "districts"
+TEST_DIRECTION_MANUAL = "manual"
+TEST_DIRECTION_MIXED = "mixed"
+
 
 async def get_active_session(user_id: int) -> dict | None:
     async with db_session() as db:
@@ -13,21 +19,30 @@ async def get_active_session(user_id: int) -> dict | None:
         return dict(rows[0]) if rows else None
 
 
-async def start_test(user_id: int, total_questions: int) -> dict:
+async def start_test(user_id: int, total_questions: int, direction: str = TEST_DIRECTION_MIXED) -> dict:
     active = await get_active_session(user_id)
     if active:
         return active
 
     async with db_session() as db:
+        where_sql = "WHERE is_active = 1"
+        params: tuple[object, ...] = (total_questions,)
+        if direction == TEST_DIRECTION_DISTRICTS:
+            where_sql = "WHERE is_active = 1 AND category = ?"
+            params = (DISTRICT_CATEGORY, total_questions)
+        elif direction == TEST_DIRECTION_MANUAL:
+            where_sql = "WHERE is_active = 1 AND category = ?"
+            params = (OPERATOR_MANUAL_CATEGORY, total_questions)
+
         question_rows = await db.execute_fetchall(
-            """
+            f"""
             SELECT id
             FROM questions
-            WHERE is_active = 1
+            {where_sql}
             ORDER BY RANDOM()
             LIMIT ?
             """,
-            (total_questions,),
+            params,
         )
         if len(question_rows) < total_questions:
             raise ValueError(f"Kamida {total_questions} ta aktiv savol kerak.")
