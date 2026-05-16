@@ -37,47 +37,79 @@ def build_questions() -> list[dict[str, str]]:
     return build_district_questions() + build_operator_manual_questions()
 
 
-async def seed_questions(questions: list[dict[str, str]]) -> dict[str, int]:
+async def seed_questions(questions: list[dict[str, str]], reset_categories: list[str] | None = None) -> dict[str, int]:
     await init_db()
     inserted = 0
     skipped = 0
+    updated = 0
     async with db_session() as db:
+        for category in reset_categories or []:
+            await db.execute("UPDATE questions SET is_active = 0 WHERE category = ?", (category,))
         for question in questions:
-            cursor = await db.execute(
+            existing_rows = await db.execute_fetchall(
                 """
-                INSERT OR IGNORE INTO questions (
+                SELECT correct_answer, category, difficulty, is_active
+                FROM questions
+                WHERE question_text = ?
+                """,
+                (question["question_text"],),
+            )
+            difficulty = question.get("difficulty", "easy")
+            if not existing_rows:
+                inserted += 1
+            else:
+                existing = dict(existing_rows[0])
+                desired = {
+                    "correct_answer": question["correct_answer"],
+                    "category": question["category"],
+                    "difficulty": difficulty,
+                    "is_active": 1,
+                }
+                if existing == desired:
+                    skipped += 1
+                else:
+                    updated += 1
+
+            await db.execute(
+                """
+                INSERT INTO questions (
                     question_text, correct_answer, category, difficulty, is_active
                 )
                 VALUES (?, ?, ?, ?, 1)
+                ON CONFLICT(question_text) DO UPDATE SET
+                    correct_answer = excluded.correct_answer,
+                    category = excluded.category,
+                    difficulty = excluded.difficulty,
+                    is_active = 1
                 """,
                 (
                     question["question_text"],
                     question["correct_answer"],
                     question["category"],
-                    question.get("difficulty", "easy"),
+                    difficulty,
                 ),
             )
-            if cursor.rowcount:
-                inserted += 1
-            else:
-                skipped += 1
         await db.commit()
-    return {"inserted": inserted, "skipped": skipped, "total": len(questions)}
+    return {"inserted": inserted, "updated": updated, "skipped": skipped, "total": len(questions)}
 
 
 async def seed_district_questions() -> dict[str, int]:
-    return await seed_questions(build_district_questions())
+    return await seed_questions(build_district_questions(), [DISTRICT_CATEGORY])
 
 
 async def seed_all_questions() -> dict[str, int]:
-    return await seed_questions(build_questions())
+    return await seed_questions(
+        build_questions(),
+        [DISTRICT_CATEGORY, "Operatorlar yo'riqnomasi 2026"],
+    )
 
 
 async def main() -> None:
     result = await seed_all_questions()
     print(
         "Seed yakunlandi: "
-        f"inserted={result['inserted']}, skipped={result['skipped']}, total={result['total']}"
+        f"inserted={result['inserted']}, updated={result['updated']}, "
+        f"skipped={result['skipped']}, total={result['total']}"
     )
 
 
