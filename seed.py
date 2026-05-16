@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import asyncio
 import json
@@ -8,10 +8,11 @@ from app.database import db_session, init_db
 
 BASE_DIR = Path(__file__).resolve().parent
 DISTRICTS_PATH = BASE_DIR / "data" / "uzbekistan_districts.json"
-CATEGORY = "O'zbekiston tumanlari"
+OPERATOR_MANUAL_QUESTIONS_PATH = BASE_DIR / "data" / "operator_manual_questions.json"
+DISTRICT_CATEGORY = "O'zbekiston tumanlari"
 
 
-def build_questions() -> list[dict[str, str]]:
+def build_district_questions() -> list[dict[str, str]]:
     data = json.loads(DISTRICTS_PATH.read_text(encoding="utf-8"))
     questions: list[dict[str, str]] = []
     for item in data:
@@ -21,16 +22,23 @@ def build_questions() -> list[dict[str, str]]:
                 {
                     "question_text": f"{district} qaysi viloyatda joylashgan?",
                     "correct_answer": region,
-                    "category": CATEGORY,
+                    "category": DISTRICT_CATEGORY,
                     "difficulty": "easy",
                 }
             )
     return questions
 
 
-async def seed_district_questions() -> dict[str, int]:
+def build_operator_manual_questions() -> list[dict[str, str]]:
+    return json.loads(OPERATOR_MANUAL_QUESTIONS_PATH.read_text(encoding="utf-8"))
+
+
+def build_questions() -> list[dict[str, str]]:
+    return build_district_questions() + build_operator_manual_questions()
+
+
+async def seed_questions(questions: list[dict[str, str]]) -> dict[str, int]:
     await init_db()
-    questions = build_questions()
     inserted = 0
     skipped = 0
     async with db_session() as db:
@@ -46,7 +54,7 @@ async def seed_district_questions() -> dict[str, int]:
                     question["question_text"],
                     question["correct_answer"],
                     question["category"],
-                    question["difficulty"],
+                    question.get("difficulty", "easy"),
                 ),
             )
             if cursor.rowcount:
@@ -57,8 +65,16 @@ async def seed_district_questions() -> dict[str, int]:
     return {"inserted": inserted, "skipped": skipped, "total": len(questions)}
 
 
+async def seed_district_questions() -> dict[str, int]:
+    return await seed_questions(build_district_questions())
+
+
+async def seed_all_questions() -> dict[str, int]:
+    return await seed_questions(build_questions())
+
+
 async def main() -> None:
-    result = await seed_district_questions()
+    result = await seed_all_questions()
     print(
         "Seed yakunlandi: "
         f"inserted={result['inserted']}, skipped={result['skipped']}, total={result['total']}"
