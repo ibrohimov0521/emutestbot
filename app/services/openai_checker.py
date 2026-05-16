@@ -32,11 +32,15 @@ Savol: {question}
 To'g'ri javob: {correct_answer}
 User javobi: {user_answer}
 
-Vazifa: User javobini bahola. Mayda imlo xatolari, qisqa javoblar va bir xil ma'noli
-variantlarni to'g'ri deb qabul qil. Masalan "Buxoro", "Buxoro viloyati", "Buxoroda"
-bir xil ma'noda bo'lishi mumkin. "Qoraqalpog'iston", "Qoraqalpog'iston Respublikasi",
-"QR" bir xil hududni anglatishi mumkin. Lekin butunlay boshqa viloyat yoki hudud
-yozilsa, noto'g'ri deb bahola.
+Vazifa: User javobini bahola. Savollar EMU operator yo'riqnomasi, ish jarayonlari,
+xavfsizlik qoidalari yoki O'zbekiston tumanlari bo'yicha bo'lishi mumkin.
+
+Mayda imlo xatolari, kirill/lotin yozuvidagi farqlar, qisqa javoblar va bir xil
+ma'noli variantlarni to'g'ri deb qabul qil. Masalan "Buxoro", "Buxoro viloyati",
+"Buxoroda" bir xil ma'noda bo'lishi mumkin. "manifest", "манифест", "manifest
+orqali" kabi javoblar ham mazmuni bir xil bo'lsa to'g'ri hisoblanadi.
+
+Javob mazmunan boshqa bo'lsa yoki muhim talabni noto'g'ri aytsa, noto'g'ri deb bahola.
 
 Faqat JSON qaytar:
 {{"is_correct": true, "score": 0.0, "reason": "qisqa izoh"}}
@@ -48,8 +52,8 @@ Faqat JSON qaytar:
                     {
                         "role": "system",
                         "content": (
-                            "Sen geografiya test javoblarini qat'iy, lekin adolatli tekshiradigan "
-                            "baholovchisan. Faqat valid JSON qaytar."
+                            "Sen EMU operator yo'riqnomasi va umumiy test javoblarini qat'iy, "
+                            "lekin adolatli tekshiradigan baholovchisan. Faqat valid JSON qaytar."
                         ),
                     },
                     {"role": "user", "content": prompt},
