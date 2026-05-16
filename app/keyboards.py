@@ -2,6 +2,9 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardBu
 
 
 BTN_START_TEST = "Testni boshlash"
+BTN_TEST_DISTRICTS = "Tumanlar bo'yicha"
+BTN_TEST_MANUAL = "Ichki nizom va dastur bo'yicha"
+BTN_TEST_MIXED = "Aralash"
 BTN_TEST_30 = "30 talik test"
 BTN_TEST_50 = "50 talik test"
 BTN_LAST_RESULTS = "Oxirgi natijalarim"
@@ -24,6 +27,18 @@ def main_menu() -> ReplyKeyboardMarkup:
 def test_menu() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[[KeyboardButton(text=BTN_CANCEL_TEST)]],
+        resize_keyboard=True,
+    )
+
+
+def test_direction_menu() -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text=BTN_TEST_DISTRICTS)],
+            [KeyboardButton(text=BTN_TEST_MANUAL)],
+            [KeyboardButton(text=BTN_TEST_MIXED)],
+            [KeyboardButton(text=BTN_CANCEL_TEST)],
+        ],
         resize_keyboard=True,
     )
 
