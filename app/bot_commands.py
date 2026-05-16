@@ -16,7 +16,8 @@ ADMIN_COMMANDS = COMMON_COMMANDS + [
     BotCommand(command="block_user", description="Userni bloklash"),
     BotCommand(command="unblock_user", description="Userni aktiv qilish"),
     BotCommand(command="user_stats", description="User statistikasi"),
-    BotCommand(command="seed_districts", description="Savollarni seed qilish"),
+    BotCommand(command="seed_questions", description="Barcha savollarni seed qilish"),
+    BotCommand(command="seed_districts", description="Tuman savollarini seed qilish"),
 ]
 
 
