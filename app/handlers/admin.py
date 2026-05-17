@@ -2,11 +2,13 @@ from __future__ import annotations
 
 from aiogram import F, Router
 from aiogram.filters import Command, CommandObject
+from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
 from app.config import settings
 from app.keyboards import admin_users_pagination
 from app.services import admin_service, user_service
+from app.states import AdminStates
 from app.time_utils import format_tashkent
 
 router = Router()
@@ -32,6 +34,23 @@ def _parse_telegram_id(command: CommandObject | None) -> int | None:
     if not value.isdigit():
         return None
     return int(value)
+
+
+def _parse_message_telegram_id(message: Message) -> int | None:
+    value = (message.text or "").strip().split()[0] if message.text else ""
+    if not value.isdigit():
+        return None
+    return int(value)
+
+
+async def _add_user_by_telegram_id(message: Message, telegram_id: int) -> None:
+    user = await user_service.add_allowed_user(telegram_id)
+    await message.answer(
+        "User qo'shildi yoki aktiv qilindi.\n\n"
+        f"Telegram ID: {user['telegram_id']}\n"
+        f"Status: {user['status']}\n"
+        f"Rol: {user['role']}"
+    )
 
 
 @router.message(Command("admin"))
@@ -141,20 +160,38 @@ async def user_stats(message: Message, command: CommandObject) -> None:
 
 
 @router.message(Command("add_user"))
-async def add_user(message: Message, command: CommandObject) -> None:
+async def add_user(message: Message, command: CommandObject, state: FSMContext) -> None:
     if not await _require_admin(message):
         return
     telegram_id = _parse_telegram_id(command)
     if telegram_id is None:
-        await message.answer("Foydalanish: /add_user TELEGRAM_ID\nMasalan: /add_user 123456789")
+        await state.set_state(AdminStates.waiting_add_user_id)
+        await message.answer(
+            "Yangi user qo'shish uchun Telegram ID yuboring.\n\n"
+            "Masalan: 123456789\n"
+            "Bekor qilish: /cancel"
+        )
         return
-    user = await user_service.add_allowed_user(telegram_id)
-    await message.answer(
-        "User qo'shildi yoki aktiv qilindi.\n\n"
-        f"Telegram ID: {user['telegram_id']}\n"
-        f"Status: {user['status']}\n"
-        f"Rol: {user['role']}"
-    )
+    await _add_user_by_telegram_id(message, telegram_id)
+
+
+@router.message(AdminStates.waiting_add_user_id, Command("cancel"))
+async def cancel_add_user(message: Message, state: FSMContext) -> None:
+    await state.clear()
+    await message.answer("User qo'shish bekor qilindi.")
+
+
+@router.message(AdminStates.waiting_add_user_id)
+async def add_user_id_received(message: Message, state: FSMContext) -> None:
+    if not await _require_admin(message):
+        await state.clear()
+        return
+    telegram_id = _parse_message_telegram_id(message)
+    if telegram_id is None:
+        await message.answer("Telegram ID faqat raqamlardan iborat bo'lishi kerak. Qayta yuboring yoki /cancel bosing.")
+        return
+    await _add_user_by_telegram_id(message, telegram_id)
+    await state.clear()
 
 
 @router.message(Command("block_user"))
