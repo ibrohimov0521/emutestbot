@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from app.database import db_session
 from app.services.openai_checker import CheckResult
+from app.time_utils import format_tashkent
 
 DISTRICT_CATEGORY = "O'zbekiston tumanlari"
 OPERATOR_MANUAL_CATEGORY = "Operatorlar yo'riqnomasi 2026"
@@ -169,6 +170,6 @@ def format_result(session: dict) -> str:
         f"To'g'ri javoblar: {correct}\n"
         f"Noto'g'ri javoblar: {wrong}\n"
         f"Foiz: {percent:.1f}%\n"
-        f"Boshlanish vaqti: {session['started_at']}\n"
-        f"Tugash vaqti: {session['finished_at']}"
+        f"Boshlanish vaqti: {format_tashkent(session['started_at'])}\n"
+        f"Tugash vaqti: {format_tashkent(session['finished_at'])}"
     )
