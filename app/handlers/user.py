@@ -8,6 +8,7 @@ from app.bot_commands import set_chat_commands
 from app.config import settings
 from app.keyboards import BTN_HELP, BTN_LAST_RESULTS, BTN_PROFILE, main_menu
 from app.services import user_service
+from app.time_utils import format_tashkent
 
 router = Router()
 
@@ -79,8 +80,8 @@ async def profile(message: Message) -> None:
         f"Status: {data['status']}\n"
         f"Ishlangan testlar: {data['tests_count']}\n"
         f"Operatsiyalar: {data['operations_count']}\n"
-        f"Ro'yxatdan o'tgan: {data['created_at']}\n"
-        f"Oxirgi faollik: {data['last_seen_at']}",
+        f"Ro'yxatdan o'tgan: {format_tashkent(data['created_at'])}\n"
+        f"Oxirgi faollik: {format_tashkent(data['last_seen_at'])}",
         reply_markup=main_menu(),
     )
 
@@ -103,7 +104,7 @@ async def last_results(message: Message) -> None:
         percent = correct / total * 100 if total else 0
         lines.append(
             f"#{item['id']}: {correct}/{total} ({percent:.1f}%) | "
-            f"{item['started_at']} - {item['finished_at']}"
+            f"{format_tashkent(item['started_at'])} - {format_tashkent(item['finished_at'])}"
         )
     await message.answer("\n".join(lines), reply_markup=main_menu())
 
