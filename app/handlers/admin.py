@@ -7,6 +7,7 @@ from aiogram.types import CallbackQuery, Message
 from app.config import settings
 from app.keyboards import admin_users_pagination
 from app.services import admin_service, user_service
+from app.time_utils import format_tashkent
 
 router = Router()
 
@@ -79,7 +80,7 @@ async def _send_users_page(message: Message, page: int) -> None:
         name = user.get("first_name") or "-"
         lines.append(
             f"#{user['id']} | tg:{user['telegram_id']} | {username} | ism:{name} | "
-            f"status:{user['status']} | oxirgi:{user['last_seen_at']} | "
+            f"status:{user['status']} | oxirgi:{format_tashkent(user['last_seen_at'])} | "
             f"test:{user['tests_count']} | op:{user['operations_count']}"
         )
     await message.answer("\n".join(lines), reply_markup=admin_users_pagination(page, page > 1, has_next))
@@ -98,7 +99,7 @@ async def users_page_callback(callback: CallbackQuery) -> None:
         name = user.get("first_name") or "-"
         lines.append(
             f"#{user['id']} | tg:{user['telegram_id']} | {username} | ism:{name} | "
-            f"status:{user['status']} | oxirgi:{user['last_seen_at']} | "
+            f"status:{user['status']} | oxirgi:{format_tashkent(user['last_seen_at'])} | "
             f"test:{user['tests_count']} | op:{user['operations_count']}"
         )
     await callback.message.edit_text(
@@ -130,7 +131,7 @@ async def user_stats(message: Message, command: CommandObject) -> None:
         f"Ism: {summary.get('first_name') or '-'}\n"
         f"Rol: {summary['role']}\n"
         f"Status: {summary['status']}\n"
-        f"Oxirgi kirgan: {summary['last_seen_at']}\n"
+        f"Oxirgi kirgan: {format_tashkent(summary['last_seen_at'])}\n"
         f"Operatsiyalar: {summary['operations_count']}\n"
         f"Testlar: {summary['sessions']}\n"
         f"Umumiy to'g'ri: {summary['correct']}\n"
