@@ -8,7 +8,10 @@ async def dashboard_stats() -> dict:
         values = {}
         queries = {
             "total_users": "SELECT COUNT(*) AS count FROM users",
-            "today_users": "SELECT COUNT(*) AS count FROM users WHERE date(last_seen_at) = date('now')",
+            "today_users": (
+                "SELECT COUNT(*) AS count FROM users "
+                "WHERE date(last_seen_at, '+5 hours') = date('now', '+5 hours')"
+            ),
             "total_sessions": "SELECT COUNT(*) AS count FROM test_sessions",
             "total_answers": "SELECT COUNT(*) AS count FROM test_answers",
             "total_questions": "SELECT COUNT(*) AS count FROM questions",
