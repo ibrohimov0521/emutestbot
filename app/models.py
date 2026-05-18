@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS questions (
     correct_answer TEXT NOT NULL,
     category TEXT NOT NULL,
     difficulty TEXT NOT NULL DEFAULT 'easy',
+    question_type TEXT NOT NULL DEFAULT 'text',
+    options_json TEXT,
     is_active INTEGER NOT NULL DEFAULT 1,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
