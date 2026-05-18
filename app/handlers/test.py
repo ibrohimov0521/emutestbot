@@ -11,6 +11,7 @@ from app.keyboards import (
     BTN_TEST_MIXED,
     BTN_TEST_30,
     BTN_TEST_50,
+    choice_answer_menu,
     main_menu,
     test_menu,
     test_direction_menu,
@@ -59,10 +60,9 @@ async def _send_next_question(message: Message, session_id: int) -> None:
                 await message.answer(test_service.format_result(session), reply_markup=main_menu())
         return
     answered = await test_service.count_answered(session_id)
-    await message.answer(
-        f"Savol {answered + 1}/{session['total_questions'] if session else 50}\n\n{question['question_text']}",
-        reply_markup=test_menu(),
-    )
+    total_questions = int(session["total_questions"]) if session else 50
+    reply_markup = choice_answer_menu() if test_service.is_choice_question(question) else test_menu()
+    await message.answer(test_service.format_question_text(question, answered, total_questions), reply_markup=reply_markup)
 
 
 @router.message(F.text == BTN_START_TEST)
@@ -167,13 +167,21 @@ async def answer_question(message: Message) -> None:
         return
 
     await user_service.log_operation(user_id, "answer_question", {"question_id": question["id"]})
-    try:
-        result = await get_checker().check(question["question_text"], question["correct_answer"], message.text)
-    except AnswerCheckError:
-        await message.answer("Javobni tekshirishda xatolik bo'ldi, qayta urinib ko'ring.", reply_markup=test_menu())
-        return
+    user_answer = message.text
+    if test_service.is_choice_question(question):
+        result = test_service.check_choice_answer(question, message.text)
+        if result is None:
+            await message.answer("Iltimos, javobni A, B, C yoki D tugmalaridan tanlang.", reply_markup=choice_answer_menu())
+            return
+        user_answer = test_service.format_choice_user_answer(question, message.text)
+    else:
+        try:
+            result = await get_checker().check(question["question_text"], question["correct_answer"], message.text)
+        except AnswerCheckError:
+            await message.answer("Javobni tekshirishda xatolik bo'ldi, qayta urinib ko'ring.", reply_markup=test_menu())
+            return
 
-    session = await test_service.save_answer(active["id"], question, message.text, result)
+    session = await test_service.save_answer(active["id"], question, user_answer, result)
     mark = "To'g'ri" if result.is_correct else "Noto'g'ri"
     await message.answer(f"{mark}. {result.reason}")
 
