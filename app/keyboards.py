@@ -11,6 +11,12 @@ BTN_LAST_RESULTS = "Oxirgi natijalarim"
 BTN_PROFILE = "Profilim"
 BTN_HELP = "Yordam"
 BTN_CANCEL_TEST = "Testni bekor qilish"
+BTN_CHOICE_A = "A"
+BTN_CHOICE_B = "B"
+BTN_CHOICE_C = "C"
+BTN_CHOICE_D = "D"
+
+CHOICE_BUTTONS = {BTN_CHOICE_A, BTN_CHOICE_B, BTN_CHOICE_C, BTN_CHOICE_D}
 
 
 def main_menu() -> ReplyKeyboardMarkup:
@@ -27,6 +33,21 @@ def main_menu() -> ReplyKeyboardMarkup:
 def test_menu() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[[KeyboardButton(text=BTN_CANCEL_TEST)]],
+        resize_keyboard=True,
+    )
+
+
+def choice_answer_menu() -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [
+                KeyboardButton(text=BTN_CHOICE_A),
+                KeyboardButton(text=BTN_CHOICE_B),
+                KeyboardButton(text=BTN_CHOICE_C),
+                KeyboardButton(text=BTN_CHOICE_D),
+            ],
+            [KeyboardButton(text=BTN_CANCEL_TEST)],
+        ],
         resize_keyboard=True,
     )
 
