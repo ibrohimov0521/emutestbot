@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 from app.database import db_session
 from app.services.openai_checker import CheckResult
 from app.time_utils import format_tashkent
@@ -9,6 +11,9 @@ OPERATOR_MANUAL_CATEGORY = "Operatorlar yo'riqnomasi 2026"
 TEST_DIRECTION_DISTRICTS = "districts"
 TEST_DIRECTION_MANUAL = "manual"
 TEST_DIRECTION_MIXED = "mixed"
+QUESTION_TYPE_TEXT = "text"
+QUESTION_TYPE_CHOICE = "choice"
+CHOICE_LABELS = ("A", "B", "C", "D")
 
 
 async def get_active_session(user_id: int) -> dict | None:
@@ -87,6 +92,53 @@ async def get_next_question(session_id: int) -> dict | None:
             (session_id,),
         )
         return dict(rows[0]) if rows else None
+
+
+def is_choice_question(question: dict) -> bool:
+    return question.get("question_type") == QUESTION_TYPE_CHOICE
+
+
+def get_choice_options(question: dict) -> list[str]:
+    if not is_choice_question(question):
+        return []
+    try:
+        options = json.loads(question.get("options_json") or "[]")
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(options, list):
+        return []
+    return [str(option) for option in options[:4]]
+
+
+def format_question_text(question: dict, answered_count: int, total_questions: int) -> str:
+    base = f"Savol {answered_count + 1}/{total_questions}\n\n{question['question_text']}"
+    options = get_choice_options(question)
+    if not options:
+        return base
+
+    option_lines = [f"{label}) {option}" for label, option in zip(CHOICE_LABELS, options)]
+    return f"{base}\n\n" + "\n".join(option_lines)
+
+
+def check_choice_answer(question: dict, user_answer: str) -> CheckResult | None:
+    selected = user_answer.strip().upper()
+    options = get_choice_options(question)
+    if selected not in CHOICE_LABELS or len(options) < 4:
+        return None
+
+    selected_index = CHOICE_LABELS.index(selected)
+    selected_answer = options[selected_index]
+    is_correct = selected_answer == question["correct_answer"]
+    reason = "To'g'ri variant tanlandi." if is_correct else f"To'g'ri javob: {question['correct_answer']}"
+    return CheckResult(is_correct=is_correct, score=1.0 if is_correct else 0.0, reason=reason)
+
+
+def format_choice_user_answer(question: dict, user_answer: str) -> str:
+    selected = user_answer.strip().upper()
+    options = get_choice_options(question)
+    if selected in CHOICE_LABELS and len(options) >= 4:
+        return f"{selected}. {options[CHOICE_LABELS.index(selected)]}"
+    return user_answer
 
 
 async def count_answered(session_id: int) -> int:
