@@ -18,6 +18,12 @@ async def init_db() -> None:
         column_names = {row[1] for row in columns}
         if "status" not in column_names:
             await db.execute("ALTER TABLE users ADD COLUMN status TEXT NOT NULL DEFAULT 'active'")
+        question_columns = await db.execute_fetchall("PRAGMA table_info(questions)")
+        question_column_names = {row[1] for row in question_columns}
+        if "question_type" not in question_column_names:
+            await db.execute("ALTER TABLE questions ADD COLUMN question_type TEXT NOT NULL DEFAULT 'text'")
+        if "options_json" not in question_column_names:
+            await db.execute("ALTER TABLE questions ADD COLUMN options_json TEXT")
         await db.commit()
 
 
