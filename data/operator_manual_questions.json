@@ -6,10 +6,10 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Xodimlar o'rtasida ish jadvalini taqsimlash",
-      "Faqat ichki hujjatlarni arxivlash va hisob-kitob qilish",
+      "Tez va sifatli yetkazib berish",
+      "Tez, arzon va qulay yetkazib berish",
       "Aholiga tez va ishonchli kuryerlik xizmatlarini ko'rsatish",
-      "Faqat katta hajmli yuklarni qabul qilish va saqlash"
+      "Mijozlarga tez, xamyonbop va sifatli kuyerlik xizmatlarini ko'rsatish"
     ]
   },
   {
@@ -32,7 +32,7 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Faqat ofis ichida forma kiyib yurish",
+      "Ofis hududida forma kiyib yurish va xulq-atvor normalariga amal qilishi",
       "Ish joyida va tashqarisida professional xulq-atvor bilan brend obro'sini saqlash",
       "Brend haqida faqat reklama varaqalarini tarqatish",
       "Faqat rahbar kelganda muomala madaniyatiga amal qilish"
@@ -58,7 +58,7 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Murojaatni javobsiz qoldirishi mumkin",
+      "Murojaatni mas'ul menejerlarga yo'naltirishi kerak",
       "Imkon qadar yordam ko'rsatishi va tegishli takliflar berishi kerak",
       "Faqat o'z filiali ishiga javob berishini aytib rad etishi kerak",
       "Yordamni faqat yozma buyruq bo'lsa ko'rsatishi kerak"
@@ -71,9 +71,9 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Mijozdan avval to'lov talab qilib, keyin tinglashi",
+      "Mijozni tinglab, tegishli bo'lim menejerlari bilan bog'lab berishi kerak",
       "Shikoyatni faqat yozma bo'lsa qabul qilishi",
-      "Sabr bilan tinglab, masala mohiyatini aniqlashi va sodda tilda tushuntirishi",
+      "Sabr bilan tinglab, masala mohiyatini aniqlashi va sodda tilda tushuntirishi, yechim topmaganda menejerlarga yo'naltirishi kerak",
       "Mijozni faqat rahbariyatga yuborishi va izoh bermasligi"
     ]
   },
@@ -92,28 +92,28 @@
   },
   {
     "question_text": "Telefoniga MeaSoft App o'rnatilganidan so'ng operator qaysi funksiyani belgilashi kerak?",
-    "correct_answer": "Online platyoj / Onlayn-plateji funksiyasini",
+    "correct_answer": "Ekvayring parametrlari / Onlayn-plateji funksiyasini",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Avtomatik o'chirish funksiyasini",
-      "Online platyoj / Onlayn-plateji funksiyasini",
-      "Offline arxiv rejimini",
-      "Faqat kamera ruxsatini"
+      "Fiskalizatsiya parametrlari / LIFE PAY",
+      "Ekvayring parametrlari / Onlayn-plateji funksiyasini",
+      "Tizim sozlamalari",
+      "Ekvayring parametrlari / Drugoye-prilojeniye funksiyasini"
     ]
   },
   {
     "question_text": "Operatorga berilgan login va parol bo'yicha to'g'ri talab qaysi?",
-    "correct_answer": "Faqat o'ziga biriktirilgan login-paroldan foydalanish va uni oshkor qilmaslik",
+    "correct_answer": "Faqat o'ziga biriktirilgan login-paroldan foydalanish va uni oshkor qilmaslik majburiy",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Ish tezlashishi uchun login-parolni barcha xodimlarga berish",
-      "Parolni ofis devoriga yozib qo'yish",
-      "Faqat o'ziga biriktirilgan login-paroldan foydalanish va uni oshkor qilmaslik",
-      "Bitta umumiy login orqali barcha xodimlar ishlashi"
+      "Ish tezlashishi uchun login-parolni barcha xodimlarga berish mumkin",
+      "Parolni boshqa filial operatorlariga berish mumkin",
+      "Faqat o'ziga biriktirilgan login-paroldan foydalanish va uni oshkor qilmaslik majburiy",
+      "Bitta umumiy login orqali barcha xodimlar ishlashi ruxsat beriladi"
     ]
   },
   {
@@ -125,7 +125,7 @@
     "options": [
       "Darhol kompyuterni yoqish",
       "Mijozlarga qo'ng'iroq qilishni boshlash",
-      "Kassadagi pulni sanash",
+      "Kelgan pochtalarni qabul qilish",
       "Ofis eshigi va atrofini ko'zdan kechirish"
     ]
   },
@@ -149,9 +149,9 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Faqat internet tezligini tekshirish",
-      "Istalgan xodimning loginidan foydalanish",
-      "Kompyuterni yoqib, dasturni ochmasdan kutish",
+      "Ofis tozaligiga etibor berib keyin yoqsa ham bo'ladi",
+      "Boshqa xodim profilidan kirib ishni davom ettirish",
+      "Kompyuterni yoqib, Telegramdan kelgan xabarlarga javob berish",
       "Texnika xavfsizligiga rioya qilish va o'z login-paroli bilan dasturga kirish"
     ]
   },
@@ -162,23 +162,23 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Kurьер aytgan son bo'yicha og'zaki qabul qilinadi",
-      "Excel jadvaliga qo'lda yozib qo'yiladi",
+      "VIDACHA bo'limiga o'tib skaner qilinadi",
+      "MANIFEST bo'limiga o'tib skaner qilinadi",
       "Doskа priyom orqali manifest tanlanib, jo'natmalar skaner qilinadi",
-      "Faqat telefon orqali ro'yxatga olinadi"
+      "Mobile ilova orqali skaner qilib qabul qilinadi"
     ]
   },
   {
-    "question_text": "Kelgan jo'natmalar qoplarda qanday holatda bo'lishi tekshiriladi?",
+    "question_text": "Kelgan jo'natmalar, qoplarda qanday holatda bo'lishi kerak?",
     "correct_answer": "Maxsus qoplarda plombalangan holatda",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Ochilgan va alohida ajratilgan holatda",
-      "Mijoz imzosi bilan yopishtirilgan holatda",
-      "Maxsus qoplarda plombalangan holatda",
-      "Faqat qog'oz paketga solingan holatda"
+      "Ustma-ust tartib bilan joylangan bolishi kerak",
+      "Qoplarda, plombasini kuryer ochib tekshirib ketishi kerak",
+      "Maxsus qoplarda plombalangan holatda bo'lishi kerak",
+      "Qanday holda kelishi ahamiyatsiz"
     ]
   },
   {
@@ -190,7 +190,7 @@
     "options": [
       "Manifestni avtomatik yopilgan deb hisoblab, davom etishi",
       "Jo'natmalarni mijozlarga tarqatib yuborishi",
-      "Kam kelgan jo'natmalarni mavjud deb belgilashi",
+      "Kam kelgan jo'natmalarni ertasi kuni kelishi mumkinligini hisobga olib kutishi kerak",
       "Farqni aniqlab, o'z vaqtida Bosh skladga xabar berishi va kerak bo'lsa manifestni qo'lda yopishi"
     ]
   },
@@ -202,8 +202,8 @@
     "question_type": "choice",
     "options": [
       "Jo'natmalarni operator nomiga o'qitib, tegishli yacheykalarga joylashtirish",
-      "Jo'natmalarni darhol qaytarib yuborish",
-      "Jo'natmalarni faqat stol ustida saqlash",
+      "Jo'natmalar egalariga birma bir qo'ng'iroq qilib yoki sms jo'natishi kerak",
+      "Jo'natmalarni joylashtirib chiqishi kerak",
       "Jo'natmalarni kurьер nomiga yozib qo'yish"
     ]
   },
@@ -215,22 +215,22 @@
     "question_type": "choice",
     "options": [
       "Sifat nazorati bo'limiga",
-      "Hech kimga, chunki skanerlangan bo'ladi",
-      "Faqat mijozning qarindoshiga",
-      "Faqat qo'riqlash xizmatiga"
+      "Olib kelgan kuryerga",
+      "Jo'natmaning qabul qiluvchisiga yoki jo'natuvchiga",
+      "Bosh sklad menejeriga"
     ]
   },
   {
     "question_text": "Yacheyka tashkil etishda dasturda qaysi bo'lim va funksiya ishlatiladi?",
-    "correct_answer": "Spravochniki bo'limida stellaji va adresnoe hranenie",
+    "correct_answer": "Spravochniki bo'limida stellaji va adresnoe xranenie",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Manifest oynasida opłachen",
-      "Spravochniki bo'limida stellaji va adresnoe hranenie",
-      "Vydacha bo'limida dostavlen",
-      "Adresa bo'limida status"
+      "Spravochniki bo'limida stellaji va sborka komplektov",
+      "Spravochniki bo'limida stellaji va adresnoe xranenie",
+      "Funksiya / Priyom korrespondensiya na sklad",
+      "Funksiya / Doska priyom"
     ]
   },
   {
@@ -240,23 +240,23 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Filial rahbarining telefon raqami",
+      "Kerakli pochtadagi shtrixkod",
       "Kerakli yacheykadagi shtrixkod",
-      "Kassa cheki raqami",
-      "Mijozning pasport rasmi"
+      "Operator bejigi",
+      "Skaner qilish shartmas"
     ]
   },
   {
     "question_text": "Jo'natma kelganidan so'ng oluvchiga nisbatan operatorning vazifasi qaysi?",
-    "correct_answer": "Darhol telefon qilib xabar berish, bog'lana olmasa kun davomida qayta urinib ko'rish",
+    "correct_answer": "Qabul qiluvchiga telefon qilib xabar berish, bog'lana olmasa kun davomida qayta urinib ko'rish",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Faqat yuboruvchiga SMS yozish",
+      "Qabul qiluvchiga sms jo'natish",
       "Faqat mijoz o'zi kelishini kutish",
-      "Xabarni bir haftadan keyin yuborish",
-      "Darhol telefon qilib xabar berish, bog'lana olmasa kun davomida qayta urinib ko'rish"
+      "Jo'natuvchilarga telefon qilib xabar berish, bog'lana olmasa kun davomida qayta urinib ko'rish",
+      "Qabul qiluvchiga telefon qilib xabar berish, bog'lana olmasa kun davomida qayta urinib ko'rish"
     ]
   },
   {
@@ -267,9 +267,9 @@
     "question_type": "choice",
     "options": [
       "Operator qo'lidan yechib, qayta nomiga o'qitadi va oluvchilarni ogohlantiradi",
-      "Hech qanday qayta ishlov bermaydi",
-      "Ularni yangi jo'natmalar bilan aralashtirib yuboradi",
-      "Darhol yo'q qiladi"
+      "Operator qo'lidan yechib, Arxiv yoki vozvrat qilib yuborishi kerak",
+      "Ularni manifest qilib qo'yadi",
+      "Eski jo'natmalarni boshqa operator qo'liga urib qo'yishi kerak"
     ]
   },
   {
@@ -279,10 +279,10 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Yana bir oy ofisda saqlab turish",
+      "Yana bir oy ofisda saqlab turishi mumkin",
       "Muddatiga qarab obrabotka qilib, keraklilarini vozvrat qilib yuborish",
-      "Jo'natmani boshqa mijozga berish",
-      "Operator o'z nomida saqlashi"
+      "10 kundan oshganlarini barchasini arxiv qilish",
+      "Qabul qiluvchi olib ketmagunicha ofisda saqlashi kerak"
     ]
   },
   {
@@ -292,10 +292,10 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Nastroyki bo'limi, online platyoj",
-      "Vydacha bo'limi, pechat shtrixkodov",
-      "Kassa bo'limi, plus tugmasi",
-      "Adresa bo'limi, filtr, dopolnitelno, mas'ul filialni tanlash"
+      "Kerakli operatir vidacha bo'limida ko'riladi",
+      "Manifestlar bo'limidan ochib olinib tekshiriladi",
+      "Zakazi bo'limidan kerakli sana tanlanib ochib olinadi",
+      "Adresa bo'limi, filtr, dopolnitelno, mas'ul filialni tanlanadi"
     ]
   },
   {
@@ -318,23 +318,23 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Mijozni hujjatsiz qabul qilmaslik",
+      "Mijozni shaxsini tasdiqlovchi hujjatsiz qabul qilmaslik",
       "Kirishidan e'tibor qaratish va doimo xushmuomalada bo'lish",
-      "Faqat navbat kelganda gapirish",
-      "Mijozdan avval sababini yozma so'rash"
+      "Mijoz navbatini kutishini aytish",
+      "Mijoz o'zi maqsadga o'tishini kutish"
     ]
   },
   {
     "question_text": "Mijoz jo'natma yubormoqchi bo'lsa, operator qabul qilishda nimaga e'tibor beradi?",
-    "correct_answer": "Jo'natmaning holati va turiga qarab ochiq holatda ko'zdan kechiradi",
+    "correct_answer": "Jo'natmaning holati va turiga qarab ochiq holatda mijoz oldida ko'zdan kechiradi",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Qabul qilishni faqat kurьерga topshiradi",
-      "Jo'natmani ko'rmasdan faqat og'irligini yozadi",
-      "Faqat qutining rangiga qarab qabul qiladi",
-      "Jo'natmaning holati va turiga qarab ochiq holatda ko'zdan kechiradi"
+      "Har qanday jo'natma qabul qilinaveradi jo'natma turi uchun faqat jo'natuvchi javobgar hisoblanadi",
+      "Jo'natmani ochib qarash mijozning oldida noqulayligi sababli mijoz ketgach tekshirib ko'riladi",
+      "Faqat qadog'iga qarab rasmiylashtiradi",
+      "Jo'natmaning holati va turiga qarab ochiq holatda mijoz oldida ko'zdan kechiradi"
     ]
   },
   {
@@ -347,7 +347,7 @@
       "Mijoz ko'z oldida birgalikda o'rovlanadi",
       "Mijoz ketgandan keyin alohida ochib o'raladi",
       "Faqat bosh skladda o'raladi",
-      "O'ramasdan yuboriladi"
+      "Mijoz o'zi upakovka qilib berishi kerak"
     ]
   },
   {
@@ -358,9 +358,9 @@
     "question_type": "choice",
     "options": [
       "Taqiqlangan narsalarni oldini olish va jo'natma xavfsiz yetib borishini ta'minlash",
-      "Jo'natmaning narxini pasaytirish",
-      "Mijozni uzoqroq kutdirish",
-      "Faqat qutini chiroyli ko'rinishga keltirish"
+      "Jo'natmaning narxini aniqlashtirish",
+      "Taqiqlandan nersalar bo'lsa sifat nazorat bo'limini ogohlantirib jo'natmani qabul qilish",
+      "Faqat qadoqni chiroyli ko'rinishga keltirish"
     ]
   },
   {
@@ -370,9 +370,9 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Faqat oluvchining viloyati",
-      "Faqat yuboruvchining ismi",
-      "Faqat jo'natma rangi",
+      "Asosan jo'natuvchi malumotlari va jo'natmaning og'irligi va gabaritlari",
+      "Asosan oluvchining malumotlari va jo'natmaning og'irligi va gabaritlari",
+      "Jo'natmaning narxi va kerakli qadoq turlari",
       "Yuboruvchi va oluvchining ismi, manzili, telefon raqami va boshqa kerakli ma'lumotlari"
     ]
   },
@@ -385,8 +385,8 @@
     "options": [
       "Faqat operatorning ismi",
       "Tovar nomi va IKPU kodlari",
-      "Faqat filial manzili",
-      "Faqat kuryer mashina raqami"
+      "To'lov turi yoki to'lanmaganligi haqida",
+      "Mas'ul xodim ma'lumotlari"
     ]
   },
   {
@@ -396,9 +396,9 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Filialning telefon kodi",
-      "Operatorning ichki paroli",
-      "Kuryer marshrut raqami",
+      "Mijozningn soliqdagi hisob raqami",
+      "Ishxonaning hisob raqami",
+      "Jo'natuvchining soliq tomondan berilgan identifikatsiya kodi",
       "Mahsulot va xizmatlarning identifikatsiya kodi"
     ]
   },
@@ -410,9 +410,9 @@
     "question_type": "choice",
     "options": [
       "Uzunlik, kenglik va balandlik o'lchamlari",
-      "Faqat mijozning familiyasi",
-      "Faqat qutining rangi",
-      "Faqat jo'natma kelgan sana"
+      "Tovarning qadog'idagi o'lchamlar",
+      "Jo'natma og'irligi",
+      "Yuborilayotgan viloyatga qarab"
     ]
   },
   {
