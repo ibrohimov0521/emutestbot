@@ -162,9 +162,9 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "VIDACHA bo'limiga o'tib skaner qilinadi",
-      "MANIFEST bo'limiga o'tib skaner qilinadi",
-      "Doskа priyom orqali manifest tanlanib, jo'natmalar skaner qilinadi",
+      "Выдача bo'limiga o'tib skaner qilinadi",
+      "Манифест bo'limiga o'tib skaner qilinadi",
+      "Доска приёма orqali manifest tanlanib, jo'natmalar skaner qilinadi",
       "Mobile ilova orqali skaner qilib qabul qilinadi"
     ]
   },
@@ -222,15 +222,15 @@
   },
   {
     "question_text": "Yacheyka tashkil etishda dasturda qaysi bo'lim va funksiya ishlatiladi?",
-    "correct_answer": "Spravochniki bo'limida stellaji va adresnoe xranenie",
+    "correct_answer": "Справочники bo'limida Стеллажи va Адресное хранение",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Spravochniki bo'limida stellaji va sborka komplektov",
-      "Spravochniki bo'limida stellaji va adresnoe xranenie",
-      "Funksiya / Priyom korrespondensiya na sklad",
-      "Funksiya / Doska priyom"
+      "Справочники bo'limida Стеллажи va Сборка комплектов",
+      "Справочники bo'limida Стеллажи va Адресное хранение",
+      "Функции / Приём корреспонденции на склад",
+      "Функции / Доска приёма"
     ]
   },
   {
@@ -292,10 +292,10 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Kerakli operatir vidacha bo'limida ko'riladi",
+      "Kerakli operator выдача bo'limida ko'riladi",
       "Manifestlar bo'limidan ochib olinib tekshiriladi",
-      "Zakazi bo'limidan kerakli sana tanlanib ochib olinadi",
-      "Adresa bo'limi, filtr, dopolnitelno, mas'ul filialni tanlanadi"
+      "Заказы bo'limidan kerakli sana tanlanib ochib olinadi",
+      "Вдреса bo'limi, Фильтр, Дополнительно, mas'ul filialni tanlanadi"
     ]
   },
   {
@@ -377,7 +377,7 @@
     ]
   },
   {
-    "question_text": "Jo'natma turiga qarab 'vlojeniya' qismiga nimalar kiritiladi?",
+    "question_text": "Jo'natma turiga qarab 'Вложения' qismiga nimalar kiritiladi?",
     "correct_answer": "Tovar nomi va IKPU kodlari",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
@@ -422,23 +422,23 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Faqat mijoz aytgan og'irlik olinadi",
+      "Mijoz bilan kelishgan holda o'rtasi olinadi",
       "Doimo eng kichik ko'rsatkich olinadi",
       "Eng yuqori ko'rsatkich posilka og'irligi deb olinadi",
       "Faqat tarozidagi qiymat olinadi"
     ]
   },
   {
-    "question_text": "Tариф bo'yicha mijozga ma'lumot berishda operator nimalarga asoslanadi?",
+    "question_text": "Tarif bo'yicha mijozga ma'lumot berishda operator nimalarga asoslanadi?",
     "correct_answer": "Jo'natma manzili va massasini dastur yoki kalkulyatorga kiritib aniq summa beradi",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Taxminiy narx aytadi",
-      "Narxni ish oxirida bildiradi",
+      "Mijoz vaqtini olmaslik uchun taxminiy narx aytadi",
+      "Narxni jo'natma rasmiylashtirgan ayta olaman deydi",
       "Jo'natma manzili va massasini dastur yoki kalkulyatorga kiritib aniq summa beradi",
-      "Faqat boshqa mijoz to'lagan summani aytadi"
+      "Ma'lumot berish uchun menejer bilan bog'lab beradi"
     ]
   },
   {
@@ -461,10 +461,10 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Oddiy kiyim-kechak va hujjatlar",
-      "Ruxsat etilgan maishiy buyumlar",
+      "Tamaki va alkogol mahsulotlari, qurol-yarog', kuchli yonuvchi suyuqliklar",
+      "narkotik moddalar, tirik hayvon yoki qushlar, elektron qurilmalar",
       "Qurol-yarog', kuchli yonuvchi suyuqliklar, narkotik moddalar, tirik hayvon yoki qushlar",
-      "Yaxshi o'ralgan kitoblar"
+      "Katta o'lchamli maishiy texnikalar, qurol-yarog', kuchli yonuvchi suyuqliklar"
     ]
   },
   {
@@ -475,9 +475,9 @@
     "question_type": "choice",
     "options": [
       "Umuman yuborilmaydi, faqat maxsus talablar asosida maxsus o'ralgan bo'lsa belgilangan tartibda ishlov berilishi mumkin",
-      "Faqat qopga solib yuboriladi",
+      "Mijoz roziligi bilan istalgan holda jo'natish mumkin",
       "Har qanday holatda qabul qilinadi",
-      "Hech qanday tekshiruvsiz qabul qilinadi"
+      "Har qanday holatda qabul qilinmaydi"
     ]
   },
   {
@@ -487,9 +487,9 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Mijozning telefonidagi ilovalarni",
-      "Mijozning ish joyini",
-      "Mijozning boshqa filialdagi tarixini",
+      "Jo'natmaning qadog'ini",
+      "To'lovi to'langanmi yo'qligini",
+      "Jo'natma kelgan muddatni",
       "Oluvchi ma'lumotlari to'g'riligini va o'zi ekanligini"
     ]
   },
@@ -501,61 +501,61 @@
     "question_type": "choice",
     "options": [
       "Yacheykadan jo'natmani olib, summa va ma'lumotlarni mobil ilovadan tekshiradi, mijozga imzo qo'ydiradi",
-      "Faqat jo'natmani qo'liga berib yuboradi",
-      "Imzosiz topshiradi",
-      "Summani tekshirmasdan qayd qiladi"
+      "Jo'natma kelganini tekshib pulini olib qolib mijozga topshiradi",
+      "Jo'natmani berib Komputerdan Dostavlen qilib qo'yadi",
+      "Yacheykadan jo'natmani olib, summa va ma'lumotlarni komputerdan tekshirib, komputerdan dostavlen bosadi"
     ]
   },
   {
     "question_text": "Kun davomida qabul qilingan jo'natmalarni Bosh skladga yuborishdan oldin operator nima qiladi?",
-    "correct_answer": "Dastur orqali o'ziga 'poluchen' qilib, manifest qiladi va skanerlab qoplarga joylaydi",
+    "correct_answer": "Dastur orqali o'ziga 'получен' qilib, manifest qiladi va skanerlab qoplarga joylaydi",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Dastur orqali o'ziga 'poluchen' qilib, manifest qiladi va skanerlab qoplarga joylaydi",
-      "Faqat telefon orqali xabar beradi",
-      "Jo'natmalarni yacheykada qoldiradi",
-      "Jo'natmalarni ro'yxatsiz qopga soladi"
+      "Dastur orqali o'ziga 'получен' qilib, manifest qiladi va skanerlab qoplarga joylaydi",
+      "Manifest bo'limiga o'tib birma bir skaner qiladi",
+      "Mobil ilova orqali birma bir skaner qilib chiqadi",
+      "Выдача ga urib qo'yadi"
     ]
   },
   {
     "question_text": "Jo'natmalar manifest qilingandan so'ng kurьерga berish uchun qaysi funksiya ishlatiladi?",
-    "correct_answer": "Manifest oynasida 'peremestit v dostavku' funksiyasi orqali korrespondensiya yaratish",
+    "correct_answer": "Манифест oynasida 'переместить в доставку' funksiyasi orqali korrespondensiya yaratish",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Manifest oynasida 'peremestit v dostavku' funksiyasi orqali korrespondensiya yaratish",
-      "Adresa bo'limidan filtrni tozalash",
-      "Nastroykadan online platyojni o'chirish",
-      "Stellaji bo'limida yacheyka o'chirish"
+      "Манифест oynasida 'переместить в доставку' funksiyasi orqali korrespondensiya yaratish",
+      "Адрес bo'limida yangi zakaz yaratilib kuryer qo'liga uriladi",
+      "Jo'natmalar birma bir kuryer qo'liga uriladi",
+      "Kuryer mobil ilovasi orqali jo'natmalarni qabul qilib olishi kerak"
     ]
   },
   {
     "question_text": "Xizmat haqi kassaga kirim qilinishi uchun buyurtma yaratish jarayonida nima bosiladi?",
-    "correct_answer": "'+' tugmasi",
+    "correct_answer": "'+' tugmasi bosiladi",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "'Adresnoe hranenie' tugmasi",
-      "'Pechat shtrixkodov' tugmasi",
-      "'+' tugmasi",
-      "'Manifest' tugmasi"
+      "'Оплата получателем' ga galochka qo'yiladi",
+      "'Оплата получателем' ga galochka qo'yilmaydi",
+      "'+' tugmasi bosiladi",
+      "'Оплата наличными' dan galochka olib qo'yiladi"
     ]
   },
   {
     "question_text": "Mijozlarga topshirilgan jo'natmalar dasturda qanday statusga o'tkaziladi?",
-    "correct_answer": "Dostavlen",
+    "correct_answer": "Доставлен",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Adresnoe hranenie",
-      "Online platyoj",
-      "Dostavlen",
-      "Nachat priyom"
+      "Не доставлен",
+      "Не доставлен по причине",
+      "Доставлен",
+      "На руках"
     ]
   },
   {
