@@ -1,812 +1,665 @@
 [
   {
-    "question_text": "EMU korxonasining bosh maqsadi nima?",
+    "question_text": "EMU korxonasining bosh maqsadi qaysi javobda to'g'ri berilgan?",
     "correct_answer": "Aholiga tez va ishonchli kuryerlik xizmatlarini ko'rsatish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Xodimlar o'rtasida ish jadvalini taqsimlash",
+      "Faqat ichki hujjatlarni arxivlash va hisob-kitob qilish",
+      "Aholiga tez va ishonchli kuryerlik xizmatlarini ko'rsatish",
+      "Faqat katta hajmli yuklarni qabul qilish va saqlash"
+    ]
   },
   {
-    "question_text": "Xodimlar qaysi ichki qoidalarga amal qilishi kerak?",
-    "correct_answer": "Ichki mehnat tartibi, ish tartibi va ijro intizomi qoidalariga",
+    "question_text": "Xodim korxonaga oid va mijozlarning shaxsiy ma'lumotlariga qanday munosabatda bo'lishi kerak?",
+    "correct_answer": "Ularni sir saqlashi va uchinchi shaxslarga oshkor qilmasligi kerak",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat hamkasblar so'rasa, ularga to'liq yuborishi mumkin",
+      "Telegram guruhida umumiy ma'lumot sifatida joylashtirishi mumkin",
+      "Mijoz rozi bo'lmasa ham, yuboruvchi bilan bo'lishishi mumkin",
+      "Ularni sir saqlashi va uchinchi shaxslarga oshkor qilmasligi kerak"
+    ]
   },
   {
-    "question_text": "Korxona va mijozlar ma'lumotlari qanday saqlanishi kerak?",
-    "correct_answer": "Sir saqlanishi kerak",
+    "question_text": "EMU brendi bilan bog'liq xodimning asosiy majburiyati nimadan iborat?",
+    "correct_answer": "Ish joyida va tashqarisida professional xulq-atvor bilan brend obro'sini saqlash",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat ofis ichida forma kiyib yurish",
+      "Ish joyida va tashqarisida professional xulq-atvor bilan brend obro'sini saqlash",
+      "Brend haqida faqat reklama varaqalarini tarqatish",
+      "Faqat rahbar kelganda muomala madaniyatiga amal qilish"
+    ]
   },
   {
-    "question_text": "Shaxsiy ma'lumotlarni kimlarga oshkor qilish mumkin emas?",
-    "correct_answer": "Uchinchi shaxslarga",
+    "question_text": "Shaxsiy kompyuterlar va orgtexnikadan foydalanishda operator nimalarga rioya qilishi kerak?",
+    "correct_answer": "Jihozlardan ehtiyotkorlik bilan foydalanish, elektr energiyasini tejash va texnika xavfsizligiga amal qilish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Orgtexnikani istalgan shaxsga vaqtincha foydalanishga berish",
+      "Materiallarni faqat tezroq ishlash uchun ko'proq sarflash",
+      "Jihozlardan ehtiyotkorlik bilan foydalanish, elektr energiyasini tejash va texnika xavfsizligiga amal qilish",
+      "Kompyuterni kun bo'yi yoqilgan holatda qoldirish"
+    ]
   },
   {
-    "question_text": "Xodim EMU brendi uchun kim hisoblanadi?",
-    "correct_answer": "Brendning yuzi",
+    "question_text": "Boshqa filial xodimi xizmat faoliyatiga oid masalada yordam so'rasa, operator qanday yo'l tutishi lozim?",
+    "correct_answer": "Imkon qadar yordam ko'rsatishi va tegishli takliflar berishi kerak",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Murojaatni javobsiz qoldirishi mumkin",
+      "Imkon qadar yordam ko'rsatishi va tegishli takliflar berishi kerak",
+      "Faqat o'z filiali ishiga javob berishini aytib rad etishi kerak",
+      "Yordamni faqat yozma buyruq bo'lsa ko'rsatishi kerak"
+    ]
   },
   {
-    "question_text": "Xodim kasb faoliyatida nimaga e'tiborli bo'lishi kerak?",
-    "correct_answer": "Kasb etikasi va muomala madaniyatiga",
+    "question_text": "Fuqarolarning ariza yoki shikoyatini ko'rib chiqishda operatorning to'g'ri harakati qaysi?",
+    "correct_answer": "Sabr bilan tinglab, masala mohiyatini aniqlashi va sodda tilda tushuntirishi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Mijozdan avval to'lov talab qilib, keyin tinglashi",
+      "Shikoyatni faqat yozma bo'lsa qabul qilishi",
+      "Sabr bilan tinglab, masala mohiyatini aniqlashi va sodda tilda tushuntirishi",
+      "Mijozni faqat rahbariyatga yuborishi va izoh bermasligi"
+    ]
   },
   {
-    "question_text": "Orgtexnika va aloqa vositalaridan qanday foydalanish kerak?",
-    "correct_answer": "Samarali va ehtiyotkorlik bilan",
+    "question_text": "Ofisning sanitariya holati bo'yicha operatorning vazifasi nimadan iborat?",
+    "correct_answer": "Xonani va ko'cha tomonlarini toza saqlash, ozodalikni ta'minlash",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat ish stoli ustini tartibga keltirish",
+      "Sanitariya holatini faqat farroshga topshirish",
+      "Tozalashni faqat haftaning oxirida bajarish",
+      "Xonani va ko'cha tomonlarini toza saqlash, ozodalikni ta'minlash"
+    ]
   },
   {
-    "question_text": "Materiallar va elektr energiyasidan qanday foydalanish kerak?",
-    "correct_answer": "Tejamkor va oqilona",
+    "question_text": "Telefoniga MeaSoft App o'rnatilganidan so'ng operator qaysi funksiyani belgilashi kerak?",
+    "correct_answer": "Online platyoj / Onlayn-plateji funksiyasini",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Avtomatik o'chirish funksiyasini",
+      "Online platyoj / Onlayn-plateji funksiyasini",
+      "Offline arxiv rejimini",
+      "Faqat kamera ruxsatini"
+    ]
   },
   {
-    "question_text": "Boshqa filial xodimi yordam so'rasa nima qilish kerak?",
-    "correct_answer": "Yordam ko'rsatish va taklif berish kerak",
+    "question_text": "Operatorga berilgan login va parol bo'yicha to'g'ri talab qaysi?",
+    "correct_answer": "Faqat o'ziga biriktirilgan login-paroldan foydalanish va uni oshkor qilmaslik",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Ish tezlashishi uchun login-parolni barcha xodimlarga berish",
+      "Parolni ofis devoriga yozib qo'yish",
+      "Faqat o'ziga biriktirilgan login-paroldan foydalanish va uni oshkor qilmaslik",
+      "Bitta umumiy login orqali barcha xodimlar ishlashi"
+    ]
   },
   {
-    "question_text": "Murojaat qilgan fuqaro shikoyat bildirsa avval nima qilish kerak?",
-    "correct_answer": "Sabr-toqat bilan tinglash",
+    "question_text": "Ish joyiga kelganda ofisga kirishdan oldin birinchi navbatda nima qilinadi?",
+    "correct_answer": "Ofis eshigi va atrofini ko'zdan kechirish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Darhol kompyuterni yoqish",
+      "Mijozlarga qo'ng'iroq qilishni boshlash",
+      "Kassadagi pulni sanash",
+      "Ofis eshigi va atrofini ko'zdan kechirish"
+    ]
   },
   {
-    "question_text": "Murojaatchiga qoidalar qanday tilda tushuntiriladi?",
-    "correct_answer": "Sodda tilda",
+    "question_text": "Eshik yoki derazada buzilish, begona kirish alomati sezilsa, operator nima qilishi kerak?",
+    "correct_answer": "Darhol rahbariyatga va IIB bo'limiga xabar berishi kerak",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Ish kuni tugagandan keyin yozma ma'lumot berishi kerak",
+      "Darhol rahbariyatga va IIB bo'limiga xabar berishi kerak",
+      "Avval xonani yig'ishtirib, keyin xabar berishi kerak",
+      "O'zi mustaqil tekshiruv o'tkazishi kerak"
+    ]
   },
   {
-    "question_text": "Ofis tozaligi uchun kim mas'ul?",
-    "correct_answer": "Xodim",
+    "question_text": "Ofisga kirgandan so'ng kompyuterlarni yoqishda qaysi talab muhim?",
+    "correct_answer": "Texnika xavfsizligiga rioya qilish va o'z login-paroli bilan dasturga kirish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat internet tezligini tekshirish",
+      "Istalgan xodimning loginidan foydalanish",
+      "Kompyuterni yoqib, dasturni ochmasdan kutish",
+      "Texnika xavfsizligiga rioya qilish va o'z login-paroli bilan dasturga kirish"
+    ]
   },
   {
-    "question_text": "Xona sanitariya holati qachon tartibga keltiriladi?",
-    "correct_answer": "Har kuni",
+    "question_text": "Yangi kelgan jo'natmalar dasturda qaysi tartib orqali qabul qilinadi?",
+    "correct_answer": "Doskа priyom orqali manifest tanlanib, jo'natmalar skaner qilinadi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Kurьер aytgan son bo'yicha og'zaki qabul qilinadi",
+      "Excel jadvaliga qo'lda yozib qo'yiladi",
+      "Doskа priyom orqali manifest tanlanib, jo'natmalar skaner qilinadi",
+      "Faqat telefon orqali ro'yxatga olinadi"
+    ]
   },
   {
-    "question_text": "Operator telefoniga qaysi ilova o'rnatiladi?",
-    "correct_answer": "MeaSoft App",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "MeaSoft App sozlamasida qaysi funksiya belgilanadi?",
-    "correct_answer": "Online platyoj yoki Onlayn-to'lovlar",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Onlayn-to'lovlar funksiyasi nima uchun kerak?",
-    "correct_answer": "To'lov turini real vaqtda online tanlash uchun",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Operator logini va parolini nima qilmasligi kerak?",
-    "correct_answer": "Boshqa birovga oshkor qilmasligi kerak",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Programmada har bir xodim uchun nima yaratiladi?",
-    "correct_answer": "Alohida foydalanuvchi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Ish joyiga kelganda birinchi nima qilinadi?",
-    "correct_answer": "Ofis eshigi ochilib, kirishdan oldin ko'zdan kechiriladi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Eshik yoki deraza buzilgan bo'lsa kimga xabar beriladi?",
-    "correct_answer": "Rahbariyatga va IIB bo'limiga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Ofisga kirgandan keyin programmaga qanday kiriladi?",
-    "correct_answer": "Berilgan login-parol orqali",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Kompyuter va uskunalarni yoqishda qaysi qoidalarga rioya qilinadi?",
-    "correct_answer": "Texnika xavfsizligi qoidalariga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Yangi jo'natmalar nima orqali qabul qilinadi?",
-    "correct_answer": "Manifest orqali",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Yangi jo'natmalar qanday qurilma orqali o'qitiladi?",
-    "correct_answer": "Skaner orqali",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Pochta ish vaqtida yetib kelmasa kimga bog'laniladi?",
-    "correct_answer": "Hududiy filial menejeriga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Kelib tushgan jo'natmalar qanday holatda bo'lishi tekshiriladi?",
+    "question_text": "Kelgan jo'natmalar qoplarda qanday holatda bo'lishi tekshiriladi?",
     "correct_answer": "Maxsus qoplarda plombalangan holatda",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Ochilgan va alohida ajratilgan holatda",
+      "Mijoz imzosi bilan yopishtirilgan holatda",
+      "Maxsus qoplarda plombalangan holatda",
+      "Faqat qog'oz paketga solingan holatda"
+    ]
   },
   {
-    "question_text": "Qabul qilish jarayoni programmada qaysi qism orqali qilinadi?",
-    "correct_answer": "Doska priyom",
+    "question_text": "Manifestdagi jo'natmalar soni kelgan jo'natmalar sonidan ko'p bo'lsa, operator nima qilishi kerak?",
+    "correct_answer": "Farqni aniqlab, o'z vaqtida Bosh skladga xabar berishi va kerak bo'lsa manifestni qo'lda yopishi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Manifestni avtomatik yopilgan deb hisoblab, davom etishi",
+      "Jo'natmalarni mijozlarga tarqatib yuborishi",
+      "Kam kelgan jo'natmalarni mavjud deb belgilashi",
+      "Farqni aniqlab, o'z vaqtida Bosh skladga xabar berishi va kerak bo'lsa manifestni qo'lda yopishi"
+    ]
   },
   {
-    "question_text": "Doska priyomdan keyin qaysi tugma bosiladi?",
-    "correct_answer": "Manifest",
+    "question_text": "Manifest orqali qabul qilingandan so'ng jo'natmalar bo'yicha navbatdagi ish qaysi?",
+    "correct_answer": "Jo'natmalarni operator nomiga o'qitib, tegishli yacheykalarga joylashtirish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Jo'natmalarni operator nomiga o'qitib, tegishli yacheykalarga joylashtirish",
+      "Jo'natmalarni darhol qaytarib yuborish",
+      "Jo'natmalarni faqat stol ustida saqlash",
+      "Jo'natmalarni kurьер nomiga yozib qo'yish"
+    ]
   },
   {
-    "question_text": "Manifest tanlangandan keyin qabulni boshlash uchun nima bosiladi?",
-    "correct_answer": "Nachat priyom",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Barcha jo'natmalar skanerdan o'tgach manifest qanday holatga o'tadi?",
-    "correct_answer": "Zavershyon",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Manifestda farq aniqlansa kimga xabar beriladi?",
-    "correct_answer": "Bosh skladga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natmalar soni manifestdan kam bo'lsa manifest qanday yopiladi?",
-    "correct_answer": "Qo'lda, qabul qilingan sana va vaqtni to'ldirib",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "hard"
-  },
-  {
-    "question_text": "Manifestdan keyin jo'natmalar kimning nomiga o'qitiladi?",
-    "correct_answer": "Operator nomiga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Shikastlangan jo'natma aniqlansa qaysi bo'limga xabar beriladi?",
+    "question_text": "Kelgan jo'natmalar ichida shikastlanganlari aniqlansa, kimga xabar beriladi?",
     "correct_answer": "Sifat nazorati bo'limiga",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Sifat nazorati bo'limiga",
+      "Hech kimga, chunki skanerlangan bo'ladi",
+      "Faqat mijozning qarindoshiga",
+      "Faqat qo'riqlash xizmatiga"
+    ]
   },
   {
-    "question_text": "Jo'natmalar xodim nomiga o'qitilishi uchun qaysi qismga o'tiladi?",
-    "correct_answer": "Vydacha qismiga",
+    "question_text": "Yacheyka tashkil etishda dasturda qaysi bo'lim va funksiya ishlatiladi?",
+    "correct_answer": "Spravochniki bo'limida stellaji va adresnoe hranenie",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Manifest oynasida opłachen",
+      "Spravochniki bo'limida stellaji va adresnoe hranenie",
+      "Vydacha bo'limida dostavlen",
+      "Adresa bo'limida status"
+    ]
   },
   {
-    "question_text": "Yacheyka tashkil etish uchun qaysi qismga kiriladi?",
-    "correct_answer": "Spravochniki qismiga",
+    "question_text": "Har bir jo'natmani yacheykaga joylashtirishdan oldin nima skaner qilinadi?",
+    "correct_answer": "Kerakli yacheykadagi shtrixkod",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Filial rahbarining telefon raqami",
+      "Kerakli yacheykadagi shtrixkod",
+      "Kassa cheki raqami",
+      "Mijozning pasport rasmi"
+    ]
   },
   {
-    "question_text": "Yacheyka uchun qaysi tugma bosiladi?",
-    "correct_answer": "Stellaji",
+    "question_text": "Jo'natma kelganidan so'ng oluvchiga nisbatan operatorning vazifasi qaysi?",
+    "correct_answer": "Darhol telefon qilib xabar berish, bog'lana olmasa kun davomida qayta urinib ko'rish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat yuboruvchiga SMS yozish",
+      "Faqat mijoz o'zi kelishini kutish",
+      "Xabarni bir haftadan keyin yuborish",
+      "Darhol telefon qilib xabar berish, bog'lana olmasa kun davomida qayta urinib ko'rish"
+    ]
   },
   {
-    "question_text": "Stellaji qismida qaysi belgi tanlanadi?",
-    "correct_answer": "Adresnoe hranenie",
+    "question_text": "Avvalgi sanalarda kelgan qoldiq jo'natmalar bo'yicha operator nima qiladi?",
+    "correct_answer": "Operator qo'lidan yechib, qayta nomiga o'qitadi va oluvchilarni ogohlantiradi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Operator qo'lidan yechib, qayta nomiga o'qitadi va oluvchilarni ogohlantiradi",
+      "Hech qanday qayta ishlov bermaydi",
+      "Ularni yangi jo'natmalar bilan aralashtirib yuboradi",
+      "Darhol yo'q qiladi"
+    ]
   },
   {
-    "question_text": "Yacheyka shtrixkodlarini chiqarish uchun qaysi tugma bosiladi?",
-    "correct_answer": "Pechat shtrixkodov",
+    "question_text": "Bir oy muddatda olib ketilmagan qoldiq jo'natmalar bo'yicha talab qaysi?",
+    "correct_answer": "Muddatiga qarab obrabotka qilib, keraklilarini vozvrat qilib yuborish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Yana bir oy ofisda saqlab turish",
+      "Muddatiga qarab obrabotka qilib, keraklilarini vozvrat qilib yuborish",
+      "Jo'natmani boshqa mijozga berish",
+      "Operator o'z nomida saqlashi"
+    ]
   },
   {
-    "question_text": "Jo'natmani operator nomiga o'qitishdan oldin nima skaner qilinadi?",
-    "correct_answer": "Kerakli yacheyka shtrixkodi",
+    "question_text": "Qoldiq jo'natmalar ro'yxatini chiqarish uchun dasturda qaysi yo'l ishlatiladi?",
+    "correct_answer": "Adresa bo'limi, filtr, dopolnitelno, mas'ul filialni tanlash",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Nastroyki bo'limi, online platyoj",
+      "Vydacha bo'limi, pechat shtrixkodov",
+      "Kassa bo'limi, plus tugmasi",
+      "Adresa bo'limi, filtr, dopolnitelno, mas'ul filialni tanlash"
+    ]
   },
   {
-    "question_text": "Jo'natma kelgani haqida kimga telefon qilinadi?",
-    "correct_answer": "Oluvchiga",
+    "question_text": "Rahbariyat yoki mijoz telefon qilganda operator qanday harakat qilishi kerak?",
+    "correct_answer": "Telefonni o'z vaqtida ko'tarib, savollarga kechiktirmasdan izoh berishi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat telegram orqali javob berishi",
+      "Telefonni o'z vaqtida ko'tarib, savollarga kechiktirmasdan izoh berishi",
+      "Barcha qo'ng'iroqlarni javobsiz qoldirishi",
+      "Faqat ish oxirida javob qaytarishi"
+    ]
   },
   {
-    "question_text": "Oluvchi bilan bog'lana olinmasa nima qilinadi?",
-    "correct_answer": "Kun davomida bog'lanishga harakat qilinadi",
+    "question_text": "Ofisga tashrif buyurgan mijozga nisbatan to'g'ri muomala qaysi?",
+    "correct_answer": "Kirishidan e'tibor qaratish va doimo xushmuomalada bo'lish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Mijozni hujjatsiz qabul qilmaslik",
+      "Kirishidan e'tibor qaratish va doimo xushmuomalada bo'lish",
+      "Faqat navbat kelganda gapirish",
+      "Mijozdan avval sababini yozma so'rash"
+    ]
   },
   {
-    "question_text": "Oluvchi topilmasa aniqlik kim orqali kiritiladi?",
-    "correct_answer": "Yuboruvchi orqali",
+    "question_text": "Mijoz jo'natma yubormoqchi bo'lsa, operator qabul qilishda nimaga e'tibor beradi?",
+    "correct_answer": "Jo'natmaning holati va turiga qarab ochiq holatda ko'zdan kechiradi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Qabul qilishni faqat kurьерga topshiradi",
+      "Jo'natmani ko'rmasdan faqat og'irligini yozadi",
+      "Faqat qutining rangiga qarab qabul qiladi",
+      "Jo'natmaning holati va turiga qarab ochiq holatda ko'zdan kechiradi"
+    ]
   },
   {
-    "question_text": "Ofisdagi qoldiq jo'natmalar kimning qo'lidan yechiladi?",
-    "correct_answer": "Operator qo'lidan",
+    "question_text": "Upakovka jarayonida qaysi tartib to'g'ri?",
+    "correct_answer": "Mijoz ko'z oldida birgalikda o'rovlanadi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Mijoz ko'z oldida birgalikda o'rovlanadi",
+      "Mijoz ketgandan keyin alohida ochib o'raladi",
+      "Faqat bosh skladda o'raladi",
+      "O'ramasdan yuboriladi"
+    ]
   },
   {
-    "question_text": "Qoldiq jo'natmalar bo'yicha oluvchilarga nima deyiladi?",
-    "correct_answer": "Jo'natmasini olib ketishi kerakligi aytiladi",
+    "question_text": "Jo'natmani ochiq ko'zdan kechirishdan asosiy maqsad nima?",
+    "correct_answer": "Taqiqlangan narsalarni oldini olish va jo'natma xavfsiz yetib borishini ta'minlash",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Taqiqlangan narsalarni oldini olish va jo'natma xavfsiz yetib borishini ta'minlash",
+      "Jo'natmaning narxini pasaytirish",
+      "Mijozni uzoqroq kutdirish",
+      "Faqat qutini chiroyli ko'rinishga keltirish"
+    ]
   },
   {
-    "question_text": "Qoldiq jo'natmalar qancha muddatda olib ketilmasa qaytariladi?",
-    "correct_answer": "1 oy muddatda",
+    "question_text": "Jo'natmani rasmiylashtirishda qaysi ma'lumotlar to'liqligiga e'tibor beriladi?",
+    "correct_answer": "Yuboruvchi va oluvchining ismi, manzili, telefon raqami va boshqa kerakli ma'lumotlari",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat oluvchining viloyati",
+      "Faqat yuboruvchining ismi",
+      "Faqat jo'natma rangi",
+      "Yuboruvchi va oluvchining ismi, manzili, telefon raqami va boshqa kerakli ma'lumotlari"
+    ]
   },
   {
-    "question_text": "Qoldiq jo'natmalar ro'yxati uchun qaysi qismga kiriladi?",
-    "correct_answer": "Adresa qismiga",
+    "question_text": "Jo'natma turiga qarab 'vlojeniya' qismiga nimalar kiritiladi?",
+    "correct_answer": "Tovar nomi va IKPU kodlari",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat operatorning ismi",
+      "Tovar nomi va IKPU kodlari",
+      "Faqat filial manzili",
+      "Faqat kuryer mashina raqami"
+    ]
   },
   {
-    "question_text": "Adresa qismida qaysi filtr tanlanadi?",
-    "correct_answer": "Filtr 2",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Qoldiq ro'yxati uchun qaysi filial belgilanadi?",
-    "correct_answer": "Otvetstvenniy filial",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Qaytariladigan jo'natmalar nima asosida yuboriladi?",
-    "correct_answer": "Manifest asosida",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natmalar Bosh skladga yuborilganda qaysi maydon tanlanadi?",
-    "correct_answer": "Otv. filial",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Rahbariyat yoki mijoz telefon qilganda nima qilish kerak?",
-    "correct_answer": "O'z vaqtida telefonni ko'tarib javob berish",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Telegram orqali savol tushsa qanday javob berish kerak?",
-    "correct_answer": "Kechiktirmasdan izoh berish",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Ofisga kelgan mijozga qanday munosabatda bo'lish kerak?",
-    "correct_answer": "E'tiborli va xushmuomala",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Mijoz jo'natma yubormoqchi bo'lsa jo'natma qanday qabul qilinadi?",
-    "correct_answer": "Holati va turiga qarab ochiq holatda",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Qadoqlash jarayoni kimning ko'z oldida bajariladi?",
-    "correct_answer": "Mijozning ko'z oldida",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Operator jo'natmani qabul qilishda uni qanday tekshiradi?",
-    "correct_answer": "Vizual tarzda ko'zdan kechiradi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Qadoqlashdagi asosiy maqsadlardan biri nima?",
-    "correct_answer": "Taqiqlangan narsalar yuborilishining oldini olish",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Jo'natmani rasmiylashtirishda kimlarning ma'lumotlari to'liq kiradi?",
-    "correct_answer": "Yuboruvchi va oluvchining ma'lumotlari",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Yuboruvchi va oluvchi ma'lumotlariga nimalar kiradi?",
-    "correct_answer": "Ismi, manzili va telefon raqami",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natma turiga qarab vlojeniya qismiga nima yoziladi?",
-    "correct_answer": "Tovar nomi va IKPU kodi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Jo'natma massasi qanday aniqlanadi?",
-    "correct_answer": "Tarozida o'lchab",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Katta hajmli jo'natmada tarif nimaga qarab hisoblanadi?",
-    "correct_answer": "Hajmidan kelib chiqib",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Ustama to'lovli pochtada mahsulot uchun qanday kod kiradi?",
-    "correct_answer": "IKPU yoki MXIK kodi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "IKPU kodi nimani anglatadi?",
+    "question_text": "IKPU kodi nimani bildiradi?",
     "correct_answer": "Mahsulot va xizmatlarning identifikatsiya kodi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Filialning telefon kodi",
+      "Operatorning ichki paroli",
+      "Kuryer marshrut raqami",
+      "Mahsulot va xizmatlarning identifikatsiya kodi"
+    ]
   },
   {
-    "question_text": "IKPU kodi haqida ma'lumot qaysi saytdan olinadi?",
-    "correct_answer": "tasnif.soliq.uz",
+    "question_text": "Hajmli jo'natmalar uchun tarifni hisoblashda nimalar kiritilishi kerak?",
+    "correct_answer": "Uzunlik, kenglik va balandlik o'lchamlari",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Uzunlik, kenglik va balandlik o'lchamlari",
+      "Faqat mijozning familiyasi",
+      "Faqat qutining rangi",
+      "Faqat jo'natma kelgan sana"
+    ]
   },
   {
-    "question_text": "Edinitsa izmereniya nima?",
-    "correct_answer": "Mahsulotning o'lchov birligi",
+    "question_text": "Haqiqiy og'irlik va hajm og'irligi taqqoslanganda qaysi biri hisobga olinadi?",
+    "correct_answer": "Eng yuqori ko'rsatkich posilka og'irligi deb olinadi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat mijoz aytgan og'irlik olinadi",
+      "Doimo eng kichik ko'rsatkich olinadi",
+      "Eng yuqori ko'rsatkich posilka og'irligi deb olinadi",
+      "Faqat tarozidagi qiymat olinadi"
+    ]
   },
   {
-    "question_text": "Hajmiy og'irlikda haqiqiy va hisoblangan qiymatdan qaysi biri olinadi?",
-    "correct_answer": "Eng yuqori ko'rsatkich",
+    "question_text": "Tариф bo'yicha mijozga ma'lumot berishda operator nimalarga asoslanadi?",
+    "correct_answer": "Jo'natma manzili va massasini dastur yoki kalkulyatorga kiritib aniq summa beradi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Taxminiy narx aytadi",
+      "Narxni ish oxirida bildiradi",
+      "Jo'natma manzili va massasini dastur yoki kalkulyatorga kiritib aniq summa beradi",
+      "Faqat boshqa mijoz to'lagan summani aytadi"
+    ]
   },
   {
-    "question_text": "Hajmiy og'irlikni programma qanday hisoblaydi?",
-    "correct_answer": "Avtomatik tarzda",
+    "question_text": "Taqiqlangan jo'natmalar aniqlansa operator nima qilishi kerak?",
+    "correct_answer": "Qabul qilmasligi, xavfli yoki shubhali holatda rahbariyat va tegishli idoralarga xabar berishi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Yaxshilab o'rab yuborishi",
+      "Faqat og'irligini oshirib rasmiylashtirishi",
+      "Qabul qilmasligi, xavfli yoki shubhali holatda rahbariyat va tegishli idoralarga xabar berishi",
+      "Mijozdan qo'shimcha to'lov olib qabul qilishi"
+    ]
   },
   {
-    "question_text": "Hajmiy og'irlik uchun qaysi o'lchamlar kiradi?",
-    "correct_answer": "Uzunlik, kenglik va balandlik",
+    "question_text": "Quyidagilardan qaysi biri taqiqlangan jo'natmalarga kiradi?",
+    "correct_answer": "Qurol-yarog', kuchli yonuvchi suyuqliklar, narkotik moddalar, tirik hayvon yoki qushlar",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Oddiy kiyim-kechak va hujjatlar",
+      "Ruxsat etilgan maishiy buyumlar",
+      "Qurol-yarog', kuchli yonuvchi suyuqliklar, narkotik moddalar, tirik hayvon yoki qushlar",
+      "Yaxshi o'ralgan kitoblar"
+    ]
   },
   {
-    "question_text": "Hajm o'lchamlari programmada qaysi qismga kiritiladi?",
-    "correct_answer": "Vlojeniya qismiga",
+    "question_text": "O'ta nozik va shikastlanishi mumkin bo'lgan buyumlar bo'yicha qaysi javob to'g'ri?",
+    "correct_answer": "Umuman yuborilmaydi, faqat maxsus talablar asosida maxsus o'ralgan bo'lsa belgilangan tartibda ishlov berilishi mumkin",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Umuman yuborilmaydi, faqat maxsus talablar asosida maxsus o'ralgan bo'lsa belgilangan tartibda ishlov berilishi mumkin",
+      "Faqat qopga solib yuboriladi",
+      "Har qanday holatda qabul qilinadi",
+      "Hech qanday tekshiruvsiz qabul qilinadi"
+    ]
   },
   {
-    "question_text": "Tarif summasini bilish uchun programga nimalar kiritiladi?",
-    "correct_answer": "Manzil va massa",
+    "question_text": "Mijoz jo'natmani olib ketishga kelganda operator avval nimani tekshiradi?",
+    "correct_answer": "Oluvchi ma'lumotlari to'g'riligini va o'zi ekanligini",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Mijozning telefonidagi ilovalarni",
+      "Mijozning ish joyini",
+      "Mijozning boshqa filialdagi tarixini",
+      "Oluvchi ma'lumotlari to'g'riligini va o'zi ekanligini"
+    ]
   },
   {
-    "question_text": "Tariflarni hisoblash uchun operator kompyuterida nima bo'lishi kerak?",
-    "correct_answer": "Kalkulyator ilovasi",
+    "question_text": "Jo'natma topshirishda operator qaysi amallarni bajaradi?",
+    "correct_answer": "Yacheykadan jo'natmani olib, summa va ma'lumotlarni mobil ilovadan tekshiradi, mijozga imzo qo'ydiradi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Yacheykadan jo'natmani olib, summa va ma'lumotlarni mobil ilovadan tekshiradi, mijozga imzo qo'ydiradi",
+      "Faqat jo'natmani qo'liga berib yuboradi",
+      "Imzosiz topshiradi",
+      "Summani tekshirmasdan qayd qiladi"
+    ]
   },
   {
-    "question_text": "Taqiqlangan jo'natmalarni qabul qilish mumkinmi?",
-    "correct_answer": "Yo'q, mumkin emas",
+    "question_text": "Kun davomida qabul qilingan jo'natmalarni Bosh skladga yuborishdan oldin operator nima qiladi?",
+    "correct_answer": "Dastur orqali o'ziga 'poluchen' qilib, manifest qiladi va skanerlab qoplarga joylaydi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Dastur orqali o'ziga 'poluchen' qilib, manifest qiladi va skanerlab qoplarga joylaydi",
+      "Faqat telefon orqali xabar beradi",
+      "Jo'natmalarni yacheykada qoldiradi",
+      "Jo'natmalarni ro'yxatsiz qopga soladi"
+    ]
   },
   {
-    "question_text": "Shubhali yoki xavfli jo'natma aniqlansa kimga xabar beriladi?",
-    "correct_answer": "Korxona rahbariyatiga va tegishli idoralarga",
+    "question_text": "Jo'natmalar manifest qilingandan so'ng kurьерga berish uchun qaysi funksiya ishlatiladi?",
+    "correct_answer": "Manifest oynasida 'peremestit v dostavku' funksiyasi orqali korrespondensiya yaratish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Manifest oynasida 'peremestit v dostavku' funksiyasi orqali korrespondensiya yaratish",
+      "Adresa bo'limidan filtrni tozalash",
+      "Nastroykadan online platyojni o'chirish",
+      "Stellaji bo'limida yacheyka o'chirish"
+    ]
   },
   {
-    "question_text": "Taqiqlangan jo'natmalarga qurol-yarog' kiradimi?",
-    "correct_answer": "Ha, kiradi",
+    "question_text": "Xizmat haqi kassaga kirim qilinishi uchun buyurtma yaratish jarayonida nima bosiladi?",
+    "correct_answer": "'+' tugmasi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "'Adresnoe hranenie' tugmasi",
+      "'Pechat shtrixkodov' tugmasi",
+      "'+' tugmasi",
+      "'Manifest' tugmasi"
+    ]
   },
   {
-    "question_text": "Taqiqlangan jo'natmalarga kuchli yonuvchi suyuqliklar kiradimi?",
-    "correct_answer": "Ha, kiradi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Taqiqlangan jo'natmalarga psixotrop va narkotik moddalar kiradimi?",
-    "correct_answer": "Ha, kiradi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Taqiqlangan jo'natmalarga tirik hayvon yoki qushlar kiradimi?",
-    "correct_answer": "Ha, kiradi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Taqiqlangan jo'natmalarga tez aynuvchi oziq-ovqat mahsulotlari kiradimi?",
-    "correct_answer": "Ha, kiradi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "O'ta nozik buyumlarni oddiy tartibda yuborish mumkinmi?",
-    "correct_answer": "Yo'q, faqat maxsus talablar asosida bo'lsa mumkin",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Pochta olib ketishga kelgan mijozda nima tekshiriladi?",
-    "correct_answer": "Oluvchining ma'lumotlari to'g'riligi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natma topshirishdan oldin mijoz haqida nimaga ishonch hosil qilinadi?",
-    "correct_answer": "O'zi ekanligiga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natma qayerdan olinadi?",
-    "correct_answer": "Tegishli yacheykadan",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natma summasi va boshqa ma'lumotlari qayerdan tekshiriladi?",
-    "correct_answer": "Mobil ilovadan",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natmani topshirishda mijozga nima qo'ydiriladi?",
-    "correct_answer": "Imzo",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Kun davomida qabul qilingan jo'natmalar kimga poluchen qilinadi?",
-    "correct_answer": "Operatorning o'ziga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Qabul qilingan jo'natmalar keyin nima qilinadi?",
-    "correct_answer": "Manifest qilinadi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Manifestdan keyin jo'natmalar qanday joylashtiriladi?",
-    "correct_answer": "Qoplarga joylashtiriladi va plomba qilinadi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Yangi korrespondensiya kim nomiga o'qitib beriladi?",
-    "correct_answer": "Tegishli kuryer yoki shofyor nomiga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Manifest oynasida kuryerga berish uchun qaysi funksiya tanlanadi?",
-    "correct_answer": "Peremestit v dostavku",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Mijozlardan qabul qilingan xizmat haqi qachon hisob-kitob qilinadi?",
-    "correct_answer": "Kun oxirida",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Oluvchilarga topshirilgan jo'natmalar qaysi statusga o'tkaziladi?",
+    "question_text": "Mijozlarga topshirilgan jo'natmalar dasturda qanday statusga o'tkaziladi?",
     "correct_answer": "Dostavlen",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Adresnoe hranenie",
+      "Online platyoj",
+      "Dostavlen",
+      "Nachat priyom"
+    ]
   },
   {
-    "question_text": "Kunlik hisobot kimga topshiriladi?",
-    "correct_answer": "Hududiy filial menejeriga",
+    "question_text": "Kun oxirida xizmat haqi va topshirilgan jo'natmalar bo'yicha operatorning hisoboti kimga topshiriladi?",
+    "correct_answer": "Hududiy filial menejeriga, Toshkent shahar PVZ operatorlari esa buxgalteriya/kassirga",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat kurьерga",
+      "Hech kimga topshirilmaydi",
+      "Hududiy filial menejeriga, Toshkent shahar PVZ operatorlari esa buxgalteriya/kassirga",
+      "Faqat mijozlarning o'ziga"
+    ]
   },
   {
-    "question_text": "Toshkent shahar PVZ operatorlari hisobotni kimga topshiradi?",
-    "correct_answer": "Buxgalteriya bo'limi yoki kassirga",
+    "question_text": "Ofisdagi ish qurollari, korobka va paketlar bo'yicha operator nimani nazorat qiladi?",
+    "correct_answer": "Doimiy qoldig'idan xabardor bo'lib, uzluksiz mavjudligini ta'minlaydi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Doimiy qoldig'idan xabardor bo'lib, uzluksiz mavjudligini ta'minlaydi",
+      "Ularni mijozlarga bepul tarqatadi",
+      "Qoldiq hisobini yuritmaydi",
+      "Faqat tugagandan keyin eslatadi"
+    ]
   },
   {
-    "question_text": "Kassaga kirim qilish uchun zakazda qaysi tugma bosiladi?",
-    "correct_answer": "+ tugmasi",
+    "question_text": "Ish kuni oxirida operator qaysi ishlarni bajarishi kerak?",
+    "correct_answer": "Kompyuter va texnik vositalarni o'chirish, isitish moslamalarini tokdan uzish, ofisni chiqindilardan tozalash",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Kompyuterlarni yangilanish uchun yoqilgan qoldirish",
+      "Faqat eshikni yopib ketish",
+      "Paketlarni ochiq holatda tashlab ketish",
+      "Kompyuter va texnik vositalarni o'chirish, isitish moslamalarini tokdan uzish, ofisni chiqindilardan tozalash"
+    ]
   },
   {
-    "question_text": "Dostavlen qilishda dastlab qaysi qismga kiriladi?",
-    "correct_answer": "Vydacha qismiga",
+    "question_text": "Mijozlardan qabul qilinayotgan jo'natmalarni o'rovlashtirish tartibiga rioya qilish nima uchun muhim?",
+    "correct_answer": "Sifatli xizmat, xavfsizlik va jo'natma beshikast yetib borishini ta'minlash uchun",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Sifatli xizmat, xavfsizlik va jo'natma beshikast yetib borishini ta'minlash uchun",
+      "Faqat qutini og'irroq qilish uchun",
+      "Faqat rasmiy ko'rinish uchun, amaliy ahamiyati yo'q",
+      "Faqat operator vaqtini to'ldirish uchun"
+    ]
   },
   {
-    "question_text": "Dostavlen qilingan zakazlar qanday tanlanadi?",
-    "correct_answer": "Umumiy tarzda belgilanadi",
+    "question_text": "Agar ish vaqtida ofisga pochta yetib kelmagan bo'lsa, operator nima qiladi?",
+    "correct_answer": "Hududiy filial menejeriga telefon qilib, sababini aniqlashtiradi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Manifestni avtomatik yakunlaydi",
+      "Hududiy filial menejeriga telefon qilib, sababini aniqlashtiradi",
+      "Mijozlarga barcha jo'natmalar keldi deb xabar beradi",
+      "Pochta kelmagani haqida hech kimga aytmaydi"
+    ]
   },
   {
-    "question_text": "Statusni yopish uchun qaysi funksiyaga kiriladi?",
-    "correct_answer": "Status funksiyasiga",
+    "question_text": "Jo'natma qabul qilishda skaner orqali birma-bir o'qitishning asosiy maqsadi nima?",
+    "correct_answer": "Jo'natmalarni manifest bo'yicha aniq qabul qilish va farqlarni aniqlash",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Jo'natmalarni manifest bo'yicha aniq qabul qilish va farqlarni aniqlash",
+      "Faqat skaner ishlayotganini tekshirish",
+      "Jo'natmalar sonini taxminan bilish",
+      "Qoplarni plombalamasdan yuborish"
+    ]
   },
   {
-    "question_text": "Dostavlendan keyin nimani printerdan chiqarish tavsiya etiladi?",
-    "correct_answer": "Hisobot orderini",
+    "question_text": "Operator ish jarayonida telegram orqali savol tushsa, qanday munosabatda bo'lishi kerak?",
+    "correct_answer": "Ish jarayoniga oid savolga o'z vaqtida javob berishi va izoh berishi",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Ish jarayoniga oid savolga o'z vaqtida javob berishi va izoh berishi",
+      "Savolni o'chirib tashlashi",
+      "Faqat ertasi kuni javob berishi",
+      "Faqat og'zaki javob berishini aytishi"
+    ]
   },
   {
-    "question_text": "Ofisdagi ish qurollari va qadoqlash materiallaridan doim nima qilish kerak?",
-    "correct_answer": "Qoldig'idan boxabar bo'lish",
+    "question_text": "Jo'natma ustama to'lovli bo'lsa, mahsulot ma'lumotlarini kiritishda nimalar muhim?",
+    "correct_answer": "Mahsulot nomi, IKPU kodi va o'lchov birligini to'g'ri kiritish",
     "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Ish qurollari va korobkalar bo'yicha nima ta'minlanishi kerak?",
-    "correct_answer": "Uzluksiz mavjudligi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Ish kuni oxirida kompyuterlar nima qilinadi?",
-    "correct_answer": "O'chiriladi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Ish kuni oxirida isitish moslamalari nima qilinadi?",
-    "correct_answer": "Tokdan uziladi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Ish kuni oxirida ofis qanday holatga keltiriladi?",
-    "correct_answer": "Keraksiz qog'oz va chiqindilardan tozalanadi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Xodim boshqa xodimlar bilan muloqotda nimani saqlashi kerak?",
-    "correct_answer": "O'zaro hurmatni",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Ishonib aytilgan topshiriqlar qanday hal etiladi?",
-    "correct_answer": "O'z vaqtida ijobiy hal etiladi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Korxona nufuziga putur yetkazadigan harakatlarga yo'l qo'yiladimi?",
-    "correct_answer": "Yo'q, yo'l qo'yilmaydi",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Xodim brendga qanday munosabatda harakat qilishi kerak?",
-    "correct_answer": "Hurmat asosida",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "EMU brendini xodim qanday targ'ib qilishi kerak?",
-    "correct_answer": "Munosib targ'ib qilishi kerak",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Murojaat masalasiga qanday baho berilishi kerak?",
-    "correct_answer": "Qonun hujjatlari talablariga muvofiq",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "hard"
-  },
-  {
-    "question_text": "Ofis xonasining qaysi tomonlari tozalanadi?",
-    "correct_answer": "Ichi va ko'cha tomonlari",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Online platyoj qaysi jarayonda to'lov turini tanlashga yordam beradi?",
-    "correct_answer": "Jo'natmalarni egalariga topshirishda",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Login-parol kimga alohida beriladi?",
-    "correct_answer": "Har bir xodimga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Pochta qabul qilishda jo'natmalar qopdan qanday olinadi?",
-    "correct_answer": "Har biri birma-bir",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Manifest to'liq kelganligi qayerdan tekshiriladi?",
-    "correct_answer": "Programmadan",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natmalarni yacheykaga joylashtirishdan oldin nima o'qitiladi?",
-    "correct_answer": "Yacheykadagi shtrixkod",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Qoldiq jo'natmalar qaysi mezonga qarab obrabotka qilinadi?",
-    "correct_answer": "Muddatlariga qarab",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Qaytariladigan jo'natmalar qayerga yuborilishi mumkin?",
-    "correct_answer": "Bosh skladga yoki tegishli filialga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natmani ochiq qabul qilishdan maqsad nima?",
-    "correct_answer": "Xavfsizlik va taqiqlangan narsalarning oldini olish",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Katta hajmli jo'natmada tarif uchun nimani o'lchash kerak?",
-    "correct_answer": "Uzunlik, kenglik, balandlik va massani",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Mijozga tarif bo'yicha qanday ma'lumot berish kerak?",
-    "correct_answer": "Aniq ma'lumot",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Xavfli narsalardan biri sifatida qanday buyum keltirilgan?",
-    "correct_answer": "Ochiq turdagi o'tkir tig'li buyumlar",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Mijozga jo'natma topshirishda summadan tashqari nima tekshiriladi?",
-    "correct_answer": "Jo'natmaga oid boshqa ma'lumotlar",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Kuryerga yuborishda jo'natmalar qoplarga qanday solinadi?",
-    "correct_answer": "Birma-bir skanerdan o'tkazilib",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Xizmat haqi pullarini kassaga kirim qilish qaysi jarayonda bajariladi?",
-    "correct_answer": "Jo'natmani sozdat qilish jarayonida",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "hard"
-  },
-  {
-    "question_text": "Hisobotlarni filial operatorlari kimga topshiradi?",
-    "correct_answer": "Filial menejeriga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Ish kuni yakunida qanday texnik vositalar o'chiriladi?",
-    "correct_answer": "Kompyuter va boshqa texnik vositalar",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Taqiqlangan jo'natmalar ro'yxati hujjatda nima sifatida ko'rsatilgan?",
-    "correct_answer": "Ilova qilinadigan ro'yxat",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
-  },
-  {
-    "question_text": "Maxsus shaklda o'ralgan nozik buyumlarga qanday tartibda ishlov beriladi?",
-    "correct_answer": "Belgilangan tartibda",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "hard"
-  },
-  {
-    "question_text": "Operator mijoz ma'lumotlarining nimasi to'liqligiga e'tibor beradi?",
-    "correct_answer": "Ism, manzil va telefon raqamining to'liqligiga",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Jo'natma kelganligi haqida oluvchi bilan qachongacha bog'lanishga harakat qilinadi?",
-    "correct_answer": "Kun davomida",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "Qaysi holatda Bosh skladga o'z vaqtida xabar berish kerak?",
-    "correct_answer": "Manifestda farq aniqlansa",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "easy"
-  },
-  {
-    "question_text": "PVZdagi qoldiq jo'natmalar ro'yxati qachon chiqadi?",
-    "correct_answer": "Otvetstvenniy filial belgilanib OK bosilgandan keyin",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "hard"
-  },
-  {
-    "question_text": "Jo'natmalar yangi dostavkaga qanday o'tkaziladi?",
-    "correct_answer": "Peremestit v dostavku funksiyasi orqali",
-    "category": "Operatorlar yo'riqnomasi 2026",
-    "difficulty": "medium"
+    "difficulty": "medium",
+    "question_type": "choice",
+    "options": [
+      "Faqat filial nomini tanlash",
+      "Faqat qop raqamini kiritish",
+      "Faqat jo'natuvchi familiyasini yozish",
+      "Mahsulot nomi, IKPU kodi va o'lchov birligini to'g'ri kiritish"
+    ]
   }
 ]
