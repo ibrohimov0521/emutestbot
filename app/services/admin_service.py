@@ -16,10 +16,13 @@ async def dashboard_stats() -> dict:
             "total_answers": "SELECT COUNT(*) AS count FROM test_answers",
             "total_questions": "SELECT COUNT(*) AS count FROM questions",
             "active_questions": "SELECT COUNT(*) AS count FROM questions WHERE is_active = 1",
-            "district_questions": "SELECT COUNT(*) AS count FROM questions WHERE category = 'O''zbekiston tumanlari'",
+            "district_questions": (
+                "SELECT COUNT(*) AS count FROM questions "
+                "WHERE category = 'O''zbekiston tumanlari' AND is_active = 1"
+            ),
             "operator_manual_questions": (
                 "SELECT COUNT(*) AS count FROM questions "
-                "WHERE category = 'Operatorlar yo''riqnomasi 2026'"
+                "WHERE category = 'Operatorlar yo''riqnomasi 2026' AND is_active = 1"
             ),
         }
         for key, sql in queries.items():
