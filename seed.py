@@ -53,7 +53,11 @@ def build_operator_manual_questions() -> list[dict[str, Any]]:
     answer_pool = [str(question["correct_answer"]) for question in questions]
     for question in questions:
         question["question_type"] = "choice"
-        question["options"] = _build_choice_options(question, answer_pool)
+        options = [str(option) for option in question.get("options", [])]
+        if len(options) == 4 and str(question["correct_answer"]) in options:
+            question["options"] = options
+        else:
+            question["options"] = _build_choice_options(question, answer_pool)
     return questions
 
 
