@@ -126,7 +126,7 @@ SQLite ma'lumotlari restart yoki redeploydan keyin ham saqlanishi uchun Railway'
 
 ## Admin komandalar
 
-- `/admin` - umumiy statistika.
+- `/admin` - umumiy statistika..
 - `/users` - userlar ro'yxati, 10 tadan pagination.
 - `/seed_districts` - O'zbekiston tumanlari savollarini seed qilish.
 
