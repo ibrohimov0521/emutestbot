@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import random
 import re
 from difflib import SequenceMatcher
 from functools import lru_cache
@@ -13,9 +14,11 @@ from app.time_utils import format_tashkent
 
 DISTRICT_CATEGORY = "O'zbekiston tumanlari"
 OPERATOR_MANUAL_CATEGORY = "Operatorlar yo'riqnomasi 2026"
+PROFESSIONAL_CATEGORY = "EMU operator professional test"
 TEST_DIRECTION_DISTRICTS = "districts"
-TEST_DIRECTION_MANUAL = "manual"
-TEST_DIRECTION_MIXED = "mixed"
+TEST_DIRECTION_SIMPLE_MIXED = "simple_mixed"
+TEST_DIRECTION_COMPLEX_MIXED = "complex_mixed"
+TEST_DIRECTION_WORK_PROCESS = "work_process"
 QUESTION_TYPE_TEXT = "text"
 QUESTION_TYPE_CHOICE = "choice"
 CHOICE_LABELS = ("A", "B", "C", "D")
@@ -55,46 +58,154 @@ async def get_active_session(user_id: int) -> dict | None:
         return dict(rows[0]) if rows else None
 
 
-async def start_test(user_id: int, total_questions: int, direction: str = TEST_DIRECTION_MIXED) -> dict:
+async def _count_questions(db, conditions: str, params: tuple[object, ...]) -> int:
+    rows = await db.execute_fetchall(
+        f"SELECT COUNT(*) AS count FROM questions WHERE {conditions}",
+        params,
+    )
+    return int(rows[0]["count"])
+
+
+async def _fetch_question_ids(db, conditions: str, params: tuple[object, ...], limit: int) -> list[int]:
+    if limit <= 0:
+        return []
+    rows = await db.execute_fetchall(
+        f"""
+        SELECT id
+        FROM questions
+        WHERE {conditions}
+        ORDER BY RANDOM()
+        LIMIT ?
+        """,
+        (*params, limit),
+    )
+    return [int(row["id"]) for row in rows]
+
+
+async def _require_question_ids(
+    db,
+    conditions: str,
+    params: tuple[object, ...],
+    limit: int,
+    label: str,
+) -> list[int]:
+    question_ids = await _fetch_question_ids(db, conditions, params, limit)
+    if len(question_ids) < limit:
+        raise ValueError(f"{label} bo'yicha kamida {limit} ta aktiv savol kerak.")
+    return question_ids
+
+
+async def _select_question_ids(db, total_questions: int, direction: str) -> list[int]:
+    active_category = "is_active = 1 AND category = ?"
+    active_district = (DISTRICT_CATEGORY,)
+    active_manual = (OPERATOR_MANUAL_CATEGORY,)
+    active_professional = (PROFESSIONAL_CATEGORY,)
+    no_tashkent_district = (
+        "is_active = 1 AND category = ? AND correct_answer NOT IN (?, ?)"
+    )
+    no_tashkent_params = (DISTRICT_CATEGORY, "Toshkent viloyati", "Toshkent shahri")
+
+    if direction == TEST_DIRECTION_DISTRICTS:
+        selected = await _require_question_ids(
+            db,
+            active_category,
+            active_district,
+            total_questions,
+            "Tumanlar",
+        )
+    elif direction == TEST_DIRECTION_SIMPLE_MIXED:
+        professional_available = await _count_questions(db, active_category, active_professional)
+        if total_questions == 30:
+            professional_count = 15
+        else:
+            professional_count = min(professional_available, total_questions)
+        district_count = total_questions - professional_count
+        selected = []
+        selected.extend(
+            await _require_question_ids(
+                db,
+                active_category,
+                active_professional,
+                professional_count,
+                "EMU operator professional test",
+            )
+        )
+        selected.extend(
+            await _require_question_ids(db, active_category, active_district, district_count, "Tumanlar")
+        )
+    elif direction == TEST_DIRECTION_COMPLEX_MIXED:
+        manual_count = 15 if total_questions == 30 else 25
+        district_count = total_questions - manual_count
+        selected = []
+        selected.extend(
+            await _require_question_ids(
+                db,
+                active_category,
+                active_manual,
+                manual_count,
+                "Operatorlar yo'riqnomasi",
+            )
+        )
+        selected.extend(
+            await _require_question_ids(
+                db,
+                no_tashkent_district,
+                no_tashkent_params,
+                district_count,
+                "Toshkentdan tashqari tumanlar",
+            )
+        )
+    elif direction == TEST_DIRECTION_WORK_PROCESS:
+        professional_count = int(total_questions * 0.3)
+        manual_count = total_questions - professional_count
+        selected = []
+        selected.extend(
+            await _require_question_ids(
+                db,
+                active_category,
+                active_professional,
+                professional_count,
+                "EMU operator professional test",
+            )
+        )
+        selected.extend(
+            await _require_question_ids(
+                db,
+                active_category,
+                active_manual,
+                manual_count,
+                "Operatorlar yo'riqnomasi",
+            )
+        )
+    else:
+        raise ValueError("Noma'lum test yo'nalishi tanlandi.")
+
+    selected = list(dict.fromkeys(selected))
+    if len(selected) < total_questions:
+        raise ValueError(f"Kamida {total_questions} ta takrorlanmaydigan aktiv savol kerak.")
+    random.shuffle(selected)
+    return selected[:total_questions]
+
+
+async def start_test(user_id: int, total_questions: int, direction: str = TEST_DIRECTION_SIMPLE_MIXED) -> dict:
     active = await get_active_session(user_id)
     if active:
         return active
 
     async with db_session() as db:
-        where_sql = "WHERE is_active = 1"
-        params: tuple[object, ...] = (total_questions,)
-        if direction == TEST_DIRECTION_DISTRICTS:
-            where_sql = "WHERE is_active = 1 AND category = ?"
-            params = (DISTRICT_CATEGORY, total_questions)
-        elif direction == TEST_DIRECTION_MANUAL:
-            where_sql = "WHERE is_active = 1 AND category = ?"
-            params = (OPERATOR_MANUAL_CATEGORY, total_questions)
-
-        question_rows = await db.execute_fetchall(
-            f"""
-            SELECT id
-            FROM questions
-            {where_sql}
-            ORDER BY RANDOM()
-            LIMIT ?
-            """,
-            params,
-        )
-        if len(question_rows) < total_questions:
-            raise ValueError(f"Kamida {total_questions} ta aktiv savol kerak.")
-
+        question_ids = await _select_question_ids(db, total_questions, direction)
         cursor = await db.execute(
             "INSERT INTO test_sessions (user_id, total_questions) VALUES (?, ?)",
             (user_id, total_questions),
         )
         session_id = cursor.lastrowid
-        for position, row in enumerate(question_rows, start=1):
+        for position, question_id in enumerate(question_ids, start=1):
             await db.execute(
                 """
                 INSERT INTO test_session_questions (session_id, question_id, position)
                 VALUES (?, ?, ?)
                 """,
-                (session_id, row["id"], position),
+                (session_id, question_id, position),
             )
         await db.commit()
         return (await get_session(session_id)) or {}

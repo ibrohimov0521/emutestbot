@@ -90,9 +90,10 @@ TEXTS = {
 
 BUTTON_TEXTS = {
     "start_test": {LANG_UZ: "Testni boshlash", LANG_CYRL: "Тестни бошлаш"},
+    "test_simple_mixed": {LANG_UZ: "Sodda aralash", LANG_CYRL: "Содда аралаш"},
+    "test_complex_mixed": {LANG_UZ: "Murakkab aralash", LANG_CYRL: "Мураккаб аралаш"},
     "test_districts": {LANG_UZ: "Tumanlar bo'yicha", LANG_CYRL: "Туманлар бўйича"},
-    "test_manual": {LANG_UZ: "Ichki nizom va dastur bo'yicha", LANG_CYRL: "Ички низом ва дастур бўйича"},
-    "test_mixed": {LANG_UZ: "Aralash", LANG_CYRL: "Аралаш"},
+    "test_work_process": {LANG_UZ: "Ish jarayoni bo'yicha", LANG_CYRL: "Иш жараёни бўйича"},
     "test_30": {LANG_UZ: "30 talik test", LANG_CYRL: "30 талик тест"},
     "test_50": {LANG_UZ: "50 talik test", LANG_CYRL: "50 талик тест"},
     "last_results": {LANG_UZ: "Oxirgi natijalarim", LANG_CYRL: "Охирги натижаларим"},
@@ -124,9 +125,11 @@ def button_values(key: str) -> set[str]:
 PROTECTED_TERMS = (
     "MeaSoft App",
     "LIFE PAY",
+    "EMU Express",
     "IKPU",
     "EMU TEST BOT",
     "EMU",
+    "Google отзыв",
     "Telegram",
     "SQLite",
     "OpenAI",

@@ -1,0 +1,210 @@
+[
+  {
+    "question_text": "Operator mijoz bilan telefon orqali qanday gaplashishi kerak?",
+    "correct_answer": "Adabiy tilda va hurmat bilan",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Faqat o'zbek tilida",
+      "Adabiy tilda va hurmat bilan",
+      "Faqat rus tilida",
+      "Filial operatori mijozlar bilan telefonda gaplashishi majburiy emas"
+    ]
+  },
+  {
+    "question_text": "Mijoz bilan suhbatni boshlashda qaysi usul to'g'ri?",
+    "correct_answer": "Assalomu alaykum, EMU Express pochta filial operatori...",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Assalomu alaykum, qanday yordam bera olaman?",
+      "Assalomu alaykum, EMU Express pochta filial operatori...",
+      "Assalomu alaykum.",
+      "EMU Express pochta filial operatori..."
+    ]
+  },
+  {
+    "question_text": "Operatorning tashqi ko'rinishi qanday bo'lishi kerak?",
+    "correct_answer": "Ozoda va tartibli",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "EMU brendi tushirilgan formada",
+      "Ozoda va tartibli",
+      "Shortik va futbolkada",
+      "Kir va tartibsiz bo'lmagan"
+    ]
+  },
+  {
+    "question_text": "Korporativ SIM karta nimaga ishlatiladi?",
+    "correct_answer": "Korxona ish faoliyati uchun",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "O'yin uchun",
+      "Korxona ish faoliyati uchun",
+      "Faqat internet uchun",
+      "Shaxsiy reklama uchun"
+    ]
+  },
+  {
+    "question_text": "Telegram akkauntida nima qo'yilishi tavsiya qilinadi?",
+    "correct_answer": "Korxona logotipi",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Operator rasmi",
+      "Korxona logotipi",
+      "Ofis joylashuvi",
+      "Anonim rasm"
+    ]
+  },
+  {
+    "question_text": "Qaysi holatda xodimga jarima berilishi mumkin?",
+    "correct_answer": "Ma'lumotni xato kiritganda",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Ishga vaqtida kelganda",
+      "Ma'lumotni xato kiritganda",
+      "Tozalik saqlaganda",
+      "Mijozga yordam berganda"
+    ]
+  },
+  {
+    "question_text": "EMU qushining asosiy xususiyati nima?",
+    "correct_answer": "Tez yuguradi va orqaga yurmaydi",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Sekin yuradi",
+      "Tez yuguradi va orqaga yurmaydi",
+      "Balandga ucha oladi",
+      "Og'ir yuk ko'tara oladi"
+    ]
+  },
+  {
+    "question_text": "Operator mijozga qanday muomalada bo'lishi kerak?",
+    "correct_answer": "Xushmuomala",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Qo'pol",
+      "Xushmuomala",
+      "Jahldor",
+      "Befarq"
+    ]
+  },
+  {
+    "question_text": "Google отзыв qo'yishdan maqsad nima?",
+    "correct_answer": "Kompaniya reytingini oshirish",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "O'yin uchun",
+      "Kompaniya reytingini oshirish",
+      "Faqat internet uchun",
+      "Faqat reklama uchun"
+    ]
+  },
+  {
+    "question_text": "Mijozga noto'g'ri ma'lumot berish nimaga olib keladi?",
+    "correct_answer": "Norozilik va tushunmovchilikka",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Muammo bo'lmaydi",
+      "Norozilik va tushunmovchilikka",
+      "Mijozlar oqimining oshishiga",
+      "Barcha javoblar to'g'ri"
+    ]
+  },
+  {
+    "question_text": "Ofisdagi tartibsizlik nimaga olib kelishi mumkin?",
+    "correct_answer": "Mijozlar boshqa kompaniyaga ketishiga",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Mijozlar ko'payishiga",
+      "Mijozlar boshqa kompaniyaga ketishiga",
+      "Ish jarayonida tartibsizlik bo'lib turishiga",
+      "Mijozlarning jo'natmalari ko'payishiga"
+    ]
+  },
+  {
+    "question_text": "Xodimlar nima uchun korporativ kanallarga a'zo bo'lishi kerak?",
+    "correct_answer": "Yangilik va qoidalarni bilish uchun",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Oylik maoshlarning tushishi haqida bilish uchun",
+      "Yangilik va qoidalarni bilish uchun",
+      "Xodimlar o'rtasida o'zaro suhbatlashish muhitini yaratish uchun",
+      "Jarimalar haqida bilish uchun"
+    ]
+  },
+  {
+    "question_text": "Mehnat ta'tili nimaga qarab beriladi?",
+    "correct_answer": "Ish hajmi va faoliyatiga qarab",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Xodimning xohishiga qarab",
+      "Ish hajmi va faoliyatiga qarab",
+      "Xodimning maoshiga qarab",
+      "Xodim lavozimiga qarab"
+    ]
+  },
+  {
+    "question_text": "Korporativ SIM kartani yo'qotish nima hisoblanadi?",
+    "correct_answer": "Qoidabuzarlik",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Oddiy holat",
+      "Qoidabuzarlik",
+      "Mehnat shartnomasi bekor qilinishiga sabab bo'lmaydi",
+      "Hech qanday oqibatga olib kelmaydi"
+    ]
+  },
+  {
+    "question_text": "Operatorlar nima uchun skript asosida gaplashadi?",
+    "correct_answer": "Professional xizmat uchun",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Mijozning muomalasiga qarab o'zgarishi mumkinligi uchun",
+      "Professional xizmat uchun",
+      "Bunday qilishga majbur emasligi uchun",
+      "Barcha javoblar to'g'ri bo'lgani uchun"
+    ]
+  },
+  {
+    "question_text": "Taqiqlangan materiallarni tarqatish nimaga olib keladi?",
+    "correct_answer": "Qonuniy javobgarlikka",
+    "category": "EMU operator professional test",
+    "difficulty": "easy",
+    "question_type": "choice",
+    "options": [
+      "Mijozlar shikoyatiga",
+      "Qonuniy javobgarlikka",
+      "Mijozlar oqimini oshirishga",
+      "Lavozim oshishiga"
+    ]
+  }
+]

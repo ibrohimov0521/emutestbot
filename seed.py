@@ -12,7 +12,10 @@ from app.database import db_session, init_db
 BASE_DIR = Path(__file__).resolve().parent
 DISTRICTS_PATH = BASE_DIR / "data" / "uzbekistan_districts.json"
 OPERATOR_MANUAL_QUESTIONS_PATH = BASE_DIR / "data" / "operator_manual_questions.json"
+PROFESSIONAL_QUESTIONS_PATH = BASE_DIR / "data" / "emu_operator_professional_test.json"
 DISTRICT_CATEGORY = "O'zbekiston tumanlari"
+OPERATOR_MANUAL_CATEGORY = "Operatorlar yo'riqnomasi 2026"
+PROFESSIONAL_CATEGORY = "EMU operator professional test"
 
 
 def build_district_questions() -> list[dict[str, Any]]:
@@ -38,12 +41,20 @@ def _seed_from_text(text: str) -> int:
     return int(hashlib.sha256(text.encode("utf-8")).hexdigest()[:16], 16)
 
 
-def _build_choice_options(question: dict[str, Any], answer_pool: list[str]) -> list[str]:
+def _build_choice_options(question: dict[str, Any], answer_pool: list[str], force_shuffle: bool = False) -> list[str]:
     correct_answer = str(question["correct_answer"])
+    provided_options = [str(option) for option in question.get("options", [])]
     distractors = [answer for answer in dict.fromkeys(answer_pool) if answer != correct_answer]
     rng = random.Random(_seed_from_text(question["question_text"]))
-    rng.shuffle(distractors)
-    options = [correct_answer, *distractors[:3]]
+    if len(provided_options) == 4 and correct_answer in provided_options:
+        options = provided_options
+    else:
+        rng.shuffle(distractors)
+        options = [correct_answer, *distractors[:3]]
+    if force_shuffle:
+        options = options[:]
+        rng.shuffle(options)
+        return options
     rng.shuffle(options)
     return options
 
@@ -53,16 +64,28 @@ def build_operator_manual_questions() -> list[dict[str, Any]]:
     answer_pool = [str(question["correct_answer"]) for question in questions]
     for question in questions:
         question["question_type"] = "choice"
-        options = [str(option) for option in question.get("options", [])]
-        if len(options) == 4 and str(question["correct_answer"]) in options:
-            question["options"] = options
-        else:
-            question["options"] = _build_choice_options(question, answer_pool)
+        question["category"] = OPERATOR_MANUAL_CATEGORY
+        question["options"] = _build_choice_options(question, answer_pool)
+    return questions
+
+
+def build_professional_questions() -> list[dict[str, Any]]:
+    questions = json.loads(PROFESSIONAL_QUESTIONS_PATH.read_text(encoding="utf-8"))
+    answer_pool = [str(question["correct_answer"]) for question in questions]
+    target_correct_indexes = (0, 2, 3, 1)
+    for index, question in enumerate(questions):
+        question["question_type"] = "choice"
+        question["category"] = PROFESSIONAL_CATEGORY
+        options = _build_choice_options(question, answer_pool, force_shuffle=True)
+        correct_index = options.index(str(question["correct_answer"]))
+        target_index = target_correct_indexes[index % len(target_correct_indexes)]
+        options[correct_index], options[target_index] = options[target_index], options[correct_index]
+        question["options"] = options
     return questions
 
 
 def build_questions() -> list[dict[str, Any]]:
-    return build_district_questions() + build_operator_manual_questions()
+    return build_district_questions() + build_operator_manual_questions() + build_professional_questions()
 
 
 async def seed_questions(questions: list[dict[str, Any]], reset_categories: list[str] | None = None) -> dict[str, int]:
@@ -136,7 +159,7 @@ async def seed_district_questions() -> dict[str, int]:
 async def seed_all_questions() -> dict[str, int]:
     return await seed_questions(
         build_questions(),
-        [DISTRICT_CATEGORY, "Operatorlar yo'riqnomasi 2026"],
+        [DISTRICT_CATEGORY, OPERATOR_MANUAL_CATEGORY, PROFESSIONAL_CATEGORY],
     )
 
 

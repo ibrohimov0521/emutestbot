@@ -19,9 +19,10 @@ checker: OpenAIAnswerChecker | None = None
 pending_test_directions: dict[int, str] = {}
 
 TEST_DIRECTION_LABELS = {
+    test_service.TEST_DIRECTION_SIMPLE_MIXED: "test_simple_mixed",
+    test_service.TEST_DIRECTION_COMPLEX_MIXED: "test_complex_mixed",
     test_service.TEST_DIRECTION_DISTRICTS: "test_districts",
-    test_service.TEST_DIRECTION_MANUAL: "test_manual",
-    test_service.TEST_DIRECTION_MIXED: "test_mixed",
+    test_service.TEST_DIRECTION_WORK_PROCESS: "test_work_process",
 }
 
 
@@ -82,19 +83,28 @@ async def start_test(message: Message) -> None:
     await message.answer(text("choose_direction", language), reply_markup=test_direction_menu(language))
 
 
-@router.message(F.text.in_(button_values("test_districts") | button_values("test_manual") | button_values("test_mixed")))
+@router.message(
+    F.text.in_(
+        button_values("test_simple_mixed")
+        | button_values("test_complex_mixed")
+        | button_values("test_districts")
+        | button_values("test_work_process")
+    )
+)
 async def choose_test_direction(message: Message) -> None:
     user_id = await _ensure_allowed(message)
     if user_id is None:
         return
     language = await user_service.get_language(user_id)
     direction_by_button = {
+        button("test_simple_mixed", "uz"): test_service.TEST_DIRECTION_SIMPLE_MIXED,
+        button("test_simple_mixed", "cyrl"): test_service.TEST_DIRECTION_SIMPLE_MIXED,
+        button("test_complex_mixed", "uz"): test_service.TEST_DIRECTION_COMPLEX_MIXED,
+        button("test_complex_mixed", "cyrl"): test_service.TEST_DIRECTION_COMPLEX_MIXED,
         button("test_districts", "uz"): test_service.TEST_DIRECTION_DISTRICTS,
         button("test_districts", "cyrl"): test_service.TEST_DIRECTION_DISTRICTS,
-        button("test_manual", "uz"): test_service.TEST_DIRECTION_MANUAL,
-        button("test_manual", "cyrl"): test_service.TEST_DIRECTION_MANUAL,
-        button("test_mixed", "uz"): test_service.TEST_DIRECTION_MIXED,
-        button("test_mixed", "cyrl"): test_service.TEST_DIRECTION_MIXED,
+        button("test_work_process", "uz"): test_service.TEST_DIRECTION_WORK_PROCESS,
+        button("test_work_process", "cyrl"): test_service.TEST_DIRECTION_WORK_PROCESS,
     }
     direction = direction_by_button[message.text]
     pending_test_directions[message.from_user.id] = direction

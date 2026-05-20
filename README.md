@@ -5,12 +5,12 @@ Telegram uchun aiogram 3.x, OpenAI API va SQLite asosida yozilgan test bot.
 ## Imkoniyatlar
 
 - `/start` orqali userni ro'yxatdan o'tkazadi.
-- Bazadan random 50 ta savol tanlaydi.
+- Bazadan 30 yoki 50 ta savolni tanlangan yo'nalish nisbatlari bo'yicha random tanlaydi.
 - User javobni o'zi yozadi, OpenAI javobni JSON formatda baholaydi.
 - Test sessiyasi va javoblar SQLite bazada saqlanadi.
 - Bot restart bo'lsa ham aktiv test sessiyasi davom ettiriladi.
 - Admin panel statistikani ko'rsatadi va userlarni pagination bilan chiqaradi.
-- `/seed_districts` orqali O'zbekiston tumanlari savollarini qayta seed qiladi.
+- `/seed_questions` orqali tumanlar, operator yo'riqnomasi va EMU professional testlarini seed qiladi.
 
 ## Loyiha strukturasi
 
@@ -35,6 +35,8 @@ emu_test_bot/
   data/
     bot.db
     uzbekistan_districts.json
+    operator_manual_questions.json
+    emu_operator_professional_test.json
   seed.py
   .env.example
   requirements.txt
@@ -84,17 +86,25 @@ AUTO_SEED_DISTRICTS=false
 
 `ADMIN_IDS` bir nechta bo'lsa vergul bilan yoziladi.
 
+## Test yo'nalishlari
+
+- `Sodda aralash` - tumanlar va `EMU operator professional test` savollari.
+- `Murakkab aralash` - Toshkent tumanlarisiz tumanlar va `operator_manual_questions` savollari.
+- `Tumanlar bo'yicha` - faqat tuman qaysi viloyatda joylashgani bo'yicha savollar.
+- `Ish jarayoni bo'yicha` - 30% `EMU operator professional test`, 70% `operator_manual_questions`.
+
 ## Savollarni seed qilish
 
-O'zbekiston tumanlari bo'yicha savollarni bazaga qo'shish:
+Barcha savollarni bazaga qo'shish:
 
 ```bash
 python seed.py
 ```
 
-Seed duplicate savollarni qayta qo'shmaydi. Bot ichida admin quyidagi komandani ishlatishi mumkin:
+Seed duplicate savollarni qayta qo'shmaydi. Bot ichida admin quyidagi komandalarni ishlatishi mumkin:
 
 ```text
+/seed_questions
 /seed_districts
 ```
 
@@ -126,8 +136,9 @@ SQLite ma'lumotlari restart yoki redeploydan keyin ham saqlanishi uchun Railway'
 
 ## Admin komandalar
 
-- `/admin` - umumiy statistika..
+- `/admin` - umumiy statistika.
 - `/users` - userlar ro'yxati, 10 tadan pagination.
+- `/seed_questions` - barcha savollarni seed qilish.
 - `/seed_districts` - O'zbekiston tumanlari savollarini seed qilish.
 
 ## OpenAI javob formati

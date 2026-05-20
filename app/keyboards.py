@@ -4,9 +4,10 @@ from app.i18n import LANGUAGE_BUTTON_CYRL, LANGUAGE_BUTTON_UZ, button
 
 
 BTN_START_TEST = "Testni boshlash"
+BTN_TEST_SIMPLE_MIXED = "Sodda aralash"
+BTN_TEST_COMPLEX_MIXED = "Murakkab aralash"
 BTN_TEST_DISTRICTS = "Tumanlar bo'yicha"
-BTN_TEST_MANUAL = "Ichki nizom va dastur bo'yicha"
-BTN_TEST_MIXED = "Aralash"
+BTN_TEST_WORK_PROCESS = "Ish jarayoni bo'yicha"
 BTN_TEST_30 = "30 talik test"
 BTN_TEST_50 = "50 talik test"
 BTN_LAST_RESULTS = "Oxirgi natijalarim"
@@ -66,9 +67,10 @@ def choice_answer_menu(language: str = "uz") -> ReplyKeyboardMarkup:
 def test_direction_menu(language: str = "uz") -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
+            [KeyboardButton(text=button("test_simple_mixed", language))],
+            [KeyboardButton(text=button("test_complex_mixed", language))],
             [KeyboardButton(text=button("test_districts", language))],
-            [KeyboardButton(text=button("test_manual", language))],
-            [KeyboardButton(text=button("test_mixed", language))],
+            [KeyboardButton(text=button("test_work_process", language))],
             [KeyboardButton(text=button("cancel_test", language))],
         ],
         resize_keyboard=True,
