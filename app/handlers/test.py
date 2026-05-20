@@ -197,8 +197,11 @@ async def answer_question(message: Message) -> None:
             return
 
     session = await test_service.save_answer(active["id"], question, user_answer, result)
-    mark = text("correct", language) if result.is_correct else text("wrong", language)
-    await message.answer(f"{mark}. {result.reason}")
+    if not result.is_correct and test_service.is_district_region_question(question):
+        await message.answer(test_service.format_district_wrong_answer(question, language))
+    else:
+        mark = text("correct", language) if result.is_correct else text("wrong", language)
+        await message.answer(f"{mark}. {result.reason}")
 
     if session.get("status") == "finished":
         await message.answer(test_service.format_result(session, language), reply_markup=main_menu(language))

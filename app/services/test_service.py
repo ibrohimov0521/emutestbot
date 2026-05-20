@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 
 from app.database import db_session
 from app.i18n import LANG_UZ, localize_value, text
@@ -15,6 +16,13 @@ TEST_DIRECTION_MIXED = "mixed"
 QUESTION_TYPE_TEXT = "text"
 QUESTION_TYPE_CHOICE = "choice"
 CHOICE_LABELS = ("A", "B", "C", "D")
+DISTRICT_QUESTION_SUFFIXES = (
+    " qaysi viloyatda joylashgan?",
+    " qaysi hududga tegishli?",
+    " qaysi viloyat tarkibida?",
+    " qaysi hududga qaraydi?",
+    " joylashgan viloyat nomini yozing",
+)
 
 
 async def get_active_session(user_id: int) -> dict | None:
@@ -115,6 +123,28 @@ def get_choice_options(question: dict) -> list[str]:
 
 def display_text(value: str, language: str = LANG_UZ) -> str:
     return localize_value(value, language)
+
+
+def is_district_region_question(question: dict) -> bool:
+    if question.get("category") != DISTRICT_CATEGORY or is_choice_question(question):
+        return False
+    question_text = str(question.get("question_text") or "")
+    return any(question_text.endswith(suffix) for suffix in DISTRICT_QUESTION_SUFFIXES)
+
+
+def extract_district_name(question_text: str) -> str:
+    for suffix in DISTRICT_QUESTION_SUFFIXES:
+        if question_text.endswith(suffix):
+            return question_text[: -len(suffix)]
+    return re.sub(r"\s+qaysi.*$", "", question_text).strip() or question_text
+
+
+def format_district_wrong_answer(question: dict, language: str = LANG_UZ) -> str:
+    district = display_text(extract_district_name(str(question["question_text"])), language)
+    region = display_text(str(question["correct_answer"]), language)
+    if language == "cyrl":
+        return f"{text('wrong', language)}. {district} {region}да жойлашган"
+    return f"{text('wrong', language)}. {district} {region}da joylashgan"
 
 
 def format_question_text(question: dict, answered_count: int, total_questions: int, language: str = LANG_UZ) -> str:
