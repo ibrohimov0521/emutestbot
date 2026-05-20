@@ -18,6 +18,8 @@ async def init_db() -> None:
         column_names = {row[1] for row in columns}
         if "status" not in column_names:
             await db.execute("ALTER TABLE users ADD COLUMN status TEXT NOT NULL DEFAULT 'active'")
+        if "language" not in column_names:
+            await db.execute("ALTER TABLE users ADD COLUMN language TEXT NOT NULL DEFAULT 'uz'")
         question_columns = await db.execute_fetchall("PRAGMA table_info(questions)")
         question_column_names = {row[1] for row in question_columns}
         if "question_type" not in question_column_names:

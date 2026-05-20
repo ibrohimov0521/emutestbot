@@ -7,6 +7,7 @@ from aiogram.types import User as TelegramUser
 
 from app.config import settings
 from app.database import db_session
+from app.i18n import LANG_UZ, normalize_language, text
 
 ADMIN_CONTACT = "@Javohir_Ibrohimov"
 
@@ -16,11 +17,7 @@ def is_admin(telegram_id: int) -> bool:
 
 
 def access_denied_text(telegram_id: int) -> str:
-    return (
-        "Sizda botdan foydalanish uchun ruxsat yo'q.\n\n"
-        f"Ruxsat olish uchun admin bilan bog'laning: {ADMIN_CONTACT}\n"
-        f"Sizning Telegram ID: {telegram_id}"
-    )
+    return text("access_denied", LANG_UZ, admin_contact=ADMIN_CONTACT, telegram_id=telegram_id)
 
 
 async def get_allowed_user_id(telegram_id: int) -> int | None:
@@ -49,14 +46,14 @@ async def add_allowed_user(telegram_id: int, role: str = "user") -> dict:
     async with db_session() as db:
         await db.execute(
             """
-            INSERT INTO users (telegram_id, role, status)
-            VALUES (?, ?, 'active')
+            INSERT INTO users (telegram_id, role, status, language)
+            VALUES (?, ?, 'active', ?)
             ON CONFLICT(telegram_id) DO UPDATE SET
                 role = excluded.role,
                 status = 'active',
                 last_seen_at = CURRENT_TIMESTAMP
             """,
-            (telegram_id, role),
+            (telegram_id, role, LANG_UZ),
         )
         await db.commit()
     return await get_profile_by_telegram_id(telegram_id) or {}
@@ -82,8 +79,8 @@ async def upsert_user(tg_user: TelegramUser) -> int:
     async with db_session() as db:
         await db.execute(
             """
-            INSERT INTO users (telegram_id, username, first_name, last_name, role, status)
-            VALUES (?, ?, ?, ?, ?, 'active')
+            INSERT INTO users (telegram_id, username, first_name, last_name, role, status, language)
+            VALUES (?, ?, ?, ?, ?, 'active', ?)
             ON CONFLICT(telegram_id) DO UPDATE SET
                 username = excluded.username,
                 first_name = excluded.first_name,
@@ -92,7 +89,7 @@ async def upsert_user(tg_user: TelegramUser) -> int:
                 status = 'active',
                 last_seen_at = CURRENT_TIMESTAMP
             """,
-            (tg_user.id, tg_user.username, tg_user.first_name, tg_user.last_name, role),
+            (tg_user.id, tg_user.username, tg_user.first_name, tg_user.last_name, role, LANG_UZ),
         )
         await db.commit()
         row = await db.execute_fetchall("SELECT id FROM users WHERE telegram_id = ?", (tg_user.id,))
@@ -116,7 +113,7 @@ async def get_profile(user_id: int) -> dict:
     async with db_session() as db:
         rows = await db.execute_fetchall(
             """
-            SELECT id, telegram_id, username, first_name, last_name, role, created_at,
+            SELECT id, telegram_id, username, first_name, last_name, role, language, created_at,
                    last_seen_at, status, operations_count, tests_count
             FROM users
             WHERE id = ?
@@ -130,7 +127,7 @@ async def get_profile_by_telegram_id(telegram_id: int) -> dict | None:
     async with db_session() as db:
         rows = await db.execute_fetchall(
             """
-            SELECT id, telegram_id, username, first_name, last_name, role, created_at,
+            SELECT id, telegram_id, username, first_name, last_name, role, language, created_at,
                    last_seen_at, status, operations_count, tests_count
             FROM users
             WHERE telegram_id = ?
@@ -138,6 +135,21 @@ async def get_profile_by_telegram_id(telegram_id: int) -> dict | None:
             (telegram_id,),
         )
         return dict(rows[0]) if rows else None
+
+
+async def get_language(user_id: int) -> str:
+    async with db_session() as db:
+        rows = await db.execute_fetchall("SELECT language FROM users WHERE id = ?", (user_id,))
+        return normalize_language(rows[0]["language"] if rows else LANG_UZ)
+
+
+async def set_language(user_id: int, language: str) -> None:
+    async with db_session() as db:
+        await db.execute(
+            "UPDATE users SET language = ?, last_seen_at = CURRENT_TIMESTAMP WHERE id = ?",
+            (normalize_language(language), user_id),
+        )
+        await db.commit()
 
 
 async def get_last_results(user_id: int, limit: int = 5) -> list[dict]:

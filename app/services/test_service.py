@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 
 from app.database import db_session
+from app.i18n import LANG_UZ, localize_value, text
 from app.services.openai_checker import CheckResult
 from app.time_utils import format_tashkent
 
@@ -101,6 +102,8 @@ def is_choice_question(question: dict) -> bool:
 def get_choice_options(question: dict) -> list[str]:
     if not is_choice_question(question):
         return []
+    if isinstance(question.get("options"), list):
+        return [str(option) for option in question["options"][:4]]
     try:
         options = json.loads(question.get("options_json") or "[]")
     except json.JSONDecodeError:
@@ -110,17 +113,22 @@ def get_choice_options(question: dict) -> list[str]:
     return [str(option) for option in options[:4]]
 
 
-def format_question_text(question: dict, answered_count: int, total_questions: int) -> str:
-    base = f"Savol {answered_count + 1}/{total_questions}\n\n{question['question_text']}"
+def display_text(value: str, language: str = LANG_UZ) -> str:
+    return localize_value(value, language)
+
+
+def format_question_text(question: dict, answered_count: int, total_questions: int, language: str = LANG_UZ) -> str:
+    counter = text("question_counter", language, current=answered_count + 1, total=total_questions)
+    base = f"{counter}\n\n{display_text(question['question_text'], language)}"
     options = get_choice_options(question)
     if not options:
         return base
 
-    option_lines = [f"{label}) {option}" for label, option in zip(CHOICE_LABELS, options)]
+    option_lines = [f"{label}) {display_text(option, language)}" for label, option in zip(CHOICE_LABELS, options)]
     return f"{base}\n\n" + "\n".join(option_lines)
 
 
-def check_choice_answer(question: dict, user_answer: str) -> CheckResult | None:
+def check_choice_answer(question: dict, user_answer: str, language: str = LANG_UZ) -> CheckResult | None:
     selected = user_answer.strip().upper()
     options = get_choice_options(question)
     if selected not in CHOICE_LABELS or len(options) < 4:
@@ -129,7 +137,11 @@ def check_choice_answer(question: dict, user_answer: str) -> CheckResult | None:
     selected_index = CHOICE_LABELS.index(selected)
     selected_answer = options[selected_index]
     is_correct = selected_answer == question["correct_answer"]
-    reason = "To'g'ri variant tanlandi." if is_correct else f"To'g'ri javob: {question['correct_answer']}"
+    reason = (
+        text("correct_choice", language)
+        if is_correct
+        else text("correct_answer", language, answer=display_text(question["correct_answer"], language))
+    )
     return CheckResult(is_correct=is_correct, score=1.0 if is_correct else 0.0, reason=reason)
 
 
@@ -212,13 +224,22 @@ async def cancel_active_session(user_id: int) -> bool:
     return True
 
 
-def format_result(session: dict) -> str:
+def format_result(session: dict, language: str = LANG_UZ) -> str:
     total = int(session["total_questions"])
     correct = int(session["correct_count"])
     wrong = int(session["wrong_count"])
     percent = (correct / total * 100) if total else 0
+    if language == "cyrl":
+        return (
+            f"{text('result_title', language)}\n\n"
+            f"Тўғри жавоблар: {correct}\n"
+            f"Нотўғри жавоблар: {wrong}\n"
+            f"Фоиз: {percent:.1f}%\n"
+            f"Бошланиш вақти: {format_tashkent(session['started_at'])}\n"
+            f"Тугаш вақти: {format_tashkent(session['finished_at'])}"
+        )
     return (
-        "Test yakunlandi!\n\n"
+        f"{text('result_title', language)}\n\n"
         f"To'g'ri javoblar: {correct}\n"
         f"Noto'g'ri javoblar: {wrong}\n"
         f"Foiz: {percent:.1f}%\n"

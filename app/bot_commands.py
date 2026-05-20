@@ -6,6 +6,7 @@ from aiogram.types import BotCommand, BotCommandScopeChat, BotCommandScopeDefaul
 
 COMMON_COMMANDS = [
     BotCommand(command="start", description="Botni boshlash"),
+    BotCommand(command="language", description="Tilni tanlash"),
     BotCommand(command="help", description="Yordam va foydalanish tartibi"),
 ]
 

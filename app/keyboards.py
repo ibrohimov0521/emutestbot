@@ -1,5 +1,7 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup
 
+from app.i18n import LANGUAGE_BUTTON_CYRL, LANGUAGE_BUTTON_UZ, button
+
 
 BTN_START_TEST = "Testni boshlash"
 BTN_TEST_DISTRICTS = "Tumanlar bo'yicha"
@@ -10,6 +12,7 @@ BTN_TEST_50 = "50 talik test"
 BTN_LAST_RESULTS = "Oxirgi natijalarim"
 BTN_PROFILE = "Profilim"
 BTN_HELP = "Yordam"
+BTN_LANGUAGE = "Tilni o'zgartirish"
 BTN_CANCEL_TEST = "Testni bekor qilish"
 BTN_CHOICE_A = "A"
 BTN_CHOICE_B = "B"
@@ -19,25 +22,33 @@ BTN_CHOICE_D = "D"
 CHOICE_BUTTONS = {BTN_CHOICE_A, BTN_CHOICE_B, BTN_CHOICE_C, BTN_CHOICE_D}
 
 
-def main_menu() -> ReplyKeyboardMarkup:
+def language_menu() -> ReplyKeyboardMarkup:
+    return ReplyKeyboardMarkup(
+        keyboard=[[KeyboardButton(text=LANGUAGE_BUTTON_UZ), KeyboardButton(text=LANGUAGE_BUTTON_CYRL)]],
+        resize_keyboard=True,
+        one_time_keyboard=True,
+    )
+
+
+def main_menu(language: str = "uz") -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text=BTN_START_TEST)],
-            [KeyboardButton(text=BTN_LAST_RESULTS), KeyboardButton(text=BTN_PROFILE)],
-            [KeyboardButton(text=BTN_HELP)],
+            [KeyboardButton(text=button("start_test", language))],
+            [KeyboardButton(text=button("last_results", language)), KeyboardButton(text=button("profile", language))],
+            [KeyboardButton(text=button("language", language)), KeyboardButton(text=button("help", language))],
         ],
         resize_keyboard=True,
     )
 
 
-def test_menu() -> ReplyKeyboardMarkup:
+def test_menu(language: str = "uz") -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text=BTN_CANCEL_TEST)]],
+        keyboard=[[KeyboardButton(text=button("cancel_test", language))]],
         resize_keyboard=True,
     )
 
 
-def choice_answer_menu() -> ReplyKeyboardMarkup:
+def choice_answer_menu(language: str = "uz") -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
             [
@@ -46,29 +57,29 @@ def choice_answer_menu() -> ReplyKeyboardMarkup:
                 KeyboardButton(text=BTN_CHOICE_C),
                 KeyboardButton(text=BTN_CHOICE_D),
             ],
-            [KeyboardButton(text=BTN_CANCEL_TEST)],
+            [KeyboardButton(text=button("cancel_test", language))],
         ],
         resize_keyboard=True,
     )
 
 
-def test_direction_menu() -> ReplyKeyboardMarkup:
+def test_direction_menu(language: str = "uz") -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text=BTN_TEST_DISTRICTS)],
-            [KeyboardButton(text=BTN_TEST_MANUAL)],
-            [KeyboardButton(text=BTN_TEST_MIXED)],
-            [KeyboardButton(text=BTN_CANCEL_TEST)],
+            [KeyboardButton(text=button("test_districts", language))],
+            [KeyboardButton(text=button("test_manual", language))],
+            [KeyboardButton(text=button("test_mixed", language))],
+            [KeyboardButton(text=button("cancel_test", language))],
         ],
         resize_keyboard=True,
     )
 
 
-def test_size_menu() -> ReplyKeyboardMarkup:
+def test_size_menu(language: str = "uz") -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text=BTN_TEST_30), KeyboardButton(text=BTN_TEST_50)],
-            [KeyboardButton(text=BTN_CANCEL_TEST)],
+            [KeyboardButton(text=button("test_30", language)), KeyboardButton(text=button("test_50", language))],
+            [KeyboardButton(text=button("cancel_test", language))],
         ],
         resize_keyboard=True,
     )
@@ -77,7 +88,7 @@ def test_size_menu() -> ReplyKeyboardMarkup:
 def admin_users_pagination(page: int, has_prev: bool, has_next: bool) -> InlineKeyboardMarkup:
     buttons: list[InlineKeyboardButton] = []
     if has_prev:
-        buttons.append(InlineKeyboardButton(text="⬅️ Oldingi", callback_data=f"admin_users:{page - 1}"))
+        buttons.append(InlineKeyboardButton(text="Oldingi", callback_data=f"admin_users:{page - 1}"))
     if has_next:
-        buttons.append(InlineKeyboardButton(text="Keyingi ➡️", callback_data=f"admin_users:{page + 1}"))
+        buttons.append(InlineKeyboardButton(text="Keyingi", callback_data=f"admin_users:{page + 1}"))
     return InlineKeyboardMarkup(inline_keyboard=[buttons] if buttons else [])

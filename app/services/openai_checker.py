@@ -35,13 +35,13 @@ User javobi: {user_answer}
 Vazifa: User javobini bahola. Savollar EMU operator yo'riqnomasi, ish jarayonlari,
 xavfsizlik qoidalari yoki O'zbekiston tumanlari bo'yicha bo'lishi mumkin.
 
-Mayda imlo xatolari, 1-2 ta harf adashishi, apostrof farqlari, kirill/lotin
+Mayda imlo xatolari, 1-2 ta harf adashishi, apostrof farqlari, o'zbek kirill/lotin
 yozuvidagi farqlar, qisqa javoblar va bir xil ma'noli variantlarni to'g'ri deb
-qabul qil. Masalan "Namangan", "Наманган", "Namangan viloyati", "Namanganda"
-bir xil ma'noda bo'lishi mumkin. "manifest", "манифест", "manifest orqali"
-kabi javoblar ham mazmuni bir xil bo'lsa to'g'ri hisoblanadi.
+qabul qil. Masalan "Namangan", "Наманган", "Namangan viloyati", "Наманган вилояти",
+"Namanganda" bir xil ma'noda bo'lishi mumkin. "manifest", "манифест",
+"manifest orqali" kabi javoblar ham mazmuni bir xil bo'lsa to'g'ri hisoblanadi.
 
-Tuman nomlarida "tumani", "район", "tuman" qo'shimchalari yoki tushib qolishi
+Tuman nomlarida "tumani", "тумани", "tuman" qo'shimchalari yoki tushib qolishi
 mazmunni o'zgartirmasa, javobni to'g'ri deb qabul qil.
 
 Javob mazmunan boshqa bo'lsa yoki muhim talabni noto'g'ri aytsa, noto'g'ri deb bahola.
