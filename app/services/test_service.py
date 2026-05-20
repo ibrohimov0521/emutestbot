@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import json
 import re
+from difflib import SequenceMatcher
+from functools import lru_cache
+from pathlib import Path
 
 from app.database import db_session
 from app.i18n import LANG_UZ, localize_value, text
@@ -16,12 +19,30 @@ TEST_DIRECTION_MIXED = "mixed"
 QUESTION_TYPE_TEXT = "text"
 QUESTION_TYPE_CHOICE = "choice"
 CHOICE_LABELS = ("A", "B", "C", "D")
+BASE_DIR = Path(__file__).resolve().parents[2]
+DISTRICTS_PATH = BASE_DIR / "data" / "uzbekistan_districts.json"
 DISTRICT_QUESTION_SUFFIXES = (
     " qaysi viloyatda joylashgan?",
     " qaysi hududga tegishli?",
     " qaysi viloyat tarkibida?",
     " qaysi hududga qaraydi?",
     " joylashgan viloyat nomini yozing",
+)
+REGION_SUFFIXES = (
+    "viloyati",
+    "viloyat",
+    "respublikasi",
+    "respublika",
+    "shahri",
+    "shahar",
+    "вилояти",
+    "вилоят",
+    "республикаси",
+    "республика",
+    "шаҳри",
+    "шахри",
+    "шаҳар",
+    "шахар",
 )
 
 
@@ -145,6 +166,67 @@ def format_district_wrong_answer(question: dict, language: str = LANG_UZ) -> str
     if language == "cyrl":
         return f"{text('wrong', language)}. {district} {region}да жойлашган"
     return f"{text('wrong', language)}. {district} {region}da joylashgan"
+
+
+def format_unknown_region_answer(language: str = LANG_UZ) -> str:
+    if language == "cyrl":
+        return "Бундай вилоят йўқ."
+    return "Bunday viloyat yo'q."
+
+
+@lru_cache(maxsize=1)
+def get_known_regions() -> tuple[str, ...]:
+    try:
+        data = json.loads(DISTRICTS_PATH.read_text(encoding="utf-8"))
+    except OSError:
+        return ()
+    regions = []
+    for item in data:
+        region = str(item.get("region", "")).strip()
+        if region:
+            regions.append(region)
+    return tuple(dict.fromkeys(regions))
+
+
+def normalize_region_answer(value: str) -> str:
+    normalized = value.lower()
+    normalized = normalized.replace("ʻ", "'").replace("‘", "'").replace("`", "'").replace("’", "'")
+    normalized = re.sub(r"[^a-zа-яёғқўҳ' ]+", " ", normalized, flags=re.IGNORECASE)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    changed = True
+    while changed and normalized:
+        changed = False
+        for suffix in REGION_SUFFIXES + ("da", "dagi", "да", "даги"):
+            suffix_value = f" {suffix}"
+            if normalized.endswith(suffix_value):
+                normalized = normalized[: -len(suffix_value)].strip()
+                changed = True
+            elif normalized.endswith(suffix) and len(normalized) > len(suffix) + 2:
+                normalized = normalized[: -len(suffix)].strip()
+                changed = True
+    return normalized
+
+
+def is_known_region_answer(user_answer: str) -> bool:
+    answer = normalize_region_answer(user_answer)
+    if not answer:
+        return False
+
+    candidates: set[str] = set()
+    for region in get_known_regions():
+        candidates.add(normalize_region_answer(region))
+        candidates.add(normalize_region_answer(display_text(region, "cyrl")))
+
+    for candidate in candidates:
+        if not candidate:
+            continue
+        if answer == candidate:
+            return True
+        if len(answer) >= 4 and (answer in candidate or candidate in answer):
+            return True
+        if SequenceMatcher(None, answer, candidate).ratio() >= 0.84:
+            return True
+    return False
 
 
 def format_question_text(question: dict, answered_count: int, total_questions: int, language: str = LANG_UZ) -> str:
