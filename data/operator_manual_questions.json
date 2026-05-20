@@ -565,10 +565,10 @@
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Faqat kurьерga",
-      "Hech kimga topshirilmaydi",
+      "Kunlik jo'natmalarni olib ketuvchi kuryerga",
+      "Sifat nazorati bo'limiga",
       "Hududiy filial menejeriga, Toshkent shahar PVZ operatorlari esa buxgalteriya/kassirga",
-      "Faqat mijozlarning o'ziga"
+      "Sotuvni rivojlantirish bo'limiga"
     ]
   },
   {
@@ -579,22 +579,22 @@
     "question_type": "choice",
     "options": [
       "Doimiy qoldig'idan xabardor bo'lib, uzluksiz mavjudligini ta'minlaydi",
-      "Ularni mijozlarga bepul tarqatadi",
-      "Qoldiq hisobini yuritmaydi",
-      "Faqat tugagandan keyin eslatadi"
+      "Tezroq sotilishini taminlashi kerak",
+      "Qadoqlarni doimiy mavjudligini taminlash",
+      "Qadoqlarning qoldig'i ahamiyatsiz biz uchun uzluksiz mavjudligini taminlash zarur"
     ]
   },
   {
     "question_text": "Ish kuni oxirida operator qaysi ishlarni bajarishi kerak?",
-    "correct_answer": "Kompyuter va texnik vositalarni o'chirish, isitish moslamalarini tokdan uzish, ofisni chiqindilardan tozalash",
+    "correct_answer": "Barcha javoblar to'g'ri",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Kompyuterlarni yangilanish uchun yoqilgan qoldirish",
-      "Faqat eshikni yopib ketish",
-      "Paketlarni ochiq holatda tashlab ketish",
-      "Kompyuter va texnik vositalarni o'chirish, isitish moslamalarini tokdan uzish, ofisni chiqindilardan tozalash"
+      "Kompyuter va texnik vositalarni o'chirish",
+      "Isitish yoki sovutish moslamalarini tokdan uzish",
+      "Ofisni chiqindilardan tozalash",
+      "Barcha javoblar to'g'ri"
     ]
   },
   {
@@ -605,9 +605,9 @@
     "question_type": "choice",
     "options": [
       "Sifatli xizmat, xavfsizlik va jo'natma beshikast yetib borishini ta'minlash uchun",
-      "Faqat qutini og'irroq qilish uchun",
+      "Qadoqlarimiz orqali reklama qilish",
       "Faqat rasmiy ko'rinish uchun, amaliy ahamiyati yo'q",
-      "Faqat operator vaqtini to'ldirish uchun"
+      "Mijozlarimiz ishonchini oshirish maqsadida"
     ]
   },
   {
@@ -620,7 +620,7 @@
       "Manifestni avtomatik yakunlaydi",
       "Hududiy filial menejeriga telefon qilib, sababini aniqlashtiradi",
       "Mijozlarga barcha jo'natmalar keldi deb xabar beradi",
-      "Pochta kelmagani haqida hech kimga aytmaydi"
+      "Jo'natmalar kelishini kutadi"
     ]
   },
   {
@@ -631,9 +631,9 @@
     "question_type": "choice",
     "options": [
       "Jo'natmalarni manifest bo'yicha aniq qabul qilish va farqlarni aniqlash",
-      "Faqat skaner ishlayotganini tekshirish",
-      "Jo'natmalar sonini taxminan bilish",
-      "Qoplarni plombalamasdan yuborish"
+      "Mijozlarga sms xabarnoma jo'natish",
+      "Jo'natmalar statusini o'zgartirish",
+      "Skaner qilish shart emas"
     ]
   },
   {
@@ -644,22 +644,22 @@
     "question_type": "choice",
     "options": [
       "Ish jarayoniga oid savolga o'z vaqtida javob berishi va izoh berishi",
-      "Savolni o'chirib tashlashi",
-      "Faqat ertasi kuni javob berishi",
+      "Javob berishga majbur emas",
+      "Call sentir bo'limiga yo'naltirishi",
       "Faqat og'zaki javob berishini aytishi"
     ]
   },
   {
     "question_text": "Jo'natma ustama to'lovli bo'lsa, mahsulot ma'lumotlarini kiritishda nimalar muhim?",
-    "correct_answer": "Mahsulot nomi, IKPU kodi va o'lchov birligini to'g'ri kiritish",
+    "correct_answer": "Barcha javoblar to'g'ri",
     "category": "Operatorlar yo'riqnomasi 2026",
     "difficulty": "medium",
     "question_type": "choice",
     "options": [
-      "Faqat filial nomini tanlash",
-      "Faqat qop raqamini kiritish",
-      "Faqat jo'natuvchi familiyasini yozish",
-      "Mahsulot nomi, IKPU kodi va o'lchov birligini to'g'ri kiritish"
+      "Mahsulot nomi",
+      "IKPU kodi",
+      "O'lchov birligini to'g'ri kiritish",
+      "Barcha javoblar to'g'ri"
     ]
   }
 ]
