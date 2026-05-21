@@ -5,7 +5,7 @@ Telegram uchun aiogram 3.x, OpenAI API va SQLite asosida yozilgan test bot.
 ## Imkoniyatlar
 
 - `/start` orqali userni ro'yxatdan o'tkazadi.
-- Bazadan 30 yoki 50 ta savolni tanlangan yo'nalish nisbatlari bo'yicha random tanlaydi.
+- Bazadan 10, 20 yoki 30 ta savolni tanlangan yo'nalish nisbatlari bo'yicha random tanlaydi.
 - User javobni o'zi yozadi, OpenAI javobni JSON formatda baholaydi.
 - Test sessiyasi va javoblar SQLite bazada saqlanadi.
 - Bot restart bo'lsa ham aktiv test sessiyasi davom ettiriladi.
@@ -80,7 +80,7 @@ OPENAI_API_KEY=openai_api_key
 OPENAI_MODEL=gpt-4o-mini
 ADMIN_IDS=123456789
 DATABASE_PATH=data/bot.db
-QUESTIONS_PER_TEST=50
+QUESTIONS_PER_TEST=30
 AUTO_SEED_DISTRICTS=false
 ```
 
@@ -127,7 +127,7 @@ BOT_TOKEN=telegram_bot_token
 OPENAI_API_KEY=openai_api_key
 OPENAI_MODEL=gpt-4o-mini
 ADMIN_IDS=123456789
-QUESTIONS_PER_TEST=50
+QUESTIONS_PER_TEST=30
 AUTO_SEED_DISTRICTS=true
 DATABASE_PATH=/data/bot.db
 ```

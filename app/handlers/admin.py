@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from aiogram import F, Router
-from aiogram.filters import Command, CommandObject
+from aiogram.filters import Command, CommandObject, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
@@ -53,6 +53,46 @@ async def _add_user_by_telegram_id(message: Message, telegram_id: int) -> None:
     )
 
 
+async def _send_user_stats(message: Message, user_id: int) -> None:
+    summary = await admin_service.user_summary(user_id)
+    if not summary:
+        await message.answer("Bunday user topilmadi.")
+        return
+    total_answers = int(summary["correct"]) + int(summary["wrong"])
+    percent = int(summary["correct"]) / total_answers * 100 if total_answers else 0
+    username = f"@{summary['username']}" if summary.get("username") else "yo'q"
+    await message.answer(
+        "User statistikasi\n\n"
+        f"ID: {summary['id']}\n"
+        f"Telegram ID: {summary['telegram_id']}\n"
+        f"Username: {username}\n"
+        f"Ism: {summary.get('first_name') or '-'}\n"
+        f"Rol: {summary['role']}\n"
+        f"Status: {summary['status']}\n"
+        f"Oxirgi kirgan: {format_tashkent(summary['last_seen_at'])}\n"
+        f"Operatsiyalar: {summary['operations_count']}\n"
+        f"Testlar: {summary['sessions']}\n"
+        f"Umumiy to'g'ri: {summary['correct']}\n"
+        f"Umumiy noto'g'ri: {summary['wrong']}\n"
+        f"Umumiy foiz: {percent:.1f}%"
+    )
+
+
+async def _block_user_by_telegram_id(message: Message, telegram_id: int) -> None:
+    user = await user_service.set_user_status(telegram_id, "blocked")
+    if not user:
+        await message.answer("Bunday Telegram ID bazada topilmadi.")
+        return
+    await message.answer(f"User bloklandi: {telegram_id}")
+
+
+async def _unblock_user_by_telegram_id(message: Message, telegram_id: int) -> None:
+    user = await user_service.set_user_status(telegram_id, "active")
+    if not user:
+        user = await user_service.add_allowed_user(telegram_id)
+    await message.answer(f"User aktiv qilindi: {user['telegram_id']}")
+
+
 @router.message(Command("admin"))
 async def admin_panel(message: Message) -> None:
     if not await _require_admin(message):
@@ -73,10 +113,10 @@ async def admin_panel(message: Message) -> None:
         f"EMU professional test savollari: {stats['professional_questions']}\n\n"
         f"Kategoriya bo'yicha:\n{categories}\n\n"
         "Userlar ro'yxati: /users\n"
-        "Yangi user qo'shish: /add_user TELEGRAM_ID\n"
-        "Userni bloklash: /block_user TELEGRAM_ID\n"
-        "Userni aktiv qilish: /unblock_user TELEGRAM_ID\n"
-        "User statistikasi: /user_stats USER_ID\n"
+        "Yangi user qo'shish: /add_user\n"
+        "Userni bloklash: /block_user\n"
+        "Userni aktiv qilish: /unblock_user\n"
+        "User statistikasi: /user_stats\n"
         "Barcha savollarni seed qilish: /seed_questions\n"
         "Tuman savollarini seed qilish: /seed_districts"
     )
@@ -130,34 +170,18 @@ async def users_page_callback(callback: CallbackQuery) -> None:
 
 
 @router.message(Command("user_stats"))
-async def user_stats(message: Message, command: CommandObject) -> None:
+async def user_stats(message: Message, command: CommandObject, state: FSMContext) -> None:
     if not await _require_admin(message):
         return
     if not command.args or not command.args.strip().isdigit():
-        await message.answer("Foydalanish: /user_stats USER_ID\nMasalan: /user_stats 12")
+        await state.set_state(AdminStates.waiting_user_stats_id)
+        await message.answer(
+            "Statistikasini ko'rish uchun user ID yuboring.\n\n"
+            "Masalan: 12\n"
+            "Bekor qilish: /cancel"
+        )
         return
-    summary = await admin_service.user_summary(int(command.args.strip()))
-    if not summary:
-        await message.answer("Bunday user topilmadi.")
-        return
-    total_answers = int(summary["correct"]) + int(summary["wrong"])
-    percent = int(summary["correct"]) / total_answers * 100 if total_answers else 0
-    username = f"@{summary['username']}" if summary.get("username") else "yo'q"
-    await message.answer(
-        "User statistikasi\n\n"
-        f"ID: {summary['id']}\n"
-        f"Telegram ID: {summary['telegram_id']}\n"
-        f"Username: {username}\n"
-        f"Ism: {summary.get('first_name') or '-'}\n"
-        f"Rol: {summary['role']}\n"
-        f"Status: {summary['status']}\n"
-        f"Oxirgi kirgan: {format_tashkent(summary['last_seen_at'])}\n"
-        f"Operatsiyalar: {summary['operations_count']}\n"
-        f"Testlar: {summary['sessions']}\n"
-        f"Umumiy to'g'ri: {summary['correct']}\n"
-        f"Umumiy noto'g'ri: {summary['wrong']}\n"
-        f"Umumiy foiz: {percent:.1f}%"
-    )
+    await _send_user_stats(message, int(command.args.strip()))
 
 
 @router.message(Command("add_user"))
@@ -182,6 +206,19 @@ async def cancel_add_user(message: Message, state: FSMContext) -> None:
     await message.answer("User qo'shish bekor qilindi.")
 
 
+@router.message(
+    StateFilter(
+        AdminStates.waiting_block_user_id,
+        AdminStates.waiting_unblock_user_id,
+        AdminStates.waiting_user_stats_id,
+    ),
+    Command("cancel"),
+)
+async def cancel_admin_action(message: Message, state: FSMContext) -> None:
+    await state.clear()
+    await message.answer("Amal bekor qilindi.")
+
+
 @router.message(AdminStates.waiting_add_user_id)
 async def add_user_id_received(message: Message, state: FSMContext) -> None:
     if not await _require_admin(message):
@@ -195,33 +232,75 @@ async def add_user_id_received(message: Message, state: FSMContext) -> None:
     await state.clear()
 
 
+@router.message(AdminStates.waiting_block_user_id)
+async def block_user_id_received(message: Message, state: FSMContext) -> None:
+    if not await _require_admin(message):
+        await state.clear()
+        return
+    telegram_id = _parse_message_telegram_id(message)
+    if telegram_id is None:
+        await message.answer("Telegram ID faqat raqamlardan iborat bo'lishi kerak. Qayta yuboring yoki /cancel bosing.")
+        return
+    await _block_user_by_telegram_id(message, telegram_id)
+    await state.clear()
+
+
+@router.message(AdminStates.waiting_unblock_user_id)
+async def unblock_user_id_received(message: Message, state: FSMContext) -> None:
+    if not await _require_admin(message):
+        await state.clear()
+        return
+    telegram_id = _parse_message_telegram_id(message)
+    if telegram_id is None:
+        await message.answer("Telegram ID faqat raqamlardan iborat bo'lishi kerak. Qayta yuboring yoki /cancel bosing.")
+        return
+    await _unblock_user_by_telegram_id(message, telegram_id)
+    await state.clear()
+
+
+@router.message(AdminStates.waiting_user_stats_id)
+async def user_stats_id_received(message: Message, state: FSMContext) -> None:
+    if not await _require_admin(message):
+        await state.clear()
+        return
+    user_id = _parse_message_telegram_id(message)
+    if user_id is None:
+        await message.answer("User ID faqat raqamlardan iborat bo'lishi kerak. Qayta yuboring yoki /cancel bosing.")
+        return
+    await _send_user_stats(message, user_id)
+    await state.clear()
+
+
 @router.message(Command("block_user"))
-async def block_user(message: Message, command: CommandObject) -> None:
+async def block_user(message: Message, command: CommandObject, state: FSMContext) -> None:
     if not await _require_admin(message):
         return
     telegram_id = _parse_telegram_id(command)
     if telegram_id is None:
-        await message.answer("Foydalanish: /block_user TELEGRAM_ID\nMasalan: /block_user 123456789")
+        await state.set_state(AdminStates.waiting_block_user_id)
+        await message.answer(
+            "Bloklash uchun Telegram ID yuboring.\n\n"
+            "Masalan: 123456789\n"
+            "Bekor qilish: /cancel"
+        )
         return
-    user = await user_service.set_user_status(telegram_id, "blocked")
-    if not user:
-        await message.answer("Bunday Telegram ID bazada topilmadi.")
-        return
-    await message.answer(f"User bloklandi: {telegram_id}")
+    await _block_user_by_telegram_id(message, telegram_id)
 
 
 @router.message(Command("unblock_user"))
-async def unblock_user(message: Message, command: CommandObject) -> None:
+async def unblock_user(message: Message, command: CommandObject, state: FSMContext) -> None:
     if not await _require_admin(message):
         return
     telegram_id = _parse_telegram_id(command)
     if telegram_id is None:
-        await message.answer("Foydalanish: /unblock_user TELEGRAM_ID\nMasalan: /unblock_user 123456789")
+        await state.set_state(AdminStates.waiting_unblock_user_id)
+        await message.answer(
+            "Aktiv qilish uchun Telegram ID yuboring.\n\n"
+            "Masalan: 123456789\n"
+            "Bekor qilish: /cancel"
+        )
         return
-    user = await user_service.set_user_status(telegram_id, "active")
-    if not user:
-        user = await user_service.add_allowed_user(telegram_id)
-    await message.answer(f"User aktiv qilindi: {user['telegram_id']}")
+    await _unblock_user_by_telegram_id(message, telegram_id)
 
 
 @router.message(Command("seed_districts"))

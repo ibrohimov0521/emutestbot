@@ -58,7 +58,7 @@ async def _send_next_question(message: Message, session_id: int) -> None:
                 await message.answer(test_service.format_result(session, language), reply_markup=main_menu(language))
         return
     answered = await test_service.count_answered(session_id)
-    total_questions = int(session["total_questions"]) if session else 50
+    total_questions = int(session["total_questions"]) if session else 30
     reply_markup = choice_answer_menu(language) if test_service.is_choice_question(question) else test_menu(language)
     await message.answer(
         test_service.format_question_text(question, answered, total_questions, language),
@@ -115,7 +115,7 @@ async def choose_test_direction(message: Message) -> None:
     )
 
 
-@router.message(F.text.in_(button_values("test_30") | button_values("test_50")))
+@router.message(F.text.in_(button_values("test_10") | button_values("test_20") | button_values("test_30")))
 async def choose_test_size(message: Message) -> None:
     user_id = await _ensure_allowed(message)
     if user_id is None:
@@ -125,7 +125,12 @@ async def choose_test_size(message: Message) -> None:
     if direction is None:
         await message.answer(text("choose_direction_first", language), reply_markup=test_direction_menu(language))
         return
-    total_questions = 30 if message.text in button_values("test_30") else 50
+    if message.text in button_values("test_10"):
+        total_questions = 10
+    elif message.text in button_values("test_20"):
+        total_questions = 20
+    else:
+        total_questions = 30
     await user_service.log_operation(
         user_id,
         "choose_test_size",

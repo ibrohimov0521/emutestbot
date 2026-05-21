@@ -114,11 +114,7 @@ async def _select_question_ids(db, total_questions: int, direction: str) -> list
             "Tumanlar",
         )
     elif direction == TEST_DIRECTION_SIMPLE_MIXED:
-        professional_available = await _count_questions(db, active_category, active_professional)
-        if total_questions == 30:
-            professional_count = 15
-        else:
-            professional_count = min(professional_available, total_questions)
+        professional_count = total_questions // 2
         district_count = total_questions - professional_count
         selected = []
         selected.extend(
@@ -134,7 +130,7 @@ async def _select_question_ids(db, total_questions: int, direction: str) -> list
             await _require_question_ids(db, active_category, active_district, district_count, "Tumanlar")
         )
     elif direction == TEST_DIRECTION_COMPLEX_MIXED:
-        manual_count = 15 if total_questions == 30 else 25
+        manual_count = total_questions // 2
         district_count = total_questions - manual_count
         selected = []
         selected.extend(

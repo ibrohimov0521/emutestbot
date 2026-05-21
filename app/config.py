@@ -32,7 +32,7 @@ class Settings:
     admin_ids: set[int]
     database_path: Path
     auto_seed_districts: bool
-    questions_per_test: int = 50
+    questions_per_test: int = 30
 
 
 def get_settings() -> Settings:
@@ -49,7 +49,7 @@ def get_settings() -> Settings:
         admin_ids=_parse_admin_ids(os.getenv("ADMIN_IDS", "")),
         database_path=db_path,
         auto_seed_districts=_parse_bool(os.getenv("AUTO_SEED_DISTRICTS", "false")),
-        questions_per_test=int(os.getenv("QUESTIONS_PER_TEST", "50")),
+        questions_per_test=int(os.getenv("QUESTIONS_PER_TEST", "30")),
     )
 
 

@@ -8,8 +8,9 @@ BTN_TEST_SIMPLE_MIXED = "Sodda aralash"
 BTN_TEST_COMPLEX_MIXED = "Murakkab aralash"
 BTN_TEST_DISTRICTS = "Tumanlar bo'yicha"
 BTN_TEST_WORK_PROCESS = "Ish jarayoni bo'yicha"
+BTN_TEST_10 = "10 talik test"
+BTN_TEST_20 = "20 talik test"
 BTN_TEST_30 = "30 talik test"
-BTN_TEST_50 = "50 talik test"
 BTN_LAST_RESULTS = "Oxirgi natijalarim"
 BTN_PROFILE = "Profilim"
 BTN_HELP = "Yordam"
@@ -80,7 +81,8 @@ def test_direction_menu(language: str = "uz") -> ReplyKeyboardMarkup:
 def test_size_menu(language: str = "uz") -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(
         keyboard=[
-            [KeyboardButton(text=button("test_30", language)), KeyboardButton(text=button("test_50", language))],
+            [KeyboardButton(text=button("test_10", language)), KeyboardButton(text=button("test_20", language))],
+            [KeyboardButton(text=button("test_30", language))],
             [KeyboardButton(text=button("cancel_test", language))],
         ],
         resize_keyboard=True,

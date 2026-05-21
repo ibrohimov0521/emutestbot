@@ -40,10 +40,10 @@ TEXTS = {
             "\n\nAdmin komandalar:\n"
             "/admin - umumiy statistika\n"
             "/users - userlar ro'yxati\n"
-            "/add_user TELEGRAM_ID - yangi user qo'shish\n"
-            "/block_user TELEGRAM_ID - userni bloklash\n"
-            "/unblock_user TELEGRAM_ID - userni qayta aktiv qilish\n"
-            "/user_stats USER_ID - user statistikasi\n"
+            "/add_user - yangi user qo'shish\n"
+            "/block_user - userni bloklash\n"
+            "/unblock_user - userni qayta aktiv qilish\n"
+            "/user_stats - user statistikasi\n"
             "/seed_questions - barcha savollarni seed qilish\n"
             "/seed_districts - tuman savollarini seed qilish"
         ),
@@ -51,10 +51,10 @@ TEXTS = {
             "\n\nАдмин командалар:\n"
             "/admin - умумий статистика\n"
             "/users - userлар рўйхати\n"
-            "/add_user TELEGRAM_ID - янги user қўшиш\n"
-            "/block_user TELEGRAM_ID - userни блоклаш\n"
-            "/unblock_user TELEGRAM_ID - userни қайта актив қилиш\n"
-            "/user_stats USER_ID - user статистикаси\n"
+            "/add_user - янги user қўшиш\n"
+            "/block_user - userни блоклаш\n"
+            "/unblock_user - userни қайта актив қилиш\n"
+            "/user_stats - user статистикаси\n"
             "/seed_questions - барча саволларни seed қилиш\n"
             "/seed_districts - туман саволларини seed қилиш"
         ),
@@ -94,8 +94,9 @@ BUTTON_TEXTS = {
     "test_complex_mixed": {LANG_UZ: "Murakkab aralash", LANG_CYRL: "Мураккаб аралаш"},
     "test_districts": {LANG_UZ: "Tumanlar bo'yicha", LANG_CYRL: "Туманлар бўйича"},
     "test_work_process": {LANG_UZ: "Ish jarayoni bo'yicha", LANG_CYRL: "Иш жараёни бўйича"},
+    "test_10": {LANG_UZ: "10 talik test", LANG_CYRL: "10 талик тест"},
+    "test_20": {LANG_UZ: "20 talik test", LANG_CYRL: "20 талик тест"},
     "test_30": {LANG_UZ: "30 talik test", LANG_CYRL: "30 талик тест"},
-    "test_50": {LANG_UZ: "50 talik test", LANG_CYRL: "50 талик тест"},
     "last_results": {LANG_UZ: "Oxirgi natijalarim", LANG_CYRL: "Охирги натижаларим"},
     "profile": {LANG_UZ: "Profilim", LANG_CYRL: "Профилим"},
     "help": {LANG_UZ: "Yordam", LANG_CYRL: "Ёрдам"},
