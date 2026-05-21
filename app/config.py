@@ -9,6 +9,7 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 load_dotenv(BASE_DIR / ".env")
+RAILWAY_VOLUME_DB_PATH = Path("/data/bot.db")
 
 
 def _parse_admin_ids(value: str) -> set[int]:
@@ -22,6 +23,25 @@ def _parse_admin_ids(value: str) -> set[int]:
 
 def _parse_bool(value: str) -> bool:
     return value.strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _is_railway_environment() -> bool:
+    return any(os.getenv(name) for name in ("RAILWAY_ENVIRONMENT", "RAILWAY_PROJECT_ID", "RAILWAY_SERVICE_ID"))
+
+
+def _resolve_database_path() -> Path:
+    raw_path = os.getenv("DATABASE_PATH", "data/bot.db").strip() or "data/bot.db"
+    db_path = Path(raw_path)
+    if (
+        _is_railway_environment()
+        and not db_path.is_absolute()
+        and raw_path.replace("\\", "/") == "data/bot.db"
+        and RAILWAY_VOLUME_DB_PATH.parent.exists()
+    ):
+        return RAILWAY_VOLUME_DB_PATH
+    if not db_path.is_absolute():
+        return BASE_DIR / db_path
+    return db_path
 
 
 @dataclass(frozen=True)
@@ -38,9 +58,7 @@ class Settings:
 def get_settings() -> Settings:
     bot_token = os.getenv("BOT_TOKEN", "")
     openai_api_key = os.getenv("OPENAI_API_KEY", "")
-    db_path = Path(os.getenv("DATABASE_PATH", "data/bot.db"))
-    if not db_path.is_absolute():
-        db_path = BASE_DIR / db_path
+    db_path = _resolve_database_path()
 
     return Settings(
         bot_token=bot_token,

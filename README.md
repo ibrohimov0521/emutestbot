@@ -134,6 +134,8 @@ DATABASE_PATH=/data/bot.db
 
 SQLite ma'lumotlari restart yoki redeploydan keyin ham saqlanishi uchun Railway'da Volume yarating va mount path sifatida `/data` ni tanlang. Volume ishlatmasangiz, baza ephemeral filesystemda qoladi va deploy/restartlarda yo'qolishi mumkin.
 
+Muhim: Railway Variables bo'limida `DATABASE_PATH=/data/bot.db` bo'lishi kerak. Agar adashib `data/bot.db` qolib ketsa, bot volume ichiga emas, container ichidagi vaqtinchalik faylga yozishi mumkin. Railway loglarida `SQLite database path: /data/bot.db` ko'rinsa, baza volume ichida saqlanyapti.
+
 ## Admin komandalar
 
 - `/admin` - umumiy statistika.

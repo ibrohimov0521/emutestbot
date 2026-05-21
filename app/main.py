@@ -7,7 +7,7 @@ from aiogram import Bot, Dispatcher
 
 from app.bot_commands import set_default_commands
 from app.config import settings
-from app.database import init_db
+from app.database import get_db_path, init_db
 from app.handlers import admin, test, user
 
 
@@ -23,6 +23,7 @@ async def main() -> None:
         raise RuntimeError("OPENAI_API_KEY .env faylida ko'rsatilmagan.")
 
     await init_db()
+    logging.info("SQLite database path: %s", get_db_path())
     if settings.auto_seed_districts:
         from seed import seed_all_questions
 
